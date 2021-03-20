@@ -15,6 +15,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/open_camera"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="20dp"
@@ -42,6 +43,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/open_gallery"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="20dp"
@@ -69,6 +71,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/open_gallery_folder_project"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="20dp"
