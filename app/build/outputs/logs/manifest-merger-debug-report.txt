@@ -1,0 +1,195 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from [androidx.core:core-ktx:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/5379b1c81859c1dfec787f14a53e2e73/jetified-core-ktx-1.3.2/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.material:material:1.3.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e28b546c31507a35db313aebd35ef43a/material-1.3.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/bb23249328a13d65c47eb3379f4950df/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/1e190329b368e763623a03da6184068d/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/590c22847ade86d0fcb39817dbd89255/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/172e44de4960680b4a6d38c03e420536/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e16b02509f50d05241ee00f9fd2c876d/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/291c08de615145c1d13bb76ec39d655c/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/2678e3c23ae8e15acdb8df7b72cfd6e7/legacy-support-core-ui-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/61b8ae5378c56c187b537949700b1e48/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e93b5058f82ceee9cb2d3b895a8fc29b/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/04093f118044258fb350883b0b5ebbe7/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.transition:transition:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/f427f05b6d07c6fe2559d40557d2aa8e/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/43d2c906b73b9b71ff8b1e8d76f5a200/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/52e54b26723fa6e284c700ec5b3807a5/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/eb91dc5d98bd1aab8404e13980bce403/media-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/4e77b0913cfc8d6f890a8760d9004de4/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/8a6ceb1372a710325162b7f1a7075602/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/949956aa82621713c26c11e7f3d82626/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/cd5a3dc8dd82eb76612b950ef2314d99/jetified-activity-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/466ea2289e77ff5b812868f1ae95bd6b/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/d80d8960cfd3ddcfe83eb1eccc38413d/slidingpanelayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/24c8e698acf5068bf9736abf3cce95c5/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/3b0ca7b23d58363dfc12aad04738904e/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a0f53033bf253466dfa0ffc482eadc48/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/78b171fb121e51ea7ac9b1d541fbc699/core-1.3.2/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/6e0bfb74c05ec9c13e2dadd72a024b2c/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a6544b0f27ac45250b39dde889e94570/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/627ce2df1876676c30bc33db7eb2d55f/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/68cc02ce30b4da8450ff663c2e936f9d/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/16023fb186c9d376410b24d721cc7857/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e4e47cddaae5e825c2350c80c329e359/print-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/75729a682235556b496cdfc9d64b9ca3/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/ce3988e525b96d2d4422213a38f9fe0e/lifecycle-runtime-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/de67d364d206f737f6add3c107c3ea49/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/79dce84f8ea8cac33c2dd04d1cdb0dff/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/3dd3d6e4d02b80611061be663eb598a3/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/7061ec8e21754f96dd6708819402d227/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/094a811f30951b08caa7b2d63924865d/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/64c010ebe6c44a1c25dd4a0d28c589c4/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:3:5-36
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:5:5-19:19
+MERGED from [com.google.android.material:material:1.3.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e28b546c31507a35db313aebd35ef43a/material-1.3.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.3.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e28b546c31507a35db313aebd35ef43a/material-1.3.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/bb23249328a13d65c47eb3379f4950df/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/bb23249328a13d65c47eb3379f4950df/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/78b171fb121e51ea7ac9b1d541fbc699/core-1.3.2/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/78b171fb121e51ea7ac9b1d541fbc699/core-1.3.2/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/627ce2df1876676c30bc33db7eb2d55f/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/627ce2df1876676c30bc33db7eb2d55f/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/78b171fb121e51ea7ac9b1d541fbc699/core-1.3.2/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:11:9-48
+activity#ru.harlion.curtainspb.MainActivity
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:12:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+MERGED from [androidx.core:core-ktx:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/5379b1c81859c1dfec787f14a53e2e73/jetified-core-ktx-1.3.2/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/5379b1c81859c1dfec787f14a53e2e73/jetified-core-ktx-1.3.2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.material:material:1.3.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e28b546c31507a35db313aebd35ef43a/material-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.3.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e28b546c31507a35db313aebd35ef43a/material-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/bb23249328a13d65c47eb3379f4950df/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/bb23249328a13d65c47eb3379f4950df/constraintlayout-2.0.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/1e190329b368e763623a03da6184068d/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/1e190329b368e763623a03da6184068d/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/590c22847ade86d0fcb39817dbd89255/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/590c22847ade86d0fcb39817dbd89255/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/172e44de4960680b4a6d38c03e420536/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/172e44de4960680b4a6d38c03e420536/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e16b02509f50d05241ee00f9fd2c876d/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e16b02509f50d05241ee00f9fd2c876d/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/291c08de615145c1d13bb76ec39d655c/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/291c08de615145c1d13bb76ec39d655c/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/2678e3c23ae8e15acdb8df7b72cfd6e7/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/2678e3c23ae8e15acdb8df7b72cfd6e7/legacy-support-core-ui-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/61b8ae5378c56c187b537949700b1e48/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/61b8ae5378c56c187b537949700b1e48/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e93b5058f82ceee9cb2d3b895a8fc29b/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e93b5058f82ceee9cb2d3b895a8fc29b/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/04093f118044258fb350883b0b5ebbe7/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/04093f118044258fb350883b0b5ebbe7/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/f427f05b6d07c6fe2559d40557d2aa8e/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/f427f05b6d07c6fe2559d40557d2aa8e/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/43d2c906b73b9b71ff8b1e8d76f5a200/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/43d2c906b73b9b71ff8b1e8d76f5a200/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/52e54b26723fa6e284c700ec5b3807a5/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/52e54b26723fa6e284c700ec5b3807a5/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/eb91dc5d98bd1aab8404e13980bce403/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/eb91dc5d98bd1aab8404e13980bce403/media-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/4e77b0913cfc8d6f890a8760d9004de4/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/4e77b0913cfc8d6f890a8760d9004de4/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/8a6ceb1372a710325162b7f1a7075602/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/8a6ceb1372a710325162b7f1a7075602/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/949956aa82621713c26c11e7f3d82626/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/949956aa82621713c26c11e7f3d82626/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/cd5a3dc8dd82eb76612b950ef2314d99/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/cd5a3dc8dd82eb76612b950ef2314d99/jetified-activity-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/466ea2289e77ff5b812868f1ae95bd6b/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/466ea2289e77ff5b812868f1ae95bd6b/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/d80d8960cfd3ddcfe83eb1eccc38413d/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/d80d8960cfd3ddcfe83eb1eccc38413d/slidingpanelayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/24c8e698acf5068bf9736abf3cce95c5/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/24c8e698acf5068bf9736abf3cce95c5/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/3b0ca7b23d58363dfc12aad04738904e/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/3b0ca7b23d58363dfc12aad04738904e/swiperefreshlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a0f53033bf253466dfa0ffc482eadc48/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a0f53033bf253466dfa0ffc482eadc48/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/78b171fb121e51ea7ac9b1d541fbc699/core-1.3.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/78b171fb121e51ea7ac9b1d541fbc699/core-1.3.2/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/6e0bfb74c05ec9c13e2dadd72a024b2c/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/6e0bfb74c05ec9c13e2dadd72a024b2c/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a6544b0f27ac45250b39dde889e94570/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a6544b0f27ac45250b39dde889e94570/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/627ce2df1876676c30bc33db7eb2d55f/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/627ce2df1876676c30bc33db7eb2d55f/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/68cc02ce30b4da8450ff663c2e936f9d/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/68cc02ce30b4da8450ff663c2e936f9d/documentfile-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/16023fb186c9d376410b24d721cc7857/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/16023fb186c9d376410b24d721cc7857/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e4e47cddaae5e825c2350c80c329e359/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e4e47cddaae5e825c2350c80c329e359/print-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/75729a682235556b496cdfc9d64b9ca3/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/75729a682235556b496cdfc9d64b9ca3/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/ce3988e525b96d2d4422213a38f9fe0e/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/ce3988e525b96d2d4422213a38f9fe0e/lifecycle-runtime-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/de67d364d206f737f6add3c107c3ea49/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/de67d364d206f737f6add3c107c3ea49/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/79dce84f8ea8cac33c2dd04d1cdb0dff/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/79dce84f8ea8cac33c2dd04d1cdb0dff/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/3dd3d6e4d02b80611061be663eb598a3/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/3dd3d6e4d02b80611061be663eb598a3/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/7061ec8e21754f96dd6708819402d227/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/7061ec8e21754f96dd6708819402d227/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/094a811f30951b08caa7b2d63924865d/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/094a811f30951b08caa7b2d63924865d/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/64c010ebe6c44a1c25dd4a0d28c589c4/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/64c010ebe6c44a1c25dd4a0d28c589c4/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml

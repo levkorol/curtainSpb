@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.auth.AuthFragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_logologo" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/shape_edit_text">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint=" Логин"
+            android:padding="13dp"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/authorization_password_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_edit_text"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="none"
+        app:boxStrokeColor="@color/white"
+        app:hintEnabled="false"
+        app:layout_constraintLeft_toRightOf="@+id/ic_password"
+        app:layout_constraintTop_toBottomOf="@+id/authorization_view1"
+        app:passwordToggleDrawable="@drawable/ic_eye_on"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/gray">
+
+        <androidx.appcompat.widget.AppCompatEditText
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:cursorVisible="true"
+            android:hint=" Пароль"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:paddingStart="11dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/forget_password_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="end"
+        android:text="Забыли пароль?"
+        android:textColor="@color/black" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_button_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:padding="13dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="ВОЙТИ"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/registration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_edit_text">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@null"
+            android:padding="12dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/main_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="Войти без регистрации"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/user_arreement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="Продолжая использовать приложение вы принимаете пользовательское соглашение"
+        android:textColor="@color/gray" />
+
+</LinearLayout>

@@ -1,0 +1,2 @@
+ru/harlion/curtainspb/BuildConfig.java
+ ru.harlion.curtainspb.BuildConfig

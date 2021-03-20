@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ui.auth.RegistrationFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_photo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="7dp">
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="8dp"
+            android:src="@drawable/ic_left" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Регистрация"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_edit_text">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint=" Имя"
+            android:padding="13dp"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_edit_text">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint=" Телефон"
+            android:padding="13dp"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_edit_text">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint=" E-mail"
+            android:padding="13dp"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/authorization_password_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_edit_text"
+        app:boxBackgroundColor="@color/white"
+        app:boxBackgroundMode="none"
+        app:boxStrokeColor="@color/white"
+        app:hintEnabled="false"
+        app:layout_constraintLeft_toRightOf="@+id/ic_password"
+        app:layout_constraintTop_toBottomOf="@+id/authorization_view1"
+        app:passwordToggleDrawable="@drawable/ic_eye_on"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/gray">
+
+        <androidx.appcompat.widget.AppCompatEditText
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:cursorVisible="true"
+            android:hint=" Пароль"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:paddingStart="11dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_button_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@null"
+
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
