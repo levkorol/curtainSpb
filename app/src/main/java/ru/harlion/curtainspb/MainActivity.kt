@@ -1,8 +1,8 @@
 package ru.harlion.curtainspb
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.harlion.curtainspb.ui.auth.AuthFragment
+import androidx.appcompat.app.AppCompatActivity
+import ru.harlion.curtainspb.ui.auth.authorization.AuthFragment
 import ru.harlion.curtainspb.ui.splash.SplashFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 import java.util.*
