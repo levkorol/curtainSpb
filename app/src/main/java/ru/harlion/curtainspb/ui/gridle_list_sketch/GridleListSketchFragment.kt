@@ -1,4 +1,4 @@
-package ru.harlion.curtainspb.ui.gridl_list_sketchs
+package ru.harlion.curtainspb.ui.gridle_list_sketch
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import ru.harlion.curtainspb.R
 
 
-class GridlListSketchsFragment : Fragment() {
+class GridleListSketchFragment : Fragment() {
 
 
     override fun onCreateView(
