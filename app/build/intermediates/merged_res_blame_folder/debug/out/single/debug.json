@@ -44,6 +44,10 @@
         "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
     },
     {
+        "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/drawable_ic_save_gallery.xml.flat",
+        "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/drawable/ic_save_gallery.xml"
+    },
+    {
         "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/layout_fragment_main_menu.xml.flat",
         "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/layout/fragment_main_menu.xml"
     },
@@ -116,6 +120,10 @@
         "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/layout/fragment_password_recovery.xml"
     },
     {
+        "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/drawable_ic_plus.xml.flat",
+        "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/drawable/ic_plus.xml"
+    },
+    {
         "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_logologo.png.flat",
         "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/generated/res/pngs/debug/drawable-hdpi/ic_logologo.png"
     },
@@ -126,6 +134,10 @@
     {
         "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_logo_mini.png.flat",
         "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_logo_mini.png"
+    },
+    {
+        "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/layout_fragment_request_cost.xml.flat",
+        "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/layout/fragment_request_cost.xml"
     },
     {
         "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/drawable_shape_btn_no_active_bg.xml.flat",
@@ -228,12 +240,20 @@
         "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/drawable/ic_cancel.xml"
     },
     {
+        "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/layout_fragment_save_project.xml.flat",
+        "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/layout/fragment_save_project.xml"
+    },
+    {
         "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_eye_on.png.flat",
         "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_eye_on.png"
     },
     {
         "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/layout_fragment_auth.xml.flat",
         "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/layout/fragment_auth.xml"
+    },
+    {
+        "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/drawable_ic_ruble.xml.flat",
+        "source": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/res/drawable/ic_ruble.xml"
     },
     {
         "merged": "/Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",

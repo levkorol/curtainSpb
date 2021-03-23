@@ -1,0 +1,40 @@
+package ru.harlion.curtainspb.ui.save_project
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_save_project.*
+import ru.harlion.curtainspb.R
+import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
+import ru.harlion.curtainspb.ui.request_cost.RequestCostFragment
+import ru.harlion.curtainspb.utils.replaceFragment
+
+
+class SaveProjectFragment : Fragment() {
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_save_project, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        go_main_menu.setOnClickListener {
+            replaceFragment(MainMenuFragment())
+        }
+
+        save_project_in_gallery_and_request.setOnClickListener {
+            replaceFragment(RequestCostFragment())
+        }
+
+        save_project_in_gallery.setOnClickListener {
+            //todo
+        }
+    }
+}

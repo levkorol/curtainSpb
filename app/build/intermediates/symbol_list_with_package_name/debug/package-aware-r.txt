@@ -2428,7 +2428,10 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_plus
 drawable ic_right
+drawable ic_ruble
+drawable ic_save_gallery
 drawable ic_up_arrow
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
@@ -2563,10 +2566,11 @@ id blocking
 id bottom
 id bounce
 id buttonPanel
+id button_login_auth
 id cache_measures
 id cancel_action
 id cancel_button
-id cardView
+id cardView_save_project
 id center
 id center_horizontal
 id center_vertical
@@ -2597,6 +2601,8 @@ id counterclockwise
 id custom
 id customPanel
 id cut
+id cv_back
+id cv_back_save_project
 id cv_photo
 id date_picker_actions
 id decelerate
@@ -2634,6 +2640,7 @@ id endToStart
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
+id et_count
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2655,6 +2662,7 @@ id give_us_a_review_landmine_button
 id give_us_a_review_landmine_main_layout
 id give_us_a_review_landmine_text_1
 id give_us_a_review_landmine_text_2
+id go_main_menu
 id gone
 id graph
 id graph_wrap
@@ -2695,6 +2703,7 @@ id line3
 id linear
 id listMode
 id list_item
+id login_auth
 id main_menu
 id masked
 id material_clock_display
@@ -2772,6 +2781,7 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
+id password_auth
 id password_toggle
 id path
 id pathRelative
@@ -2792,10 +2802,14 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id rl_m1
 id rounded
 id row_index_key
+id ruble_iv
 id save_non_transition_alpha
 id save_overlay_view
+id save_project_in_gallery
+id save_project_in_gallery_and_request
 id sawtooth
 id scale
 id screen
@@ -2991,6 +3005,8 @@ layout fragment_auth
 layout fragment_main_menu
 layout fragment_password_recovery
 layout fragment_registration
+layout fragment_request_cost
+layout fragment_save_project
 layout fragment_scetch
 layout fragment_splash
 layout fragment_user_agreement

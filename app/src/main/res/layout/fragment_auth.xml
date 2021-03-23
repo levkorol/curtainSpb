@@ -15,6 +15,7 @@
         android:src="@drawable/ic_logologo" />
 
     <RelativeLayout
+        android:id="@+id/login_auth"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="20dp"
@@ -50,7 +51,7 @@
         app:passwordToggleTint="@color/gray">
 
         <androidx.appcompat.widget.AppCompatEditText
-
+            android:id="@+id/password_auth"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:cursorVisible="true"
@@ -77,6 +78,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/button_login_auth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"

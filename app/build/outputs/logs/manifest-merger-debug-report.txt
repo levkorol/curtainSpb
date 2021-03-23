@@ -1,14 +1,17 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-32:12
 MERGED from [androidx.core:core-ktx:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/5379b1c81859c1dfec787f14a53e2e73/jetified-core-ktx-1.3.2/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.3.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e28b546c31507a35db313aebd35ef43a/material-1.3.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/bb23249328a13d65c47eb3379f4950df/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/1e190329b368e763623a03da6184068d/appcompat-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/590c22847ade86d0fcb39817dbd89255/legacy-support-v4-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a6544b0f27ac45250b39dde889e94570/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.intuit.ssp:ssp-android:1.0.6] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/d21b3f39b7a40e12c2c4b1c16bc75665/jetified-ssp-android-1.0.6/AndroidManifest.xml:2:1-11:12
+MERGED from [com.intuit.sdp:sdp-android:1.0.6] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/80afd6dc0106ae152624de60c078a33a/jetified-sdp-android-1.0.6/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/172e44de4960680b4a6d38c03e420536/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e16b02509f50d05241ee00f9fd2c876d/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/291c08de615145c1d13bb76ec39d655c/jetified-appcompat-resources-1.2.0/AndroidManifest.xml:17:1-24:12
@@ -31,7 +34,6 @@ MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/spbiph
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a0f53033bf253466dfa0ffc482eadc48/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/78b171fb121e51ea7ac9b1d541fbc699/core-1.3.2/AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/6e0bfb74c05ec9c13e2dadd72a024b2c/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cardview:cardview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a6544b0f27ac45250b39dde889e94570/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/627ce2df1876676c30bc33db7eb2d55f/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/68cc02ce30b4da8450ff663c2e936f9d/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/16023fb186c9d376410b24d721cc7857/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -44,25 +46,47 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/spbiphones/.gra
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/7061ec8e21754f96dd6708819402d227/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/094a811f30951b08caa7b2d63924865d/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/64c010ebe6c44a1c25dd4a0d28c589c4/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
-INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
-INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-32:12
+INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-32:12
 	package
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:3:5-36
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:4:5-36
 		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-32:12
 		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-21:12
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:1-32:12
 		INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:6:5-8:40
+	tools:ignore
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:8:9-37
+	android:name
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:7:9-65
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:9:22-77
+uses-permission#android.permission.INTERNET
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:10:5-67
+	android:name
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:10:22-64
+uses-feature#android.hardware.camera
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:12:5-14:35
+	android:required
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:14:9-32
+	android:name
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:13:9-47
 application
-ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:5:5-19:19
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:16:5-30:19
 MERGED from [com.google.android.material:material:1.3.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e28b546c31507a35db313aebd35ef43a/material-1.3.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e28b546c31507a35db313aebd35ef43a/material-1.3.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/bb23249328a13d65c47eb3379f4950df/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
@@ -74,31 +98,31 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/spbi
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/78b171fb121e51ea7ac9b1d541fbc699/core-1.3.2/AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:21:9-35
 	android:label
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:19:9-41
 	android:roundIcon
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:9:9-54
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:20:9-54
 	android:icon
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:7:9-43
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:18:9-43
 	android:allowBackup
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:6:9-35
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:17:9-35
 	android:theme
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:11:9-48
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:22:9-48
 activity#ru.harlion.curtainspb.MainActivity
-ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:12:9-18:20
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:23:9-29:20
 	android:name
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:12:19-47
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:23:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:13:13-17:29
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:24:13-28:29
 action#android.intent.action.MAIN
-ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:14:17-69
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:14:25-66
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:16:17-77
+ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:16:27-74
+		ADDED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml:27:27-74
 uses-sdk
 INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/spbiphones/Desktop/Петербужский занавес/CurtainSpb/app/src/main/AndroidManifest.xml
@@ -113,6 +137,12 @@ MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/spbiphones/.gradle/cache
 MERGED from [androidx.appcompat:appcompat:1.2.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/1e190329b368e763623a03da6184068d/appcompat-1.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/590c22847ade86d0fcb39817dbd89255/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/590c22847ade86d0fcb39817dbd89255/legacy-support-v4-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a6544b0f27ac45250b39dde889e94570/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a6544b0f27ac45250b39dde889e94570/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.intuit.ssp:ssp-android:1.0.6] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/d21b3f39b7a40e12c2c4b1c16bc75665/jetified-ssp-android-1.0.6/AndroidManifest.xml:7:5-9:41
+MERGED from [com.intuit.ssp:ssp-android:1.0.6] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/d21b3f39b7a40e12c2c4b1c16bc75665/jetified-ssp-android-1.0.6/AndroidManifest.xml:7:5-9:41
+MERGED from [com.intuit.sdp:sdp-android:1.0.6] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/80afd6dc0106ae152624de60c078a33a/jetified-sdp-android-1.0.6/AndroidManifest.xml:7:5-9:41
+MERGED from [com.intuit.sdp:sdp-android:1.0.6] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/80afd6dc0106ae152624de60c078a33a/jetified-sdp-android-1.0.6/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/172e44de4960680b4a6d38c03e420536/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/172e44de4960680b4a6d38c03e420536/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/e16b02509f50d05241ee00f9fd2c876d/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
@@ -157,8 +187,6 @@ MERGED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transfor
 MERGED from [androidx.core:core:1.3.2] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/78b171fb121e51ea7ac9b1d541fbc699/core-1.3.2/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/6e0bfb74c05ec9c13e2dadd72a024b2c/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/6e0bfb74c05ec9c13e2dadd72a024b2c/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a6544b0f27ac45250b39dde889e94570/cardview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.cardview:cardview:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/a6544b0f27ac45250b39dde889e94570/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/627ce2df1876676c30bc33db7eb2d55f/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/627ce2df1876676c30bc33db7eb2d55f/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/spbiphones/.gradle/caches/transforms-2/files-2.1/68cc02ce30b4da8450ff663c2e936f9d/documentfile-1.0.0/AndroidManifest.xml:20:5-44
