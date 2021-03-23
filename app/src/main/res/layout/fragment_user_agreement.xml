@@ -23,11 +23,11 @@
 
             <ImageView
                 android:id="@+id/iv_photo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="8dp"
-                android:src="@drawable/ic_left" />
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:background="@drawable/ic_left" />
         </androidx.cardview.widget.CardView>
 
         <TextView

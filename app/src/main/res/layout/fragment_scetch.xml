@@ -26,11 +26,11 @@
 
             <ImageView
                 android:id="@+id/iv_photo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="8dp"
-                android:src="@drawable/ic_left" />
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:background="@drawable/ic_left" />
         </androidx.cardview.widget.CardView>
 
         <ImageView
@@ -57,11 +57,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="8dp"
-                android:src="@drawable/ic_right" />
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:background="@drawable/ic_right" />
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -83,7 +83,7 @@
             android:layout_margin="20dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="100dp"
-            app:cardElevation="7dp"
+            app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -102,7 +102,7 @@
             android:layout_margin="20dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="100dp"
-            app:cardElevation="7dp"
+            app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -121,7 +121,7 @@
             android:layout_margin="20dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="100dp"
-            app:cardElevation="7dp"
+            app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -140,7 +140,7 @@
             android:layout_margin="20dp"
             android:layout_marginEnd="20dp"
             app:cardCornerRadius="100dp"
-            app:cardElevation="7dp"
+            app:cardElevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -156,6 +156,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
+        android:layout_weight="0.1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 

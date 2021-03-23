@@ -14,8 +14,18 @@ class SketchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_scetch, container, false)
+    }
+
+    companion object {
+
+//        fun newInstance(image: Bitmap): SketchFragment {
+//            val fragment = SketchFragment()
+//            val arguments = Bundle()
+//            arguments.apply {
+//
+//            }
+//        }
     }
 
 }
