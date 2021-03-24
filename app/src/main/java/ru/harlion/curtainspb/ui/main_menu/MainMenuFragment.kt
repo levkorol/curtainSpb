@@ -43,6 +43,10 @@ class MainMenuFragment : Fragment() {
         open_gallery.setOnClickListener {
             startActivityForResult(picker.galleryIntent, GALLERY)
         }
+
+        open_gallery_folder_project.setOnClickListener {
+            openGallerySaveProject()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -53,5 +57,13 @@ class MainMenuFragment : Fragment() {
         if (resultCode == Activity.RESULT_OK && requestCode == GALLERY) {
             replaceFragment(SketchFragment.newInstance(data!!.data!!))
         }
+    }
+
+    private fun openGallerySaveProject() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_VIEW
+        // intent.setDataAndType(Uri.withAppendedPath(Uri.fromFile(file), "/AppPics"), "image/*")
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 }

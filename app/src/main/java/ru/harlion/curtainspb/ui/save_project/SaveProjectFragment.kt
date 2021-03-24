@@ -1,5 +1,6 @@
 package ru.harlion.curtainspb.ui.save_project
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +35,28 @@ class SaveProjectFragment : Fragment() {
         }
 
         save_project_in_gallery.setOnClickListener {
-            //todo
+            saveInFolderGallery()
+        }
+    }
+
+    private fun saveInFolderGallery() {
+//        val path: String =
+//            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + directory
+//        val outputDir = File(path)
+//        outputDir.mkdirs()
+//        val newFile = File(path + File.separator.toString() + "test.png")
+//        val out = FileOutputStream(newFile)
+//        bmp.compress(Bitmap.CompressFormat.PNG, 100, out)
+    }
+
+    companion object {
+
+        fun newInstance(image: Uri): SaveProjectFragment {
+            val fragment = SaveProjectFragment()
+            fragment.arguments = Bundle().apply {
+                putParcelable("image", image)
+            }
+            return fragment
         }
     }
 }
