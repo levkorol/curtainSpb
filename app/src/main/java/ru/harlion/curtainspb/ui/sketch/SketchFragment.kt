@@ -1,5 +1,6 @@
 package ru.harlion.curtainspb.ui.sketch
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,6 +35,8 @@ class SketchFragment : Fragment(), SketchPresenter.View {
 
         presenter.attach(this)
 
+        sketch_iv.setImageURI(arguments!!.getParcelable("image"))
+
         cardView_save_project.setOnClickListener {
             presenter.onSaveClicked()
         }
@@ -49,13 +52,13 @@ class SketchFragment : Fragment(), SketchPresenter.View {
 
     companion object {
 
-//        fun newInstance(image: Bitmap): SketchFragment {
-//            val fragment = SketchFragment()
-//            val arguments = Bundle()
-//            arguments.apply {
-//
-//            }
-//        }
+        fun newInstance(image: Uri): SketchFragment {
+            val fragment = SketchFragment()
+            fragment.arguments = Bundle().apply {
+                putParcelable("image", image)
+            }
+            return fragment
+        }
     }
 
 }

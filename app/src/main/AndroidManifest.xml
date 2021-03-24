@@ -27,6 +27,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- photo picker -->
+        <provider
+                android:name="androidx.core.content.FileProvider"
+                android:authorities="${applicationId}.com.vansuita.pickimage.provider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/picker_provider_paths" />
+        </provider>
+
     </application>
 
 </manifest>
