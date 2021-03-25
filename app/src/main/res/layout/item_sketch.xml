@@ -6,6 +6,9 @@
     android:layout_height="106dp">
 
     <androidx.cardview.widget.CardView
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:id="@+id/imageView_sketch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

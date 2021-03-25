@@ -27,6 +27,21 @@ object SketchRepo {
                 4,
                 "",
                 true
+            ),
+            Sketch(
+                2,
+                "",
+                true
+            ),
+            Sketch(
+                2,
+                "",
+                true
+            ),
+            Sketch(
+                2,
+                "",
+                true
             )
         )
     }

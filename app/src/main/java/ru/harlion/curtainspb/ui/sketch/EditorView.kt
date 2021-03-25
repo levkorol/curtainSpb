@@ -7,9 +7,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
-import ru.harlion.curtainspb.ui.sketch.EditorView.EditType.ALL
-import ru.harlion.curtainspb.ui.sketch.EditorView.EditType.LEFT_TOP_CORNER
-
+import ru.harlion.curtainspb.ui.sketch.EditorView.EditType.*
 
 private const val CLICK_DISTANCE_LIMIT = 60
 private const val CLICK_DISTANCE_LIMIT_SQR = CLICK_DISTANCE_LIMIT * CLICK_DISTANCE_LIMIT
@@ -36,7 +34,7 @@ class EditorView @JvmOverloads constructor(
         addView(bottomView)
         addView(topView)
         topView.setBackgroundColor(Color.RED)
-        topView.layoutParams = LayoutParams(200, 200)
+        topView.layoutParams = LayoutParams(500, 500)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -50,19 +48,27 @@ class EditorView @JvmOverloads constructor(
             MotionEvent.ACTION_MOVE -> {
                 if (editType != null) {
                     val dx = event.x - startTouchPoint!!.x
+                    val dy = event.y - startTouchPoint!!.y
                     when (editType) {
                         LEFT_TOP_CORNER -> {
-                            // TODO возможно нужно добавить пределы (например для ширины startTopSizes!!.x - dx.toInt() > 42)
-                            topView.translationX = startTopPoint!!.x + dx
-                            // TODO ещё translationY зафиксить
-                            topView.layoutParams = LayoutParams(
-                                startTopSizes!!.x - dx.toInt(),
-                                startTopSizes!!.y
-                            ) // TODO -dy
+                            if (startTopSizes!!.x - dx.toInt() > 200 && startTopSizes!!.y - dy.toInt() > 200) {
+                                topView.translationX = startTopPoint!!.x + dx
+                                // TODO ещё translationY зафиксить
+                                topView.layoutParams = LayoutParams(
+                                    startTopSizes!!.x - dx.toInt(),
+                                    startTopSizes!!.y
+                                )
+                            }
+
                         }
+
+                        RIGHT_TOP_CORNER -> {
+
+                        }
+
                         ALL -> {
                             topView.translationX = startTopPoint!!.x + dx
-                            // TODO движение по y
+                            topView.translationY = startTopPoint!!.y + dy
                         }
                     }
                 }
@@ -81,10 +87,24 @@ class EditorView @JvmOverloads constructor(
         // TODO добавить else if для трёх остальных углов
         val tx = topView.translationX.toInt()
         val ty = topView.translationY.toInt()
-        if (distSqr(topView.left + tx, topView.top + ty, event.x.toInt(), event.y.toInt()) < CLICK_DISTANCE_LIMIT_SQR) {
+        if (distSqr(
+                topView.left + tx,
+                topView.top + ty,
+                event.x.toInt(),
+                event.y.toInt()
+            ) < CLICK_DISTANCE_LIMIT_SQR
+        ) {
             return LEFT_TOP_CORNER
-        } else if (event.x.toInt() in (topView.left + tx)..(topView.right + tx) && event.y.toInt() in (topView.top + ty)..(topView.bottom + ty)){
+        } else if (event.x.toInt() in (topView.left + tx)..(topView.right + tx) && event.y.toInt() in (topView.top + ty)..(topView.bottom + ty)) {
             return ALL
+        } else if (distSqr(
+                topView.right + tx,
+                topView.top + ty,
+                event.x.toInt(),
+                event.y.toInt()
+            ) < CLICK_DISTANCE_LIMIT_SQR
+        ) {
+            return RIGHT_TOP_CORNER
         }
         return null
     }
@@ -112,7 +132,9 @@ class EditorView @JvmOverloads constructor(
 
     enum class EditType {
         LEFT_TOP_CORNER,
-        // TODO 3 остальных угла
+        RIGHT_TOP_CORNER,
+        LEFT_BOTTOM_CORNER,
+        RIGHT_BOTTOM_CORNER,
         ALL
     }
 }

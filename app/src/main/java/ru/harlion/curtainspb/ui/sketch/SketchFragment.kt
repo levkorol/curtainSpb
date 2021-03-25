@@ -2,11 +2,9 @@ package ru.harlion.curtainspb.ui.sketch
 
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,6 +42,13 @@ class SketchFragment : Fragment(), IView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val recyclerView: RecyclerView? = view.findViewById(R.id.recyclerView)
+        val llm = LinearLayoutManager(view.context)
+        llm.orientation = LinearLayoutManager.HORIZONTAL
+        adapter = SketchAdapter()
+        recyclerView?.layoutManager = llm
+        recyclerView?.adapter = adapter
+
         presenter.attach(this)
 
         editorView.bottomView.setImageURI(arguments!!.getParcelable("image"))
@@ -54,12 +59,7 @@ class SketchFragment : Fragment(), IView {
             presenter.onSaveClicked()
         }
 
-        val recyclerView: RecyclerView? = view.findViewById(R.id.recyclerView)
-        val llm = LinearLayoutManager(view.context)
-        llm.orientation = LinearLayoutManager.HORIZONTAL
-        adapter = SketchAdapter()
-        recyclerView?.layoutManager = llm
-        recyclerView?.adapter = adapter
+
     }
 
     override fun onDestroyView() {
@@ -74,6 +74,8 @@ class SketchFragment : Fragment(), IView {
 
     override fun showPictures(sketches: List<Sketch>) {
         // TODO adapter <- sketches
+        adapter.sketch = sketches
+
     }
     //endregion IView
 
