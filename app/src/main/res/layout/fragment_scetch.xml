@@ -65,8 +65,8 @@
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/sketch_iv"
+    <ru.harlion.curtainspb.ui.sketch.EditorView
+        android:id="@+id/editorView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="28dp"

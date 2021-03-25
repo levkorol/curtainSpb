@@ -1,20 +1,27 @@
 package ru.harlion.curtainspb.ui.sketch
 
-class SketchPresenter {
-    private var view: View? = null
-    fun attach(view: View) {
+import ru.harlion.curtainspb.repo.SketchRepo
+
+class SketchPresenter : IPresenter {
+
+    private var view: IView? = null
+
+    override fun attach(view: IView) {
         this.view = view
+        view.showPictures(SketchRepo.getListSketch())
     }
-    fun detach() {
+
+    override fun detach() {
         view = null
     }
 
-    fun onSaveClicked() {
+    override fun onSaveClicked() {
         view?.goToSave()
     }
+}
 
-    interface View {
-        fun goToSave()
-    }
-
+interface IPresenter {
+    fun attach(view: IView)
+    fun detach()
+    fun onSaveClicked()
 }

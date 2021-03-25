@@ -2,7 +2,7 @@ package ru.harlion.curtainspb.repo
 
 import ru.harlion.curtainspb.models.Sketch
 
-class SketchRepo {
+object SketchRepo {
 
     val list: List<Sketch> = emptyList()
 

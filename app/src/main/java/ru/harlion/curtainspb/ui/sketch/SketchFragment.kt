@@ -2,23 +2,27 @@ package ru.harlion.curtainspb.ui.sketch
 
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_scetch.*
 import ru.harlion.curtainspb.R
+import ru.harlion.curtainspb.models.Sketch
 import ru.harlion.curtainspb.ui.save_project.SaveProjectFragment
 import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
 import ru.harlion.curtainspb.utils.replaceFragment
 
-class SketchFragment : Fragment(), SketchPresenter.View {
+class SketchFragment : Fragment(), IView {
 
     private lateinit var adapter: SketchAdapter
 
-    private lateinit var presenter: SketchPresenter
+    private lateinit var presenter: IPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter = SketchPresenter()
@@ -27,7 +31,7 @@ class SketchFragment : Fragment(), SketchPresenter.View {
 
     override fun onDestroy() {
         super.onDestroy()
-
+        presenter.detach()
     }
 
     override fun onCreateView(
@@ -42,7 +46,9 @@ class SketchFragment : Fragment(), SketchPresenter.View {
 
         presenter.attach(this)
 
-        sketch_iv.setImageURI(arguments!!.getParcelable("image"))
+        editorView.bottomView.setImageURI(arguments!!.getParcelable("image"))
+
+        // TODO editorView.topView.loadSomething()
 
         cardView_save_project.setOnClickListener {
             presenter.onSaveClicked()
@@ -61,12 +67,27 @@ class SketchFragment : Fragment(), SketchPresenter.View {
         presenter.detach()
     }
 
+    //region IView
     override fun goToSave() {
         replaceFragment(SaveProjectFragment())
     }
 
-    companion object {
+    override fun showPictures(sketches: List<Sketch>) {
+        // TODO adapter <- sketches
+    }
+    //endregion IView
 
+    // TODO проверить по нажатию на какую-нибудь кнопочку
+    private fun saveTemp() {
+//        val path: String = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + directory
+//        val outputDir = File(path)
+//        outputDir.mkdirs()
+//        val newFile = File(path + File.separator.toString() + "test.png")
+//        val out = FileOutputStream(newFile)
+//        editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, out)
+    }
+
+    companion object {
         fun newInstance(image: Uri): SketchFragment {
             val fragment = SketchFragment()
             fragment.arguments = Bundle().apply {
@@ -76,4 +97,9 @@ class SketchFragment : Fragment(), SketchPresenter.View {
         }
     }
 
+}
+
+interface IView {
+    fun goToSave()
+    fun showPictures(sketches: List<Sketch>)
 }
