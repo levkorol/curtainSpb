@@ -40,13 +40,7 @@ class SaveProjectFragment : Fragment() {
     }
 
     private fun saveInFolderGallery() {
-//        val path: String =
-//            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + directory
-//        val outputDir = File(path)
-//        outputDir.mkdirs()
-//        val newFile = File(path + File.separator.toString() + "test.png")
-//        val out = FileOutputStream(newFile)
-//        bmp.compress(Bitmap.CompressFormat.PNG, 100, out)
+    //todo
     }
 
     companion object {

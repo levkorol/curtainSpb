@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gridle_list_sketch.GridleListSketchFragment">
+    android:orientation="vertical"
+    tools:context=".ui.grid_list_sketch.GridListSketchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="7dp">
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/_2sdp"
+            android:background="@drawable/ic_left" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_gridle"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp" />
 
-</FrameLayout>
+</LinearLayout>

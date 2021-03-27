@@ -27,6 +27,8 @@ class SketchAdapter :
     override fun onBindViewHolder(holder: SketchHolder, position: Int) {
         val item = sketch[position]
         holder.bind(item)
+
+
     }
 
     override fun getItemCount(): Int = sketch.size
@@ -36,7 +38,10 @@ class SketchAdapter :
         private val image: CardView = itemView.imageView_sketch
 
         fun bind(item: Sketch) {
-            image.setBackgroundResource(R.drawable.test_pic_big) //todo временно для теста
+            // image.setBackgroundResource(R.drawable.test_pic_big) //todo временно для теста
+            itemView.setOnClickListener {
+
+            }
         }
     }
 }

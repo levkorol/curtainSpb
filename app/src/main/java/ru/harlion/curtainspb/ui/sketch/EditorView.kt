@@ -24,7 +24,7 @@ class EditorView @JvmOverloads constructor(
     private var startTopSizes: Point? = null
     private var editType: EditType? = null
 
-    var isEditMode: Boolean = true
+    var isEditMode: Boolean = false
         set(value) {
             field = value
             invalidate()
@@ -32,8 +32,10 @@ class EditorView @JvmOverloads constructor(
 
     init {
         addView(bottomView)
+        //    bottomView.layoutParams = LayoutParams() //todo
         addView(topView)
-        topView.setBackgroundColor(Color.RED)
+        // topView.setImageResource(R.drawable.test_pic_big)
+        topView.setBackgroundColor(Color.MAGENTA)
         topView.layoutParams = LayoutParams(500, 500)
     }
 
@@ -49,24 +51,54 @@ class EditorView @JvmOverloads constructor(
                 if (editType != null) {
                     val dx = event.x - startTouchPoint!!.x
                     val dy = event.y - startTouchPoint!!.y
+
                     when (editType) {
                         LEFT_TOP_CORNER -> {
                             if (startTopSizes!!.x - dx.toInt() > 200 && startTopSizes!!.y - dy.toInt() > 200) {
                                 topView.translationX = startTopPoint!!.x + dx
-                                // TODO ещё translationY зафиксить
+                                topView.translationY = startTopPoint!!.y + dy
                                 topView.layoutParams = LayoutParams(
                                     startTopSizes!!.x - dx.toInt(),
-                                    startTopSizes!!.y
+                                    startTopSizes!!.y - dy.toInt()
+                                )
+                            }
+                        }
+
+                        LEFT_BOTTOM_CORNER -> {
+                            if (startTopSizes!!.x - dx.toInt() > 200 && startTopSizes!!.y - dy.toInt() > 200) {
+                                topView.translationX = startTopPoint!!.x + dx
+                                topView.layoutParams = LayoutParams(
+                                    startTopSizes!!.x - dx.toInt(),
+                                    startTopSizes!!.y + dy.toInt()
+
+                                )
+                            }
+                        }
+
+                        RIGHT_TOP_CORNER -> {
+                            if (startTopSizes!!.x - dx.toInt() > 200 && startTopSizes!!.y - dy.toInt() > 200) {
+                                topView.translationY = startTopPoint!!.y + dy
+                                topView.layoutParams = LayoutParams(
+                                    startTopSizes!!.x + dx.toInt(),
+                                    startTopSizes!!.y - dy.toInt()
+
+                                )
+                            }
+                        }
+
+                        RIGHT_BOTTOM_CORNER -> {
+                            if (startTopSizes!!.x - dx.toInt() > 200 && startTopSizes!!.y - dy.toInt() > 200) {
+                                topView.layoutParams = LayoutParams(
+                                    startTopSizes!!.x + dx.toInt(),
+                                    startTopSizes!!.y + dy.toInt()
+
                                 )
                             }
 
                         }
 
-                        RIGHT_TOP_CORNER -> {
-
-                        }
-
                         ALL -> {
+                            //todo не выезжать за границы
                             topView.translationX = startTopPoint!!.x + dx
                             topView.translationY = startTopPoint!!.y + dy
                         }
@@ -78,13 +110,18 @@ class EditorView @JvmOverloads constructor(
         return editType != null
     }
 
+    val p = Paint()
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas) // отрисовывается всё содержимое вьюшки (то есть две картинки)
+        if (isEditMode) {
+            //  topView.visibility = View.VISIBLE
+            p.color = Color.RED
+            canvas?.drawCircle(100F, 200F, 50F, p)
+        }
         // TODO добавление рисования кружочков (только если isEditMode)
     }
 
     fun getEditType(event: MotionEvent): EditType? {
-        // TODO добавить else if для трёх остальных углов
         val tx = topView.translationX.toInt()
         val ty = topView.translationY.toInt()
         if (distSqr(
@@ -95,6 +132,7 @@ class EditorView @JvmOverloads constructor(
             ) < CLICK_DISTANCE_LIMIT_SQR
         ) {
             return LEFT_TOP_CORNER
+
         } else if (event.x.toInt() in (topView.left + tx)..(topView.right + tx) && event.y.toInt() in (topView.top + ty)..(topView.bottom + ty)) {
             return ALL
         } else if (distSqr(
@@ -105,6 +143,24 @@ class EditorView @JvmOverloads constructor(
             ) < CLICK_DISTANCE_LIMIT_SQR
         ) {
             return RIGHT_TOP_CORNER
+
+        } else if (distSqr(
+                topView.left + tx,
+                topView.bottom + ty,
+                event.x.toInt(),
+                event.y.toInt()
+            ) < CLICK_DISTANCE_LIMIT_SQR
+        ) {
+            return LEFT_BOTTOM_CORNER
+
+        } else if (distSqr(
+                topView.right + tx,
+                topView.bottom + ty,
+                event.x.toInt(),
+                event.y.toInt()
+            ) < CLICK_DISTANCE_LIMIT_SQR
+        ) {
+            return RIGHT_BOTTOM_CORNER
         }
         return null
     }

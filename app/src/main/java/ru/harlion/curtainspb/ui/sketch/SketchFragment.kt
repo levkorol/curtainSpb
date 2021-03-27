@@ -1,7 +1,9 @@
 package ru.harlion.curtainspb.ui.sketch
 
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_scetch.*
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.models.Sketch
+import ru.harlion.curtainspb.ui.grid_list_sketch.GridListSketchFragment
 import ru.harlion.curtainspb.ui.save_project.SaveProjectFragment
 import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
 import ru.harlion.curtainspb.utils.replaceFragment
+import java.io.File
+import java.io.FileOutputStream
 
 class SketchFragment : Fragment(), IView {
 
@@ -24,7 +29,6 @@ class SketchFragment : Fragment(), IView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter = SketchPresenter()
-
     }
 
     override fun onDestroy() {
@@ -53,12 +57,9 @@ class SketchFragment : Fragment(), IView {
 
         editorView.bottomView.setImageURI(arguments!!.getParcelable("image"))
 
-        // TODO editorView.topView.loadSomething()
+        // TODO editorView.topView.loadSomething() загрузить картинку
 
-        cardView_save_project.setOnClickListener {
-            presenter.onSaveClicked()
-        }
-
+        initClick()
 
     }
 
@@ -67,26 +68,44 @@ class SketchFragment : Fragment(), IView {
         presenter.detach()
     }
 
-    //region IView
     override fun goToSave() {
+        saveTemp()
         replaceFragment(SaveProjectFragment())
     }
 
     override fun showPictures(sketches: List<Sketch>) {
-        // TODO adapter <- sketches
         adapter.sketch = sketches
 
     }
-    //endregion IView
 
-    // TODO проверить по нажатию на какую-нибудь кнопочку
-    private fun saveTemp() {
-//        val path: String = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + directory
-//        val outputDir = File(path)
-//        outputDir.mkdirs()
-//        val newFile = File(path + File.separator.toString() + "test.png")
-//        val out = FileOutputStream(newFile)
-//        editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, out)
+    private fun saveTemp() { //todo сохранять получившиюся картинку  битмап в файл
+        //    val path: String = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + context?.packageName//directory
+        //  val path: String = Environment.getRootDirectory() + "/test_image.jpg"
+        val path: String =
+            Environment.getExternalStoragePublicDirectory(Environment.getRootDirectory().parent)
+                .absolutePath + "/sketch"
+        val outputDir = File(path)
+        outputDir.mkdirs()
+        val newFile = File(path + File.separator.toString() + "pick.png")
+        val out = FileOutputStream(newFile)
+        editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, out)
+    }
+
+    private fun initClick() {
+        cardView_save_project.setOnClickListener {
+            presenter.onSaveClicked()
+        }
+
+        show_all.setOnClickListener {
+            replaceFragment(GridListSketchFragment())
+        }
+
+        delete_pick.setOnClickListener {
+            editorView.topView.setImageDrawable(null)
+            editorView.topView.visibility = View.GONE
+            delete_pick.visibility = View.GONE
+            save_sketch.visibility = View.GONE
+        }
     }
 
     companion object {
