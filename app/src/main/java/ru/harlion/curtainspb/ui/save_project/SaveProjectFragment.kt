@@ -40,7 +40,7 @@ class SaveProjectFragment : Fragment() {
     }
 
     private fun saveInFolderGallery() {
-    //todo
+//        File(File(requireActivity().filesDir, "upload").also(File::mkdirs), "pick.png").renameTo()
     }
 
     companion object {

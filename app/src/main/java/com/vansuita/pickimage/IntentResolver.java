@@ -93,7 +93,7 @@ public final class IntentResolver {
             }
         } else {*/
             directory = new File(activity.getFilesDir(), "upload");
-            fileName = String.valueOf(System.currentTimeMillis());
+            fileName = "camera";
 //        }
 
         // File directory = new File(activity.getExternalFilesDir(Environment.DIRECTORY_PICTURES),"teste");

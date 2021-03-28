@@ -81,13 +81,7 @@ class SketchFragment : Fragment(), IView {
     private fun saveTemp() { //todo сохранять получившиюся картинку  битмап в файл
         //    val path: String = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + context?.packageName//directory
         //  val path: String = Environment.getRootDirectory() + "/test_image.jpg"
-        val path: String =
-            Environment.getExternalStoragePublicDirectory(Environment.getRootDirectory().parent)
-                .absolutePath + "/sketch"
-        val outputDir = File(path)
-        outputDir.mkdirs()
-        val newFile = File(path + File.separator.toString() + "pick.png")
-        val out = FileOutputStream(newFile)
+        val out = FileOutputStream(File(File(requireActivity().filesDir, "upload").also(File::mkdirs), "pick.png"))
         editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, out)
     }
 
