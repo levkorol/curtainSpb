@@ -3,10 +3,12 @@ package ru.harlion.curtainspb.ui.sketch
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
+import androidx.core.math.MathUtils
 import ru.harlion.curtainspb.ui.sketch.EditorView.EditType.*
 
 private const val CLICK_DISTANCE_LIMIT = 60
@@ -33,10 +35,11 @@ class EditorView @JvmOverloads constructor(
     init {
         addView(bottomView)
         //    bottomView.layoutParams = LayoutParams() //todo
-        addView(topView)
+        addView(topView, LayoutParams(500, 500, Gravity.CENTER))
         // topView.setImageResource(R.drawable.test_pic_big)
         topView.setBackgroundColor(Color.MAGENTA)
-        topView.layoutParams = LayoutParams(500, 500)
+
+        setWillNotDraw(false)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -98,11 +101,13 @@ class EditorView @JvmOverloads constructor(
                         }
 
                         ALL -> {
-                            //todo не выезжать за границы
-                            topView.translationX = startTopPoint!!.x + dx
-                            topView.translationY = startTopPoint!!.y + dy
+                            val hSpace = (width - topView.width) / 2f
+                            topView.translationX = MathUtils.clamp(startTopPoint!!.x + dx, -hSpace, hSpace)
+                            val vSpace = (height - topView.height) / 2f
+                            topView.translationY = MathUtils.clamp(startTopPoint!!.y + dy, -vSpace, vSpace)
                         }
                     }
+                    invalidate()
                 }
             }
             MotionEvent.ACTION_UP -> editType = null
@@ -110,15 +115,18 @@ class EditorView @JvmOverloads constructor(
         return editType != null
     }
 
-    val p = Paint()
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas) // отрисовывается всё содержимое вьюшки (то есть две картинки)
-        if (isEditMode) {
-            //  topView.visibility = View.VISIBLE
-            p.color = Color.RED
-            canvas?.drawCircle(100F, 200F, 50F, p)
-        }
-        // TODO добавление рисования кружочков (только если isEditMode)
+    val p = Paint(Paint.ANTI_ALIAS_FLAG)
+    override fun dispatchDraw(canvas: Canvas) {
+        super.dispatchDraw(canvas)
+
+//        if (isEditMode) {
+        p.color = Color.RED
+        val fifty = 50 * resources.displayMetrics.density
+        canvas.drawCircle(topView.x, topView.y, fifty, p)
+        canvas.drawCircle(topView.x + topView.width, topView.y, fifty, p)
+        canvas.drawCircle(topView.x + topView.width, topView.y + topView.height, fifty, p)
+        canvas.drawCircle(topView.x, topView.y + topView.height, fifty, p)
+//        }
     }
 
     fun getEditType(event: MotionEvent): EditType? {
@@ -171,8 +179,8 @@ class EditorView @JvmOverloads constructor(
         val topBitmap = viewToBitmap(topView)
         val matrix = Matrix()
         // TODO проверить потом итоговую картинку
-        matrix.postTranslate(topView.translationX, topView.translationY)
-        canvas.drawBitmap(topBitmap, matrix, Paint())
+        matrix.postTranslate(topView.x, topView.y)
+        canvas.drawBitmap(topBitmap, matrix, null)
         return resultBitmap
     }
 
