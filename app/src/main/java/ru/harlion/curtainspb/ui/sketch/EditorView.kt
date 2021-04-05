@@ -3,12 +3,12 @@ package ru.harlion.curtainspb.ui.sketch
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
-import androidx.core.math.MathUtils
+import androidx.core.content.ContextCompat
+import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.ui.sketch.EditorView.EditType.*
 
 private const val CLICK_DISTANCE_LIMIT = 60
@@ -26,16 +26,16 @@ class EditorView @JvmOverloads constructor(
     private var startTopSizes: Point? = null
     private var editType: EditType? = null
 
-    var isEditMode: Boolean = false
-        set(value) {
-            field = value
-            invalidate()
-        }
+//    var isEditMode: Boolean = false
+//        set(value) {
+//            field = value
+//            invalidate()
+//        }
 
     init {
         addView(bottomView)
-        //    bottomView.layoutParams = LayoutParams() //todo
-        addView(topView, LayoutParams(500, 500, Gravity.CENTER))
+        // addView(topView, LayoutParams(500, 500, Gravity.CENTER))
+        addView(topView, LayoutParams(500, 500))
         // topView.setImageResource(R.drawable.test_pic_big)
         topView.setBackgroundColor(Color.MAGENTA)
 
@@ -56,6 +56,11 @@ class EditorView @JvmOverloads constructor(
                     val dy = event.y - startTouchPoint!!.y
 
                     when (editType) {
+
+                        ROTATE -> {
+
+                        }
+
                         LEFT_TOP_CORNER -> {
                             if (startTopSizes!!.x - dx.toInt() > 200 && startTopSizes!!.y - dy.toInt() > 200) {
                                 topView.translationX = startTopPoint!!.x + dx
@@ -101,10 +106,13 @@ class EditorView @JvmOverloads constructor(
                         }
 
                         ALL -> {
-                            val hSpace = (width - topView.width) / 2f
-                            topView.translationX = MathUtils.clamp(startTopPoint!!.x + dx, -hSpace, hSpace)
-                            val vSpace = (height - topView.height) / 2f
-                            topView.translationY = MathUtils.clamp(startTopPoint!!.y + dy, -vSpace, vSpace)
+                            //если вью по центру
+//                            val hSpace = (width - topView.width) / 2f
+//                            topView.translationX = MathUtils.clamp(startTopPoint!!.x + dx, -hSpace, hSpace)
+//                            val vSpace = (height - topView.height) / 2f
+//                            topView.translationY = MathUtils.clamp(startTopPoint!!.y + dy, -vSpace, vSpace)
+                            topView.translationX = startTopPoint!!.x + dx
+                            topView.translationY = startTopPoint!!.y + dy
                         }
                     }
                     invalidate()
@@ -115,18 +123,26 @@ class EditorView @JvmOverloads constructor(
         return editType != null
     }
 
-    val p = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val icon = ContextCompat.getDrawable(context, R.drawable.ic_cicrle_right)!!
+    private val p = Paint(Paint.ANTI_ALIAS_FLAG)
     override fun dispatchDraw(canvas: Canvas) {
         super.dispatchDraw(canvas)
 
-//        if (isEditMode) {
-        p.color = Color.RED
-        val fifty = 50 * resources.displayMetrics.density
+        p.color = Color.WHITE
+        val fifty = 10 * resources.displayMetrics.density
+        val fifty50 = 15 * resources.displayMetrics.density
         canvas.drawCircle(topView.x, topView.y, fifty, p)
         canvas.drawCircle(topView.x + topView.width, topView.y, fifty, p)
         canvas.drawCircle(topView.x + topView.width, topView.y + topView.height, fifty, p)
         canvas.drawCircle(topView.x, topView.y + topView.height, fifty, p)
-//        }
+
+        val rotateCx = (topView.x + topView.width / 2).toInt()
+        val rotateCy = (topView.y + topView.height).toInt()
+        canvas.drawCircle(rotateCx.toFloat(), rotateCy.toFloat(), fifty50, p)
+        val half = (fifty50 / 1.2).toInt()
+        icon.setBounds(rotateCx - half, rotateCy - half, rotateCx + half, rotateCy + half)
+        icon.draw(canvas)
+
     }
 
     fun getEditType(event: MotionEvent): EditType? {
@@ -178,7 +194,6 @@ class EditorView @JvmOverloads constructor(
         val canvas = Canvas(resultBitmap)
         val topBitmap = viewToBitmap(topView)
         val matrix = Matrix()
-        // TODO проверить потом итоговую картинку
         matrix.postTranslate(topView.x, topView.y)
         canvas.drawBitmap(topBitmap, matrix, null)
         return resultBitmap
@@ -199,6 +214,7 @@ class EditorView @JvmOverloads constructor(
         RIGHT_TOP_CORNER,
         LEFT_BOTTOM_CORNER,
         RIGHT_BOTTOM_CORNER,
+        ROTATE,
         ALL
     }
 }

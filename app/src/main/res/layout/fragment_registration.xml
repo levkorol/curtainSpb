@@ -18,10 +18,10 @@
 
         <ImageView
             android:id="@+id/iv_photo"
-            android:layout_width="@dimen/_10sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="10dp"
+            android:layout_height="18dp"
             android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/_2sdp"
+            android:layout_marginEnd="2dp"
             android:background="@drawable/ic_left" />
     </androidx.cardview.widget.CardView>
 
@@ -43,6 +43,7 @@
         android:background="@drawable/shape_edit_text">
 
         <EditText
+            android:id="@+id/fragment_registration_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -60,6 +61,7 @@
         android:background="@drawable/shape_edit_text">
 
         <EditText
+            android:id="@+id/fragment_registration_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -77,6 +79,7 @@
         android:background="@drawable/shape_edit_text">
 
         <EditText
+            android:id="@+id/fragment_registration_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -104,7 +107,7 @@
         app:passwordToggleTint="@color/gray">
 
         <androidx.appcompat.widget.AppCompatEditText
-
+            android:id="@+id/fragment_registration_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:cursorVisible="true"
@@ -120,6 +123,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/fragment_registration_swich"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_20sdp"

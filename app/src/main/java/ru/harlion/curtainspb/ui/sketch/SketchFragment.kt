@@ -3,7 +3,6 @@ package ru.harlion.curtainspb.ui.sketch
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -94,12 +93,12 @@ class SketchFragment : Fragment(), IView {
             replaceFragment(GridListSketchFragment())
         }
 
-        delete_pick.setOnClickListener {
-            editorView.topView.setImageDrawable(null)
-            editorView.topView.visibility = View.GONE
-            delete_pick.visibility = View.GONE
-            save_sketch.visibility = View.GONE
-        }
+//        delete_pick.setOnClickListener {
+//            editorView.topView.setImageDrawable(null)
+//            editorView.topView.visibility = View.GONE
+//            delete_pick.visibility = View.GONE
+//            save_sketch.visibility = View.GONE
+//        }
     }
 
     companion object {
