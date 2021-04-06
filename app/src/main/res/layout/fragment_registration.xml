@@ -138,6 +138,7 @@
         android:background="@drawable/shape_button_bg">
 
         <TextView
+            android:id="@+id/loginView"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@null"
