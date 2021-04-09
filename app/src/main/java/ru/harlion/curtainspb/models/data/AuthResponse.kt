@@ -1,9 +1,9 @@
 package ru.harlion.curtainspb.models.data
 
-data class AuthResponse(
-    val data: Data
+data class Resp<T>(
+    val data: T
 )
 
-data class Data(
+data class AuthData(
     val accessToken: String
 )

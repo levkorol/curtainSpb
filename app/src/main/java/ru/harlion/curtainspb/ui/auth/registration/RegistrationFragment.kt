@@ -6,13 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_registration.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.models.data.UsersRequest
-import ru.harlion.curtainspb.models.data.UsersResponse
 import ru.harlion.curtainspb.repo.data.DataRepository
+import java.util.concurrent.Future
 
 
 class RegistrationFragment : Fragment() {
@@ -34,27 +31,25 @@ class RegistrationFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        currentTask?.let {
+            it.cancel(true)
+            currentTask = null
+        }
+    }
+
+    private var currentTask: Future<*>? = null
     private fun registerUsers() {
-        DataRepository.registerUser(
+        currentTask = DataRepository.registerUser(
             request = UsersRequest(
                 name = "Elon Musk",
                 phone = "123",
                 email = "elon@gmail.com",
                 password = "password"
-            ), callback = object : Callback<UsersResponse> {
-                override fun onResponse(
-                    call: Call<UsersResponse>,
-                    response: Response<UsersResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        // TODO пользователь создан, отправляем запрос
-                    }
-                }
-
-                override fun onFailure(call: Call<UsersResponse>, t: Throwable) {
-                    // TODO отобразить ошибку (внутри t - подробности)
-                }
-            }
+            ),
+            {},
+            Throwable::printStackTrace
         )
     }
 }
