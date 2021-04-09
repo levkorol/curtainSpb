@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
-import androidx.core.math.MathUtils
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.ui.sketch.EditorView.EditType.*
 
@@ -41,8 +40,8 @@ class EditorView @JvmOverloads constructor(
         addView(bottomView)
         // addView(topView, LayoutParams(500, 500, Gravity.CENTER))
         addView(topView, LayoutParams(500, 500))
-        // topView.setImageResource(R.drawable.test_pic_big)
-        topView.setBackgroundColor(Color.MAGENTA)
+        topView.setImageResource(R.drawable.unnamed)
+        //  topView.setBackgroundColor(Color.MAGENTA)
 
         setWillNotDraw(false)
     }
