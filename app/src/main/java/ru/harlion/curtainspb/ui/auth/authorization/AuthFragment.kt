@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_auth.*
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.ui.auth.password_recovery.PasswordRecoveryFragment
-import ru.harlion.curtainspb.ui.auth.registration.RegistrationFragment
+import ru.harlion.curtainspb.ui.auth.registration.fragment.RegistrationFragment
 import ru.harlion.curtainspb.ui.auth.user_arreement.UserAgreementFragment
 import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
 import ru.harlion.curtainspb.utils.replaceFragment

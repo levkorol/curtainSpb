@@ -14,7 +14,7 @@ import java.util.concurrent.FutureTask
 
 object DataRepository {
 
-    private val service: DataService;
+    private val service: DataServiceApi
 
     init {
         val client = OkHttpClient.Builder()
@@ -27,14 +27,19 @@ object DataRepository {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        service = retrofit.create(DataService::class.java)
+        service = retrofit.create(DataServiceApi::class.java)
     }
 
-    fun registerUser(request: UsersRequest, success: (String) -> Unit, error: (Throwable) -> Unit): Future<*> {
+    fun registerUser(
+        request: UsersRequest,
+        success: (String) -> Unit,
+        error: (Throwable) -> Unit
+    ): Future<*> {
         val task = FutureTask {
             val resp = try {
                 service.registerUser(request).execute().body()!!
-                service.auth(AuthRequest(request.email, request.password)).execute().body()!!.data.accessToken
+                service.auth(AuthRequest(request.email, request.password)).execute()
+                    .body()!!.data.accessToken
             } catch (e: Exception) {
                 e
             }

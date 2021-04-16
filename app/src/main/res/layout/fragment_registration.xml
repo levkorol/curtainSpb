@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".ui.auth.registration.RegistrationFragment">
+    tools:context=".ui.auth.registration.fragment.RegistrationFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_photo"
@@ -131,6 +131,7 @@
         android:text="Согласен на обработку персональных данных и принимаю пользовательское соглашение" />
 
     <RelativeLayout
+        android:id="@+id/registration_login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -138,7 +139,6 @@
         android:background="@drawable/shape_button_bg">
 
         <TextView
-            android:id="@+id/loginView"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@null"
