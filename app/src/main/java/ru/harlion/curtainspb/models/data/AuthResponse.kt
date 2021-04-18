@@ -5,5 +5,6 @@ data class Resp<T>(
 )
 
 data class AuthData(
-    val accessToken: String
+    val accessToken: String,
+    val userId: Int,
 )

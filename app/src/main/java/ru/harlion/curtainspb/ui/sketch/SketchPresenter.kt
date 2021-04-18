@@ -1,6 +1,8 @@
 package ru.harlion.curtainspb.ui.sketch
 
 import ru.harlion.curtainspb.repo.SketchRepo
+import ru.harlion.curtainspb.repo.data.DataRepository
+import java.io.File
 
 class SketchPresenter : IPresenter {
 
@@ -19,8 +21,8 @@ class SketchPresenter : IPresenter {
         view?.goToSave()
     }
 
-    override fun onSendSketchToBD() {
-
+    override fun onSendSketchToBD(file: File) {
+        DataRepository.sendPhoto(file)
     }
 }
 
@@ -28,5 +30,5 @@ interface IPresenter {
     fun attach(view: IView)
     fun detach()
     fun onSaveClicked()
-    fun onSendSketchToBD()
+    fun onSendSketchToBD(file: File)
 }

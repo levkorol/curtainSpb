@@ -36,10 +36,10 @@ class RegistrationFragment : Fragment() {
 
             val name = binding.fragmentRegistrationName.text.toString()
             val email = binding.fragmentRegistrationEmail.text.toString()
-            val password = binding.fragmentRegistrationPassword.toString()
-            val phone = binding.fragmentRegistrationPhone.toString()
+            val password = binding.fragmentRegistrationPassword.text.toString()
+            val phone = binding.fragmentRegistrationPhone.text.toString()
 
-            viewModel.registerUsers(name, email, password, phone)
+            viewModel.registerUsers(requireContext(), name = name, phone = phone, email = email, password = password)
         }
     }
 

@@ -82,13 +82,12 @@ class SketchFragment : Fragment(), IView {
     //сохраняет получившиюся картинку  битмап в файл
     // todo отправить на сервер
     private fun saveAndSendBdSketch() {
-        val out = FileOutputStream(
-            File(
-                File(requireActivity().filesDir, "upload").also(File::mkdirs),
-                "pick.png"
-            )
+        val file = File(
+            File(requireActivity().filesDir, "upload").also(File::mkdirs),
+            "pick.png"
         )
-        editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, out)
+        editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, FileOutputStream(file))
+        presenter.onSendSketchToBD(file)
     }
 
     private fun initClick() {

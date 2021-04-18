@@ -1,10 +1,8 @@
 package ru.harlion.curtainspb.repo.data
 
+import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 import ru.harlion.curtainspb.models.data.*
 
 interface DataServiceApi {
@@ -14,11 +12,11 @@ interface DataServiceApi {
     @POST("auth")
     fun auth(@Body request: AuthRequest): Call<Resp<AuthData>>
 
-    @GET("templates?userId=id")
-    fun getTemplates(@Path(value = "id") id: Int)
+    @GET("templates")
+    fun getTemplates(@Query("userId") id: Int)
 
-    @POST("users/:userId/images")
-    fun sendProjectImage(@Path(value = "userId") userId: Int)
+    @POST("users/{userId}/images") @Multipart
+    fun sendProjectImage(@Path(value = "userId") userId: Int, @Part image: MultipartBody.Part): Call<Unit>
 
     @POST("requests")
     fun sendRequest()
