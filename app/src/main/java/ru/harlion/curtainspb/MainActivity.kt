@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         timer = Timer()
         mTimerTask = MyTimerTask()
         timer!!.schedule(mTimerTask, 2000)
+     //   timer!!.cancel()
 
     }
 
