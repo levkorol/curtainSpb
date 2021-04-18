@@ -8,6 +8,7 @@ import java.util.concurrent.Future
 class RegistrationViewModel : ViewModel() {
 
     var currentTask: Future<*>? = null
+
     fun registerUsers(name: String, phone: String, email: String, password: String) {
         currentTask = DataRepository.registerUser(
             request = UsersRequest(

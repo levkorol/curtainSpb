@@ -1,4 +1,4 @@
-package ru.harlion.curtainspb.ui.auth.password_recovery
+package ru.harlion.curtainspb.ui.auth.password_recovery.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

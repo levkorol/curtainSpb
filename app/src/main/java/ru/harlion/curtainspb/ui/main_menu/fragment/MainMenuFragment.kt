@@ -1,4 +1,4 @@
-package ru.harlion.curtainspb.ui.main_menu
+package ru.harlion.curtainspb.ui.main_menu.fragment
 
 import android.app.Activity
 import android.content.Intent

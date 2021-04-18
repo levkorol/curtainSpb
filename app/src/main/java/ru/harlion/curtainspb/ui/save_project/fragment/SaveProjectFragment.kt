@@ -1,4 +1,4 @@
-package ru.harlion.curtainspb.ui.save_project
+package ru.harlion.curtainspb.ui.save_project.fragment
 
 import android.net.Uri
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_save_project.*
 import ru.harlion.curtainspb.R
-import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
-import ru.harlion.curtainspb.ui.request_cost.RequestCostFragment
+import ru.harlion.curtainspb.ui.main_menu.fragment.MainMenuFragment
+import ru.harlion.curtainspb.ui.request_cost.fragment.RequestCostFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 
 

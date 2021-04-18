@@ -18,10 +18,10 @@
 
         <ImageView
             android:id="@+id/iv_photo"
-            android:layout_width="@dimen/_10sdp"
-            android:layout_height="@dimen/_18sdp"
+            android:layout_width="10dp"
+            android:layout_height="18dp"
             android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/_2sdp"
+            android:layout_marginEnd="2dp"
             android:background="@drawable/ic_left" />
     </androidx.cardview.widget.CardView>
 

@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.withSave
 import androidx.core.view.setPadding
 import ru.harlion.curtainspb.R
-import ru.harlion.curtainspb.ui.sketch.EditorView.EditType.*
 
 private const val CLICK_DISTANCE_LIMIT = 60
 private const val CLICK_DISTANCE_LIMIT_SQR = CLICK_DISTANCE_LIMIT * CLICK_DISTANCE_LIMIT
@@ -66,13 +65,19 @@ class EditorView @JvmOverloads constructor(
 
                     when (editType) {
 
-                        ROTATE -> {
-                            topView.rotation = -(Math.atan2(dx.toDouble(), dy.toDouble()) * 180 / Math.PI).toFloat()
+                        EditType.ROTATE -> {
+                            topView.rotation = -(Math.atan2(
+                                dx.toDouble(),
+                                dy.toDouble()
+                            ) * 180 / Math.PI).toFloat()
                             // TODO подумать нужно
-                            Log.v("???", "angle=" + Math.atan2(dx.toDouble(), dy.toDouble()) * 180 / Math.PI);
+                            Log.v(
+                                "???",
+                                "angle=" + Math.atan2(dx.toDouble(), dy.toDouble()) * 180 / Math.PI
+                            );
                         }
 
-                        LEFT_TOP_CORNER -> {
+                        EditType.LEFT_TOP_CORNER -> {
                             if (startTopSizes.x - dx.toInt() > 200 && startTopSizes.y - dy.toInt() > 200) {
                                 topView.translationX += dx
                                 topView.translationY += dy
@@ -82,7 +87,7 @@ class EditorView @JvmOverloads constructor(
                             }
                         }
 
-                        LEFT_BOTTOM_CORNER -> {
+                        EditType.LEFT_BOTTOM_CORNER -> {
                             if (startTopSizes.x - dx.toInt() > 200 && startTopSizes.y - dy.toInt() > 200) {
                                 topView.translationX += dx
                                 topView.layoutParams = LayoutParams(
@@ -93,7 +98,7 @@ class EditorView @JvmOverloads constructor(
                             }
                         }
 
-                        RIGHT_TOP_CORNER -> {
+                        EditType.RIGHT_TOP_CORNER -> {
                             if (startTopSizes.x - dx.toInt() > 200 && startTopSizes.y - dy.toInt() > 200) {
                                 topView.translationY += dy
                                 topView.layoutParams = LayoutParams(
@@ -104,7 +109,7 @@ class EditorView @JvmOverloads constructor(
                             }
                         }
 
-                        RIGHT_BOTTOM_CORNER -> {
+                        EditType.RIGHT_BOTTOM_CORNER -> {
                             if (startTopSizes.x - dx.toInt() > 200 && startTopSizes.y - dy.toInt() > 200) {
                                 topView.layoutParams = LayoutParams(
                                     startTopSizes.x + dx.toInt(),
@@ -115,7 +120,7 @@ class EditorView @JvmOverloads constructor(
 
                         }
 
-                        ALL -> {
+                        EditType.ALL -> {
                             //если вью по центру
 //                            val hSpace = (width - topView.width) / 2f
 //                            topView.translationX = MathUtils.clamp(startTopPoint!!.x + dx, -hSpace, hSpace)
@@ -180,7 +185,7 @@ class EditorView @JvmOverloads constructor(
                 event.y.toInt()
             ) < CLICK_DISTANCE_LIMIT_SQR
         ) {
-            return LEFT_TOP_CORNER
+            return EditType.LEFT_TOP_CORNER
 
         } else if (distSqr(
                 rotateCx,
@@ -189,9 +194,9 @@ class EditorView @JvmOverloads constructor(
                 event.y.toInt()
             ) < CLICK_DISTANCE_LIMIT_SQR + 15 * resources.displayMetrics.density
         ) {
-            return ROTATE
+            return EditType.ROTATE
         } else if (event.x.toInt() in offset..(topView.width-offset) && event.y.toInt() in offset..(topView.height-offset)) {
-            return ALL
+            return EditType.ALL
         } else if (distSqr(
                 (topView.width - offset).toInt(),
                 offset,
@@ -199,7 +204,7 @@ class EditorView @JvmOverloads constructor(
                 event.y.toInt()
             ) < CLICK_DISTANCE_LIMIT_SQR
         ) {
-            return RIGHT_TOP_CORNER
+            return EditType.RIGHT_TOP_CORNER
 
         } else if (distSqr(
                 offset,
@@ -208,7 +213,7 @@ class EditorView @JvmOverloads constructor(
                 event.y.toInt()
             ) < CLICK_DISTANCE_LIMIT_SQR
         ) {
-            return LEFT_BOTTOM_CORNER
+            return EditType.LEFT_BOTTOM_CORNER
 
         } else if (distSqr(
                 (topView.width - offset).toInt(),
@@ -217,7 +222,7 @@ class EditorView @JvmOverloads constructor(
                 event.y.toInt()
             ) < CLICK_DISTANCE_LIMIT_SQR
         ) {
-            return RIGHT_BOTTOM_CORNER
+            return EditType.RIGHT_BOTTOM_CORNER
         }
         return null
     }

@@ -18,10 +18,15 @@ class SketchPresenter : IPresenter {
     override fun onSaveClicked() {
         view?.goToSave()
     }
+
+    override fun onSendSketchToBD() {
+
+    }
 }
 
 interface IPresenter {
     fun attach(view: IView)
     fun detach()
     fun onSaveClicked()
+    fun onSendSketchToBD()
 }

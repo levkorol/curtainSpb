@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_scetch.*
 import ru.harlion.curtainspb.R
+import ru.harlion.curtainspb.databinding.FragmentScetchBinding
 import ru.harlion.curtainspb.models.Sketch
 import ru.harlion.curtainspb.ui.grid_list_sketch.GridListSketchFragment
-import ru.harlion.curtainspb.ui.save_project.SaveProjectFragment
+import ru.harlion.curtainspb.ui.save_project.fragment.SaveProjectFragment
 import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
 import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.File
@@ -22,7 +23,7 @@ import java.io.FileOutputStream
 class SketchFragment : Fragment(), IView {
 
     private lateinit var adapter: SketchAdapter
-
+    private lateinit var binding: FragmentScetchBinding
     private lateinit var presenter: IPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +40,8 @@ class SketchFragment : Fragment(), IView {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_scetch, container, false)
+        binding = FragmentScetchBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,7 +56,7 @@ class SketchFragment : Fragment(), IView {
 
         presenter.attach(this)
 
-        editorView.bottomView.setImageURI(arguments!!.getParcelable("image"))
+        editorView.bottomView.setImageURI(requireArguments().getParcelable("image"))
 
         // TODO editorView.topView.loadSomething() загрузить картинку
 
@@ -68,7 +70,7 @@ class SketchFragment : Fragment(), IView {
     }
 
     override fun goToSave() {
-        saveTemp()
+        saveAndSendBdSketch()
         replaceFragment(SaveProjectFragment())
     }
 
@@ -77,21 +79,23 @@ class SketchFragment : Fragment(), IView {
 
     }
 
-    private fun saveTemp() { //todo сохранять получившиюся картинку  битмап в файл
-        //    val path: String = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + context?.packageName//directory
-        //  val path: String = Environment.getRootDirectory() + "/test_image.jpg"
-        val out = FileOutputStream(File(File(requireActivity().filesDir, "upload").also(File::mkdirs), "pick.png"))
+    //сохраняет получившиюся картинку  битмап в файл
+    // todo отправить на сервер
+    private fun saveAndSendBdSketch() {
+        val out = FileOutputStream(
+            File(
+                File(requireActivity().filesDir, "upload").also(File::mkdirs),
+                "pick.png"
+            )
+        )
         editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, out)
     }
 
     private fun initClick() {
-        cardView_save_project.setOnClickListener {
-            presenter.onSaveClicked()
-        }
 
-        show_all.setOnClickListener {
-            replaceFragment(GridListSketchFragment())
-        }
+        binding.cardViewSaveProject.setOnClickListener { presenter.onSaveClicked() }
+
+        binding.showAll.setOnClickListener { replaceFragment(GridListSketchFragment()) }
 
 //        delete_pick.setOnClickListener {
 //            editorView.topView.setImageDrawable(null)
