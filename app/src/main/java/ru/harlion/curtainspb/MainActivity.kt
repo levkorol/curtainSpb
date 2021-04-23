@@ -3,16 +3,19 @@ package ru.harlion.curtainspb
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import ru.harlion.curtainspb.repo.AuthPrefs
 import ru.harlion.curtainspb.repo.data.DataRepository
 import ru.harlion.curtainspb.ui.auth.authorization.fragment.AuthFragment
+import ru.harlion.curtainspb.ui.main_menu.fragment.MainMenuFragment
 import ru.harlion.curtainspb.ui.splash.SplashFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    var timer: Timer? = null
-    var mTimerTask: TimerTask? = null
+    private var timer: Timer? = null
+    private var mTimerTask: TimerTask? = null
+    private lateinit var prefs: AuthPrefs
 
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(newBase)
@@ -23,12 +26,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        prefs = AuthPrefs(this.getSharedPreferences("user", MODE_PRIVATE))
+
         replaceFragment(SplashFragment(), false)
 
         timer = Timer()
         mTimerTask = MyTimerTask()
         timer!!.schedule(mTimerTask, 2000)
     }
+
     override fun onDestroy() {
         super.onDestroy()
         timer!!.cancel()
@@ -36,9 +42,11 @@ class MainActivity : AppCompatActivity() {
 
     internal inner class MyTimerTask : TimerTask() {
         override fun run() {
-            //    finish()
-
-            replaceFragment(AuthFragment(),false)
+            if (prefs.hasToken()) {
+                replaceFragment(MainMenuFragment())
+            } else {
+                replaceFragment(AuthFragment(), false)
+            }
         }
     }
 }

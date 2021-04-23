@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import ru.harlion.curtainspb.databinding.FragmentRegistrationBinding
 import ru.harlion.curtainspb.ui.auth.registration.viewmodel.RegistrationViewModel
+import ru.harlion.curtainspb.ui.main_menu.fragment.MainMenuFragment
+import ru.harlion.curtainspb.utils.replaceFragment
 
 
 class RegistrationFragment : Fragment() {
@@ -28,6 +30,15 @@ class RegistrationFragment : Fragment() {
 
         initClicks()
 
+        initViewModel()
+    }
+
+    private fun initViewModel() {
+        viewModel.isRegistrationComplete.observe(viewLifecycleOwner) {
+            if (it) {
+                replaceFragment(MainMenuFragment())
+            }
+        }
     }
 
     private fun initClicks() {
@@ -39,8 +50,16 @@ class RegistrationFragment : Fragment() {
             val password = binding.fragmentRegistrationPassword.text.toString()
             val phone = binding.fragmentRegistrationPhone.text.toString()
 
-            viewModel.registerUsers(requireContext(), name = name, phone = phone, email = email, password = password)
+            viewModel.registerUsers(
+                requireContext(),
+                name = name,
+                phone = phone,
+                email = email,
+                password = password
+            )
         }
+
+        binding.fRegistrationBack.setOnClickListener { parentFragmentManager.popBackStack() }
     }
 
     override fun onDestroyView() {

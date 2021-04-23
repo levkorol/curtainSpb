@@ -39,7 +39,7 @@ class SketchFragment : Fragment(), IView {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentScetchBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -95,6 +95,8 @@ class SketchFragment : Fragment(), IView {
         binding.cardViewSaveProject.setOnClickListener { presenter.onSaveClicked() }
 
         binding.showAll.setOnClickListener { replaceFragment(GridListSketchFragment()) }
+
+        binding.fSketchBack.setOnClickListener { parentFragmentManager.popBackStack() }
 
 //        delete_pick.setOnClickListener {
 //            editorView.topView.setImageDrawable(null)
