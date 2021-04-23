@@ -1,6 +1,8 @@
 package ru.harlion.curtainspb.ui.auth.authorization.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,16 +32,27 @@ class AuthFragment : Fragment() {
             replaceFragment(PasswordRecoveryFragment())
         }
 
-        registration.setOnClickListener {
+        /*registration.setOnClickListener {
             replaceFragment(RegistrationFragment())
-        }
+        }*/
 
         user_arreement.setOnClickListener {
             replaceFragment(UserAgreementFragment())
         }
 
-        main_menu.setOnClickListener {
+        /*main_menu.setOnClickListener {
             replaceFragment(MainMenuFragment())
+        }*/
+
+        login_input.addTextChangedListener(watcher)
+        password_auth.addTextChangedListener(watcher)
+    }
+
+    private val watcher = object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        override fun afterTextChanged(p0: Editable?) {
+            button_login_auth.isEnabled = login_input.text.isNotBlank() && password_auth.text!!.isNotBlank()
         }
     }
 }

@@ -30,6 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/logo">
 
         <EditText
+            android:id="@+id/login_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -84,29 +85,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/authorization_password_et" />
 
-
-    <RelativeLayout
+    <Button
         android:id="@+id/button_login_auth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/shape_button_bg"
+        android:textColor="@color/button_text"
+        android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/forget_password_fragment">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@null"
-            android:gravity="center"
-            android:padding="13dp"
-            android:text="ВОЙТИ"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
+        app:layout_constraintTop_toBottomOf="@id/forget_password_fragment"
+        android:gravity="center"
+        android:padding="13dp"
+        android:text="ВОЙТИ"
+        android:textSize="16sp" />
 
     <!--        <RelativeLayout-->
     <!--            android:id="@+id/registration"-->
@@ -139,15 +133,15 @@
     <!--            android:text="Войти без регистрации"-->
     <!--            android:textColor="@color/black" />-->
 
-    <!--        <TextView-->
-    <!--            android:id="@+id/user_arreement"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginHorizontal="50dp"-->
-    <!--            android:layout_marginTop="50dp"-->
-    <!--            android:layout_marginBottom="20dp"-->
-    <!--            android:gravity="center"-->
-    <!--            android:text="Продолжая использовать приложение вы принимаете пользовательское соглашение"-->
-    <!--            android:textColor="@color/gray" />-->
+            <TextView
+                android:id="@+id/user_arreement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Продолжая использовать приложение вы принимаете пользовательское соглашение"
+                android:textColor="@color/gray" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
