@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.databinding.FragmentUserAgreementBinding
 
 
@@ -17,6 +18,7 @@ class UserAgreementFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentUserAgreementBinding.inflate(layoutInflater)
+        binding.agreement.text = resources.openRawResource(R.raw.user_agreement).reader().readText()
         return binding.root
     }
 
