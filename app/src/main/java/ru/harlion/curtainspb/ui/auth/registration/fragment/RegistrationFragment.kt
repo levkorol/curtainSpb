@@ -61,12 +61,4 @@ class RegistrationFragment : Fragment() {
 
         binding.fRegistrationBack.setOnClickListener { parentFragmentManager.popBackStack() }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        viewModel.currentTask?.let {
-            it.cancel(true)
-            viewModel.currentTask = null
-        }
-    }
 }

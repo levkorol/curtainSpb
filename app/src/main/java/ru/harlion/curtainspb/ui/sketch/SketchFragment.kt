@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_scetch.*
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.databinding.FragmentScetchBinding
-import ru.harlion.curtainspb.models.Sketch
+import ru.harlion.curtainspb.models.data.Template
 import ru.harlion.curtainspb.ui.grid_list_sketch.GridListSketchFragment
 import ru.harlion.curtainspb.ui.save_project.fragment.SaveProjectFragment
 import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
@@ -74,8 +74,8 @@ class SketchFragment : Fragment(), IView {
         replaceFragment(SaveProjectFragment())
     }
 
-    override fun showPictures(sketches: List<Sketch>) {
-        adapter.sketch = sketches
+    override fun showPictures(templates: List<Template>) {
+        adapter.templates = templates
 
     }
 
@@ -120,5 +120,5 @@ class SketchFragment : Fragment(), IView {
 
 interface IView {
     fun goToSave()
-    fun showPictures(sketches: List<Sketch>)
+    fun showPictures(templates: List<Template>)
 }

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.models.Sketch
+import ru.harlion.curtainspb.models.data.Template
 import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
 
 
@@ -49,11 +50,11 @@ class GridListSketchFragment : Fragment(), IView {
         presenter.detach()
     }
 
-    override fun showPictures(sketches: List<Sketch>) {
-        adapter.sketch = sketches
+    override fun showPictures(templates: List<Template>) {
+        adapter.templates = templates
     }
 }
 
 interface IView {
-    fun showPictures(sketches: List<Sketch>)
+    fun showPictures(templates: List<Template>)
 }

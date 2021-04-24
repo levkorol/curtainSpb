@@ -7,12 +7,12 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_sketch.view.*
 import ru.harlion.curtainspb.R
-import ru.harlion.curtainspb.models.Sketch
+import ru.harlion.curtainspb.models.data.Template
 
 class SketchAdapter :
     RecyclerView.Adapter<SketchAdapter.SketchHolder>() {
 
-    var sketch: List<Sketch> = listOf()
+    var templates: List<Template> = listOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -25,19 +25,19 @@ class SketchAdapter :
     }
 
     override fun onBindViewHolder(holder: SketchHolder, position: Int) {
-        val item = sketch[position]
+        val item = templates[position]
         holder.bind(item)
 
 
     }
 
-    override fun getItemCount(): Int = sketch.size
+    override fun getItemCount(): Int = templates.size
 
     class SketchHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val image: CardView = itemView.imageView_sketch
 
-        fun bind(item: Sketch) {
+        fun bind(item: Template) {
             // image.setBackgroundResource(R.drawable.test_pic_big) //todo временно для теста
             itemView.setOnClickListener {
 

@@ -7,13 +7,13 @@ import androidx.lifecycle.ViewModel
 import ru.harlion.curtainspb.models.data.UsersRequest
 import ru.harlion.curtainspb.repo.AuthPrefs
 import ru.harlion.curtainspb.repo.data.DataRepository
-import java.util.concurrent.Future
+import java.io.Closeable
 
 class RegistrationViewModel : ViewModel() {
 
     var isRegistrationComplete = MutableLiveData(false)
 
-    var currentTask: Future<*>? = null
+    var currentTask: Closeable? = null
 
     fun registerUsers(
         context: Context,
@@ -39,5 +39,13 @@ class RegistrationViewModel : ViewModel() {
             },
             Throwable::printStackTrace
         )
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        currentTask?.let {
+            it.close()
+            currentTask = null
+        }
     }
 }

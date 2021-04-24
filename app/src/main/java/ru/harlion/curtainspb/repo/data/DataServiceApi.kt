@@ -13,7 +13,7 @@ interface DataServiceApi {
     fun auth(@Body request: AuthRequest): Call<Resp<AuthData>>
 
     @GET("templates")
-    fun getTemplates(@Query("userId") id: Int)
+    fun getTemplates(@Query("userId") id: Int?): Call<Resp<List<Template>>>
 
     @POST("users/{userId}/images") @Multipart
     fun sendProjectImage(@Path(value = "userId") userId: Int, @Part image: MultipartBody.Part): Call<Unit>

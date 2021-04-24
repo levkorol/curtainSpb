@@ -8,7 +8,7 @@ class GridPresenter : IPresenter {
 
     override fun attach(view: IView) {
         this.view = view
-        view.showPictures(SketchRepo.getListSketch())
+//        view.showPictures(SketchRepo.getListSketch())
     }
 
     override fun detach() {
