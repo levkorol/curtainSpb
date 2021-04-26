@@ -38,6 +38,11 @@ class CommonDialog(val context: Context) {
         }
     }
 
+    fun setTitle(msg: String) {
+        dialog.d_common_title_tv.text = msg
+        dialog.d_common_title_tv.visibility = View.VISIBLE
+    }
+
     fun setMessage(msg: String) {
         dialog.d_common_message_tv.text = msg
         dialog.d_common_message_tv.visibility = View.VISIBLE

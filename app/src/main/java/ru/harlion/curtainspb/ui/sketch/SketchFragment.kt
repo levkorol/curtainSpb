@@ -14,7 +14,7 @@ import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.databinding.FragmentScetchBinding
 import ru.harlion.curtainspb.models.data.Template
 import ru.harlion.curtainspb.ui.grid_list_sketch.GridListSketchFragment
-import ru.harlion.curtainspb.ui.save_project.fragment.SaveProjectFragment
+import ru.harlion.curtainspb.ui.save_project.SaveProjectFragment
 import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
 import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.File
@@ -80,7 +80,7 @@ class SketchFragment : Fragment(), IView {
     }
 
     //сохраняет получившиюся картинку  битмап в файл
-    // todo отправить на сервер
+    // todo отправить на сервер (тепеерь отправлять только если сохраняет в галлерею или отправляет заявку)
     private fun saveAndSendBdSketch() {
         val file = File(
             File(requireActivity().filesDir, "upload").also(File::mkdirs),
@@ -98,12 +98,6 @@ class SketchFragment : Fragment(), IView {
 
         binding.fSketchBack.setOnClickListener { parentFragmentManager.popBackStack() }
 
-//        delete_pick.setOnClickListener {
-//            editorView.topView.setImageDrawable(null)
-//            editorView.topView.visibility = View.GONE
-//            delete_pick.visibility = View.GONE
-//            save_sketch.visibility = View.GONE
-//        }
     }
 
     companion object {
@@ -115,7 +109,6 @@ class SketchFragment : Fragment(), IView {
             return fragment
         }
     }
-
 }
 
 interface IView {

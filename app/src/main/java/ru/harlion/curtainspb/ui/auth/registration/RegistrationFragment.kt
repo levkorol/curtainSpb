@@ -1,16 +1,17 @@
-package ru.harlion.curtainspb.ui.auth.registration.fragment
+package ru.harlion.curtainspb.ui.auth.registration
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import ru.harlion.curtainspb.databinding.FragmentRegistrationBinding
-import ru.harlion.curtainspb.ui.auth.registration.viewmodel.RegistrationViewModel
-import ru.harlion.curtainspb.ui.main_menu.fragment.MainMenuFragment
+import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
 import ru.harlion.curtainspb.utils.replaceFragment
-
 
 class RegistrationFragment : Fragment() {
 
@@ -36,6 +37,11 @@ class RegistrationFragment : Fragment() {
     private fun initViewModel() {
         viewModel.isRegistrationComplete.observe(viewLifecycleOwner) {
             if (it) {
+                Toast.makeText(
+                    requireContext(),
+                    "Пользователь успешно зарегистрирован",
+                    Toast.LENGTH_LONG
+                ).show()
                 replaceFragment(MainMenuFragment())
             }
         }
@@ -60,5 +66,23 @@ class RegistrationFragment : Fragment() {
         }
 
         binding.fRegistrationBack.setOnClickListener { parentFragmentManager.popBackStack() }
+
+        binding.fragmentRegistrationEmail.addTextChangedListener(watcher)
+        binding.fragmentRegistrationName.addTextChangedListener(watcher)
+        binding.fragmentRegistrationPassword.addTextChangedListener(watcher)
+        binding.fragmentRegistrationPhone.addTextChangedListener(watcher)
+
+    }
+
+    private val watcher = object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+        override fun afterTextChanged(p0: Editable?) {
+            binding.registrationLoginButton.isEnabled =
+                binding.fragmentRegistrationEmail.text.isNotBlank()
+                        && binding.fragmentRegistrationName.text.isNotBlank()
+                        && binding.fragmentRegistrationPassword.text!!.isNotBlank()
+                        && binding.fragmentRegistrationPhone.text.isNotBlank()
+        }
     }
 }

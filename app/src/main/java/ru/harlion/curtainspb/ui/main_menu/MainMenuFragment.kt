@@ -1,4 +1,4 @@
-package ru.harlion.curtainspb.ui.main_menu.fragment
+package ru.harlion.curtainspb.ui.main_menu
 
 import android.app.Activity
 import android.content.Intent
@@ -13,8 +13,8 @@ import com.vansuita.pickimage.IntentResolver
 import ru.harlion.curtainspb.base.CommonDialog
 import ru.harlion.curtainspb.databinding.FragmentMainMenuBinding
 import ru.harlion.curtainspb.repo.AuthPrefs
-import ru.harlion.curtainspb.ui.auth.authorization.fragment.AuthFragment
-import ru.harlion.curtainspb.ui.auth.registration.fragment.RegistrationFragment
+import ru.harlion.curtainspb.ui.auth.authorization.AuthFragment
+import ru.harlion.curtainspb.ui.auth.registration.RegistrationFragment
 import ru.harlion.curtainspb.ui.sketch.SketchFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 
@@ -80,12 +80,19 @@ class MainMenuFragment : Fragment() {
         }
 
         binding.exit.setOnClickListener {
-            //  Toast.makeText(requireContext(),"777", Toast.LENGTH_LONG).show()
             openDialog()
         }
 
         binding.registration.setOnClickListener {
             replaceFragment(RegistrationFragment())
+        }
+
+        binding.urlSite.setOnClickListener {
+            val browserIntent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://pzn.su")
+            )
+            startActivity(browserIntent)
         }
     }
 

@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.harlion.curtainspb.repo.AuthPrefs
 import ru.harlion.curtainspb.repo.data.DataRepository
-import ru.harlion.curtainspb.ui.auth.authorization.fragment.AuthFragment
-import ru.harlion.curtainspb.ui.main_menu.fragment.MainMenuFragment
+import ru.harlion.curtainspb.ui.auth.authorization.AuthFragment
+import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
 import ru.harlion.curtainspb.ui.splash.SplashFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 import java.util.*

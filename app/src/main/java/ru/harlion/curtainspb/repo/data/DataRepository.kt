@@ -45,6 +45,7 @@ object DataRepository {
 
         val retrofit = Retrofit.Builder()
             .client(client)
+            //.baseUrl("http://pzntech.ru:8080/api/v1/") //todo https://api.pzntech.ru/api/v1/
             .baseUrl("http://pzntech.ru:8080/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()

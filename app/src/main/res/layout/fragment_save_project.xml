@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.save_project.fragment.SaveProjectFragment">
+    tools:context=".ui.save_project.SaveProjectFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_back_save_project"
@@ -120,6 +120,20 @@
             android:textColor="@color/white"
             android:textSize="16sp" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/f_save_project_url_site"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:padding="10dp"
+            android:text="Перейти на сайт компании" />
     </RelativeLayout>
 
 </LinearLayout>

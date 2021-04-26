@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".ui.auth.registration.fragment.RegistrationFragment">
+    tools:context=".ui.auth.registration.RegistrationFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/f_registration_back"
@@ -123,31 +123,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/fragment_registration_swich"
+        android:id="@+id/fragment_registration_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_40sdp"
         android:text="Согласен на обработку персональных данных и принимаю пользовательское соглашение" />
 
-    <RelativeLayout
+
+    <Button
         android:id="@+id/registration_login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/shape_button_bg">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@null"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
-
+        android:background="@drawable/shape_button_bg"
+        android:enabled="false"
+        android:textColor="@color/button_text"
+        android:gravity="center"
+        android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
+        android:textSize="16sp" />
 
 </LinearLayout>

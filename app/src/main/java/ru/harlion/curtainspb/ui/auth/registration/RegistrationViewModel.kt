@@ -1,4 +1,4 @@
-package ru.harlion.curtainspb.ui.auth.registration.viewmodel
+package ru.harlion.curtainspb.ui.auth.registration
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE

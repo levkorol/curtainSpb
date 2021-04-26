@@ -22,4 +22,5 @@
     <color name="lightGray">#DEDBDE</color>
     <color name="veryLightGray">#EEEEEE</color>
     <color name="red">#BF1921</color>
+    <color name="grey_text">#AFAFAF</color>
 </resources>

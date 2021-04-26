@@ -1,147 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.auth.authorization.fragment.AuthFragment">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/ic_logologo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RelativeLayout
-        android:id="@+id/login_auth"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/shape_edit_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.auth.authorization.AuthFragment">
 
-        <EditText
-            android:id="@+id/login_input"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:hint=" Логин"
-            android:padding="13dp"
-            android:textSize="16sp" />
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/ic_logologo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/authorization_password_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:background="@drawable/shape_edit_text"
-        app:boxBackgroundColor="@color/white"
-        app:boxBackgroundMode="none"
-        app:boxStrokeColor="@color/white"
-        app:hintEnabled="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_auth"
-        app:passwordToggleDrawable="@drawable/ic_eye_on"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/gray">
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/password_auth"
+        <RelativeLayout
+            android:id="@+id/login_auth"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:cursorVisible="true"
-            android:hint=" Пароль"
-            android:inputType="textPassword"
-            android:lines="1"
-            android:paddingStart="11dp"
-            android:paddingTop="0dp"
-            android:paddingBottom="0dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/shape_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo">
 
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/forget_password_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:gravity="end"
-        android:text="Забыли пароль?"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/authorization_password_et" />
-
-    <Button
-        android:id="@+id/button_login_auth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shape_button_bg"
-        android:textColor="@color/button_text"
-        android:enabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/forget_password_fragment"
-        android:gravity="center"
-        android:padding="13dp"
-        android:text="ВОЙТИ"
-        android:textSize="16sp" />
-
-    <!--        <RelativeLayout-->
-    <!--            android:id="@+id/registration"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginHorizontal="20dp"-->
-    <!--            android:layout_marginTop="20dp"-->
-    <!--            android:background="@drawable/shape_edit_text">-->
-
-    <!--            <TextView-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="50dp"-->
-    <!--                android:background="@null"-->
-    <!--                android:gravity="center"-->
-    <!--                android:padding="12dp"-->
-    <!--                android:text="ЗАРЕГИСТРИРОВАТЬСЯ"-->
-    <!--                android:textColor="@color/black"-->
-    <!--                android:textSize="16sp" />-->
-
-    <!--        </RelativeLayout>-->
-
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/main_menu"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginHorizontal="20dp"-->
-    <!--            android:layout_marginTop="50dp"-->
-    <!--            android:gravity="center"-->
-    <!--            android:text="Войти без регистрации"-->
-    <!--            android:textColor="@color/black" />-->
-
-            <TextView
-                android:id="@+id/user_arreement"
+            <EditText
+                android:id="@+id/login_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="50dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:text="Продолжая использовать приложение вы принимаете пользовательское соглашение"
-                android:textColor="@color/gray" />
+                android:background="@null"
+                android:hint=" Логин"
+                android:padding="13dp"
+                android:textSize="16sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/authorization_password_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/shape_edit_text"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="none"
+            app:boxStrokeColor="@color/white"
+            app:hintEnabled="false"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_auth"
+            app:passwordToggleDrawable="@drawable/ic_eye_on"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/gray">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/password_auth"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:cursorVisible="true"
+                android:hint=" Пароль"
+                android:inputType="textPassword"
+                android:lines="1"
+                android:paddingStart="11dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/forget_password_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:padding="20dp"
+            android:text="Забыли пароль?"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/authorization_password_et" />
+
+        <Button
+            android:id="@+id/button_login_auth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_button_bg"
+            android:enabled="true"
+            android:gravity="center"
+            android:text="ВОЙТИ"
+            android:textColor="@color/button_text"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forget_password_fragment" />
+
+        <RelativeLayout
+            android:id="@+id/registration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_login_auth">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="ЗАРЕГИСТРИРОВАТЬСЯ"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/main_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Войти без регистрации"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/registration" />
+
+        <TextView
+            android:id="@+id/user_arreement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="Продолжая использовать приложение вы принимаете пользовательское соглашение"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/main_menu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

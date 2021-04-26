@@ -31,5 +31,4 @@ class UserAgreementFragment : Fragment() {
     private fun initClicks() {
         binding.fUserAgreementBack.setOnClickListener { parentFragmentManager.popBackStack() }
     }
-
 }
