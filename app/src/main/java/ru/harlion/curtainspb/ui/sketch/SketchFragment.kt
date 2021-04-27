@@ -16,6 +16,7 @@ import ru.harlion.curtainspb.models.data.Template
 import ru.harlion.curtainspb.ui.grid_list_sketch.GridListSketchFragment
 import ru.harlion.curtainspb.ui.save_project.SaveProjectFragment
 import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
+import ru.harlion.curtainspb.utils.ovalOutline
 import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.File
 import java.io.FileOutputStream
@@ -97,6 +98,7 @@ class SketchFragment : Fragment(), IView {
         binding.showAll.setOnClickListener { replaceFragment(GridListSketchFragment()) }
 
         binding.fSketchBack.setOnClickListener { parentFragmentManager.popBackStack() }
+        binding.fSketchBack.ovalOutline()
 
     }
 
