@@ -71,18 +71,23 @@ class RegistrationFragment : Fragment() {
         binding.fragmentRegistrationName.addTextChangedListener(watcher)
         binding.fragmentRegistrationPassword.addTextChangedListener(watcher)
         binding.fragmentRegistrationPhone.addTextChangedListener(watcher)
-
+        binding.fragmentRegistrationSwitch.setOnCheckedChangeListener { _, _ -> updateButton() }
     }
 
     private val watcher = object : TextWatcher {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         override fun afterTextChanged(p0: Editable?) {
-            binding.registrationLoginButton.isEnabled =
-                binding.fragmentRegistrationEmail.text.isNotBlank()
-                        && binding.fragmentRegistrationName.text.isNotBlank()
-                        && binding.fragmentRegistrationPassword.text!!.isNotBlank()
-                        && binding.fragmentRegistrationPhone.text.isNotBlank()
+            updateButton()
         }
+    }
+
+    private fun updateButton() {
+        binding.registrationLoginButton.isEnabled =
+            binding.fragmentRegistrationSwitch.isChecked &&
+                    binding.fragmentRegistrationEmail.text.isNotBlank() &&
+                    binding.fragmentRegistrationName.text.isNotBlank() &&
+                    binding.fragmentRegistrationPassword.text!!.isNotBlank() &&
+                    binding.fragmentRegistrationPhone.text.isNotBlank()
     }
 }

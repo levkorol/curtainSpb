@@ -6,10 +6,13 @@ import android.content.SharedPreferences
 import android.os.Handler
 import android.os.Looper
 import androidx.annotation.CheckResult
+import com.google.gson.Gson
+import com.google.gson.JsonObject
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import okio.IOException
@@ -31,6 +34,7 @@ object DataRepository {
         get() = context.getSharedPreferences("user", Context.MODE_PRIVATE)
     private val service: DataServiceApi
 
+    private val gson = Gson()
     init {
         val client = OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().apply { setLevel(BODY) })
@@ -47,7 +51,7 @@ object DataRepository {
             .client(client)
             //.baseUrl("http://pzntech.ru:8080/api/v1/") //todo https://api.pzntech.ru/api/v1/
             .baseUrl("http://pzntech.ru:8080/api/v1/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
         service = retrofit.create(DataServiceApi::class.java)
@@ -135,5 +139,34 @@ object DataRepository {
             }
         })
         return Closeable(call::cancel)
+    }
+
+    @CheckResult fun request(
+        image: File, name: String, phone: String, email: String, width: String, height: String, comment: String,
+        success: () -> Unit, error: (Throwable) -> Unit,
+    ): Closeable =
+        service.sendRequest(
+            MultipartBody.Part.createFormData("image", image.name, image.asRequestBody("image/*".toMediaType())),
+            name, phone, email, width, height, comment
+        ).enqueue(
+            { _ -> success() },
+            {
+                val message = gson.fromJson(it.charStream(), JsonObject::class.java).getAsJsonPrimitive("message").asString
+                TODO("show message")
+            },
+            error,
+        )
+
+    fun <T> Call<T>.enqueue(success: (T) -> Unit, httpError: (ResponseBody) -> Unit, error: (Throwable) -> Unit): Closeable {
+        enqueue(object : Callback<T> {
+            override fun onResponse(call: Call<T>, response: Response<T>) {
+                if (response.isSuccessful) success(response.body()!!)
+                else try { httpError(response.errorBody()!!) } catch (e: Exception) { error(e) }
+            }
+            override fun onFailure(call: Call<T>, t: Throwable) {
+                error(t)
+            }
+        })
+        return Closeable(::cancel)
     }
 }

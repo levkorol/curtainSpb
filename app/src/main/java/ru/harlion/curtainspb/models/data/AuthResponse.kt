@@ -12,7 +12,7 @@ data class AuthData(
     val userId: Int,
 )
 
-private val BASE_URL = "https://api.pzntech.ru/api/v1/static/".toHttpUrl()
+private val BASE_URL = "https://api.pzntech.ru/static/templates/".toHttpUrl()
 class Template(
     val id: Int,
     val name: String,

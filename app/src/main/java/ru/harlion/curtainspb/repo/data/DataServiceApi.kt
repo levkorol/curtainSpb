@@ -18,8 +18,16 @@ interface DataServiceApi {
     @POST("users/{userId}/images") @Multipart
     fun sendProjectImage(@Path(value = "userId") userId: Int, @Part image: MultipartBody.Part): Call<Unit>
 
-    @POST("requests")
-    fun sendRequest()
+    @POST("requests") @Multipart
+    fun sendRequest(
+        @Part image: MultipartBody.Part,
+        @Field("name") name: String,
+        @Field("phone") phone: String,
+        @Field("email") email: String,
+        @Field("weight") width: String,
+        @Field("height") height: String,
+        @Field("comment") comment: String,
+    ): Call<Unit>
 
     @POST("requests/reset")
     fun passwordRecovery()

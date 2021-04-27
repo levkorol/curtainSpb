@@ -8,11 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import ru.harlion.curtainspb.databinding.FragmentRequestCostBinding
+import ru.harlion.curtainspb.repo.data.DataRepository
+import java.io.Closeable
+import java.io.File
 
 
 class RequestCostFragment : Fragment() {
 
     private lateinit var binding: FragmentRequestCostBinding
+    private var currentRequest: Closeable? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +41,28 @@ class RequestCostFragment : Fragment() {
         binding.fRequestCostInputWidth.addTextChangedListener(watcher)
         binding.fRequestCostInputEmail.addTextChangedListener(watcher)
         binding.fRequestCostInputHeight.addTextChangedListener(watcher)
+
+        binding.fRequestCostButtonSend.setOnClickListener {
+            currentRequest?.close()
+            currentRequest = DataRepository.request(
+                File(requireActivity().filesDir, "upload"),
+                binding.fRequestCostInputName.text.toString(),
+                binding.fRequestCostInputPhone.text.toString(),
+                binding.fRequestCostInputEmail.text.toString(),
+                binding.fRequestCostInputWidth.text.toString(),
+                binding.fRequestCostInputHeight.text.toString(),
+                binding.fRequestCostInputComment.text.toString(),
+                { TODO("success") },
+                Throwable::printStackTrace,
+            )
+        }
+    }
+    override fun onDestroyView() {
+        currentRequest?.let {
+            it.close()
+            currentRequest = null
+        }
+        super.onDestroyView()
     }
 
     private val watcher = object : TextWatcher {
