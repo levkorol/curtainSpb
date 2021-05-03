@@ -3,7 +3,6 @@ package ru.harlion.curtainspb.ui.sketch
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
@@ -12,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.withSave
 import androidx.core.view.setPadding
 import ru.harlion.curtainspb.R
+import kotlin.math.atan2
 
 private const val CLICK_DISTANCE_LIMIT = 60
 private const val CLICK_DISTANCE_LIMIT_SQR = CLICK_DISTANCE_LIMIT * CLICK_DISTANCE_LIMIT
@@ -69,15 +69,12 @@ class EditorView @JvmOverloads constructor(
                     when (editType) {
 
                         EditType.ROTATE -> {
-                            topView.rotation = -(Math.atan2(
-                                dx.toDouble(),
-                                dy.toDouble()
-                            ) * 180 / Math.PI).toFloat()
-                            // TODO подумать нужно
-                            Log.v(
-                                "???",
-                                "angle=" + Math.atan2(dx.toDouble(), dy.toDouble()) * 180 / Math.PI
-                            );
+                            val cx = topView.x + topView.width/2
+                            val cy = topView.y + topView.height/2
+                            topView.rotation += Math.toDegrees(angleBetweenLines(
+                                cx, cy, startTouchPoint.x, startTouchPoint.y,
+                                cx, cy, event.x, event.y,
+                            )).toFloat()
                         }
 
                         EditType.LEFT_TOP_CORNER -> {
@@ -249,6 +246,16 @@ class EditorView @JvmOverloads constructor(
 
     private fun distSqr(x0: Int, y0: Int, x1: Int, y1: Int) =
         (x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0)
+    private fun angleBetweenLines(
+        fX: Float, fY: Float, sX: Float, sY: Float, nfX: Float, nfY: Float, nsX: Float, nsY: Float): Double {
+        val angle1 = atan2((fY - sY), (fX - sX)).toDouble()
+        val angle2 = atan2((nfY - nsY), (nfX - nsX)).toDouble()
+        return when {
+            angle1 >= 0 && angle2 >= 0 || angle1 < 0 && angle2 < 0 -> angle2 - angle1
+            angle2 < 0 -> angle1 + angle2
+            else -> angle2 + angle1
+        }
+    }
 
     enum class EditType {
         LEFT_TOP_CORNER,

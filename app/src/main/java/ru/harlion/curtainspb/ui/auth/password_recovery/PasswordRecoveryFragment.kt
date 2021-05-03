@@ -32,11 +32,7 @@ class PasswordRecoveryFragment : Fragment() {
         binding.fPasswordRecoveryBack.setOnClickListener { parentFragmentManager.popBackStack() }
 
         binding.fPasswordButtonRecovery.setOnClickListener {
-            Toast.makeText(
-                requireContext(),
-                "Отлично! Мы уже отправили вам ссылку на восстановление пароля!",
-                Toast.LENGTH_LONG
-            ).show()
+            TODO("viewModel")
         }
 
         binding.fPasswordRecoveryEmail.addTextChangedListener(watcher)

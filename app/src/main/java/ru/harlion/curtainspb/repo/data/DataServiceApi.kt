@@ -31,5 +31,5 @@ interface DataServiceApi {
     ): Call<Unit>
 
     @POST("requests/reset")
-    fun passwordRecovery()
+    fun passwordRecovery(@Body request: RecoveryRequest): Call<MessageResponse>
 }

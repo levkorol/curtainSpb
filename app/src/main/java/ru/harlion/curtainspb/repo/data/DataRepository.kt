@@ -167,6 +167,22 @@ object DataRepository {
             error,
         )
 
+    @CheckResult fun recover(
+        email: String,
+        success: (String) -> Unit,
+        errorMessage: (String) -> Unit,
+        error: (Throwable) -> Unit,
+    ): Closeable =
+        service.passwordRecovery(RecoveryRequest(email)).enqueue(
+            { success(it.message) },
+            {
+                val message = gson.fromJson(it.charStream(), JsonObject::class.java)
+                    .getAsJsonPrimitive("message").asString
+                errorMessage(message)
+            },
+            error,
+        )
+
     fun <T> Call<T>.enqueue(success: (T) -> Unit, httpError: (ResponseBody) -> Unit, error: (Throwable) -> Unit): Closeable {
         enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
