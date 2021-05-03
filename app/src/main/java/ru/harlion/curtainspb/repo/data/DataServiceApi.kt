@@ -18,15 +18,16 @@ interface DataServiceApi {
     @POST("users/{userId}/images") @Multipart
     fun sendProjectImage(@Path(value = "userId") userId: Int, @Part image: MultipartBody.Part): Call<Unit>
 
+    // @FormUrlEncoded
     @POST("requests") @Multipart
     fun sendRequest(
         @Part image: MultipartBody.Part,
-        @Field("name") name: String,
-        @Field("phone") phone: String,
-        @Field("email") email: String,
-        @Field("weight") width: String,
-        @Field("height") height: String,
-        @Field("comment") comment: String,
+        @Part("name") name: String,
+        @Part("phone") phone: String,
+        @Part("email") email: String,
+        @Part("weight") width: String,
+        @Part("height") height: String,
+        @Part("comment") comment: String,
     ): Call<Unit>
 
     @POST("requests/reset")

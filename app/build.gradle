@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
     defaultConfig {
@@ -67,4 +67,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    implementation 'it.sephiroth.android.library.uigestures:uigesture-recognizer-kotlin:1.2.7'
+    implementation 'com.github.sephiroth74:AndroidUIGestureRecognizer:1.2.7 '
 }

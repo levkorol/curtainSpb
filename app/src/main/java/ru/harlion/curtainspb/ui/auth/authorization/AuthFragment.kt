@@ -37,7 +37,7 @@ class AuthFragment : Fragment() {
     private fun initViewModel() {
         viewModel.isAuthComplete.observe(viewLifecycleOwner) {
             if (it) {
-                replaceFragment(MainMenuFragment())
+                replaceFragment(MainMenuFragment(), false)
             }
         }
     }

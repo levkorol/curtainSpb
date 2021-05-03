@@ -6,9 +6,12 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import ru.harlion.curtainspb.databinding.FragmentRequestCostBinding
 import ru.harlion.curtainspb.repo.data.DataRepository
+import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
+import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.Closeable
 import java.io.File
 
@@ -45,18 +48,29 @@ class RequestCostFragment : Fragment() {
         binding.fRequestCostButtonSend.setOnClickListener {
             currentRequest?.close()
             currentRequest = DataRepository.request(
-                File(requireActivity().filesDir, "upload"),
+                File(File(requireActivity().filesDir, "upload"), "pick.png"),
                 binding.fRequestCostInputName.text.toString(),
                 binding.fRequestCostInputPhone.text.toString(),
                 binding.fRequestCostInputEmail.text.toString(),
                 binding.fRequestCostInputWidth.text.toString(),
                 binding.fRequestCostInputHeight.text.toString(),
                 binding.fRequestCostInputComment.text.toString(),
-                { TODO("success") },
+                {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ваша заявка успешно отправлена",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    replaceFragment(MainMenuFragment())
+                },
+                { message ->
+                    Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+                },
                 Throwable::printStackTrace,
             )
         }
     }
+
     override fun onDestroyView() {
         currentRequest?.let {
             it.close()

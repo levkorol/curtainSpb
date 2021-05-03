@@ -141,9 +141,18 @@ object DataRepository {
         return Closeable(call::cancel)
     }
 
+
     @CheckResult fun request(
-        image: File, name: String, phone: String, email: String, width: String, height: String, comment: String,
-        success: () -> Unit, error: (Throwable) -> Unit,
+        image: File,
+        name: String,
+        phone: String,
+        email: String,
+        width: String,
+        height: String,
+        comment: String,
+        success: () -> Unit,
+        errorMessage: (String) -> Unit,
+        error: (Throwable) -> Unit,
     ): Closeable =
         service.sendRequest(
             MultipartBody.Part.createFormData("image", image.name, image.asRequestBody("image/*".toMediaType())),
@@ -151,8 +160,9 @@ object DataRepository {
         ).enqueue(
             { _ -> success() },
             {
-                val message = gson.fromJson(it.charStream(), JsonObject::class.java).getAsJsonPrimitive("message").asString
-                TODO("show message")
+                val message = gson.fromJson(it.charStream(), JsonObject::class.java)
+                    .getAsJsonPrimitive("message").asString
+                errorMessage(message)
             },
             error,
         )

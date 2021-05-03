@@ -13,23 +13,42 @@
         android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
-        <ImageButton
+        <!--        <ImageButton-->
+        <!--            android:id="@+id/f_sketch_back"-->
+        <!--            android:layout_width="40dp"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:paddingLeft="12dp"-->
+        <!--            android:paddingRight="18dp"-->
+        <!--            android:paddingTop="12dp"-->
+        <!--            android:paddingBottom="10dp"-->
+        <!--            android:layout_marginStart="20dp"-->
+        <!--            android:elevation="7dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            android:src="@drawable/ic_left"-->
+        <!--            android:scaleType="fitCenter"-->
+        <!--            android:background="@null"-->
+        <!--            android:stateListAnimator="@null" />-->
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/f_sketch_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="18dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="10dp"
             android:layout_marginStart="20dp"
-            android:elevation="7dp"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="7dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_left"
-            android:scaleType="fitCenter"
-            android:background="@null"
-            android:stateListAnimator="@null" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="2dp"
+                android:background="@drawable/ic_left" />
+        </androidx.cardview.widget.CardView>
 
         <ImageView
             android:id="@+id/imageView"
@@ -149,7 +168,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_weight="0.1" />
+        android:layout_weight="0" />
 
     <LinearLayout
         android:layout_width="match_parent"

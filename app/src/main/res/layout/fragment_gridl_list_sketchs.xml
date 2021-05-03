@@ -8,7 +8,7 @@
     tools:context=".ui.grid_list_sketch.GridListSketchFragment">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_back"
+        android:id="@+id/cv_back_grid"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"

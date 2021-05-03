@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.harlion.curtainspb.R
-import ru.harlion.curtainspb.models.Sketch
+import ru.harlion.curtainspb.databinding.FragmentGridlListSketchsBinding
 import ru.harlion.curtainspb.models.data.Template
 import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
 
@@ -17,7 +17,7 @@ import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
 class GridListSketchFragment : Fragment(), IView {
 
     private lateinit var adapter: SketchAdapter
-
+    private lateinit var binding: FragmentGridlListSketchsBinding
     private lateinit var presenter: IPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,21 +28,28 @@ class GridListSketchFragment : Fragment(), IView {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_gridl_list_sketchs, container, false)
+    ): View {
+        binding = FragmentGridlListSketchsBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView: RecyclerView? = view.findViewById(R.id.recycler_view_gridle)
-        val llm = LinearLayoutManager(view.context)
-        // llm.orientation = LinearLayoutManager.VERTICAL
-        adapter = SketchAdapter()
+        adapter = SketchAdapter {
+            setFragmentResult(
+                "sketch",
+                Bundle(1).apply { putString("url", it.toString()) }
+            )
+            parentFragmentManager.popBackStack()
+        }
         recyclerView?.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView?.adapter = adapter
 
         presenter.attach(this)
+
+        initClick()
     }
 
     override fun onDestroy() {
@@ -52,6 +59,10 @@ class GridListSketchFragment : Fragment(), IView {
 
     override fun showPictures(templates: List<Template>) {
         adapter.templates = templates
+    }
+
+    private fun initClick() {
+        binding.cvBackGrid.setOnClickListener { parentFragmentManager.popBackStack() }
     }
 }
 

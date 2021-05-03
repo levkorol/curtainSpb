@@ -1,5 +1,6 @@
 package ru.harlion.curtainspb.ui.sketch.recyclerview
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,11 +8,12 @@ import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_sketch.view.*
+import okhttp3.HttpUrl
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.models.data.Template
 import ru.harlion.curtainspb.utils.downloadAndSetImage
 
-class SketchAdapter :
+class SketchAdapter(private val imageClicked: Context.(HttpUrl) -> Unit) :
     RecyclerView.Adapter<SketchAdapter.SketchHolder>() {
 
     var templates: List<Template> = listOf()
@@ -33,7 +35,7 @@ class SketchAdapter :
 
     override fun getItemCount(): Int = templates.size
 
-    class SketchHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class SketchHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val imageCv: CardView = itemView.imageView_sketch
         private val image: ImageView = itemView.image_img
@@ -43,7 +45,7 @@ class SketchAdapter :
             image.downloadAndSetImage(item.imageUrl.toString())
 
             itemView.setOnClickListener {
-                //todo  взять картинку по айди
+                it.context.imageClicked(item.imageUrl)
             }
         }
     }

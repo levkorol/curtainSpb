@@ -27,6 +27,7 @@ class EditorView @JvmOverloads constructor(
         it.setOnTouchListener(this)
     }
     val bottomView: ImageView = ImageView(context)
+    val waterView: ImageView = ImageView(context)
 
     private val startTouchPoint: PointF = PointF()
     private val startTopSizes: Point = Point()
@@ -43,6 +44,8 @@ class EditorView @JvmOverloads constructor(
 
     init {
         addView(bottomView)
+//        addView(waterView, LayoutParams(MATCH_PARENT, MATCH_PARENT))
+//        waterView.setImageResource(R.drawable.pic_water_down)
         // addView(topView, LayoutParams(500, 500, Gravity.CENTER))
         addView(topView, LayoutParams(500, 500))
         topView.setImageResource(R.drawable.unnamed)

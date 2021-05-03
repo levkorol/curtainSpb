@@ -28,11 +28,13 @@ class MainActivity : AppCompatActivity() {
 
         prefs = AuthPrefs(this.getSharedPreferences("user", MODE_PRIVATE))
 
-        replaceFragment(SplashFragment(), false)
+        if (savedInstanceState == null) {
+            replaceFragment(SplashFragment(), false)
 
-        timer = Timer()
-        mTimerTask = MyTimerTask()
-        timer!!.schedule(mTimerTask, 2000)
+            timer = Timer()
+            mTimerTask = MyTimerTask()
+            timer!!.schedule(mTimerTask, 2000)
+        }
     }
 
     override fun onDestroy() {
@@ -43,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     internal inner class MyTimerTask : TimerTask() {
         override fun run() {
             if (prefs.hasToken()) {
-                replaceFragment(MainMenuFragment())
+                replaceFragment(MainMenuFragment(), false)
             } else {
                 replaceFragment(AuthFragment(), false)
             }
