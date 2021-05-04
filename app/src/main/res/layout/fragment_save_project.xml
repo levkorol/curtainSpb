@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
-        android:text="Сохранить проект"
+        android:text="Сохранение проекта"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -57,7 +57,7 @@
             android:layout_centerInParent="true"
             android:background="@null"
             android:gravity="center"
-            android:text="СОХРАНИТЬ В ГАЛЛЕРЕЮ"
+            android:text="Сохранить в галлерею"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -83,12 +83,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignStart="@+id/ruble_iv"
             android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/_13sdp"
             android:background="@null"
             android:gravity="center"
-            android:text="СОХРАНИТЬ И УЗНАТЬ СТОИМОСТЬ ПРОЕКТА"
+            android:text="Сохранить и узнать стоимость"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -116,7 +114,7 @@
             android:layout_centerInParent="true"
             android:background="@null"
             android:gravity="center"
-            android:text="НАЧАТЬ НОВЫЙ ПРОЕКТ"
+            android:text="Начать новый проект"
             android:textColor="@color/white"
             android:textSize="16sp" />
 

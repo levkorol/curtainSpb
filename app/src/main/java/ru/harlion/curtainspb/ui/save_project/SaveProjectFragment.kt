@@ -12,6 +12,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
@@ -25,7 +26,6 @@ import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.File
 import java.io.OutputStream
 
-
 class SaveProjectFragment : Fragment() {
 
     private lateinit var binding: FragmentSaveProjectBinding
@@ -34,7 +34,7 @@ class SaveProjectFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         permissionLauncher =
-            registerForActivityResult(ActivityResultContracts.RequestPermission()) { if (it) saveInFolderGallery() }
+            registerForActivityResult(ActivityResultContracts.RequestPermission()) { if (it) saveInGallery() }
     }
 
     override fun onCreateView(
@@ -53,11 +53,13 @@ class SaveProjectFragment : Fragment() {
         }
 
         binding.saveProjectInGalleryAndRequest.setOnClickListener {
+            saveInGallery()
             replaceFragment(RequestCostFragment())
         }
 
         binding.saveProjectInGallery.setOnClickListener {
-            saveInFolderGallery()
+            saveInGallery()
+            showToast("Проект успешно сохранен в галлерею")
         }
 
         binding.fSaveProjectUrlSite.setOnClickListener {
@@ -71,9 +73,10 @@ class SaveProjectFragment : Fragment() {
         binding.cvBackSaveProject.setOnClickListener { parentFragmentManager.popBackStack() }
     }
 
-    private fun saveInFolderGallery() {
+    private fun saveInGallery() {
         if (Build.VERSION.SDK_INT >= 23 &&
-            requireActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requireActivity().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+        ) {
             return permissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
 
@@ -87,24 +90,25 @@ class SaveProjectFragment : Fragment() {
         val photoUri = resolver
             .insert(photoCollection, ContentValues().apply {
                 put(MediaStore.Images.Media.DISPLAY_NAME, "curtain.png")
-                if (Build.VERSION.SDK_INT >= 29) put(MediaStore.Video.Media.DATE_TAKEN, System.currentTimeMillis())
+                if (Build.VERSION.SDK_INT >= 29) put(
+                    MediaStore.Video.Media.DATE_TAKEN,
+                    System.currentTimeMillis()
+                )
             })!!
 
-        ParcelFileDescriptor.AutoCloseOutputStream(resolver.openFileDescriptor(photoUri, "w", null)).use { os: OutputStream ->
-            os.sink().buffer().writeAll(
-                File(File(requireActivity().filesDir, "upload").also(File::mkdirs), "pick.png").source()
-            )
-        }
+        ParcelFileDescriptor.AutoCloseOutputStream(resolver.openFileDescriptor(photoUri, "w", null))
+            .use { os: OutputStream ->
+                os.sink().buffer().writeAll(
+                    File(
+                        File(requireActivity().filesDir, "upload").also(File::mkdirs),
+                        "pick.png"
+                    ).source()
+                )
+            }
     }
 
-    companion object {
-
-        fun newInstance(image: Uri): SaveProjectFragment {
-            val fragment = SaveProjectFragment()
-            fragment.arguments = Bundle().apply {
-                putParcelable("image", image)
-            }
-            return fragment
-        }
+    private fun showToast(msg: String) {
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG)
+            .show()
     }
 }

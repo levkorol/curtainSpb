@@ -112,9 +112,9 @@ class MainMenuFragment : Fragment() {
     }
 
     private fun openGallerySaveProject() {
+        //todo будет апишка
         val intent = Intent()
         intent.action = Intent.ACTION_VIEW
-        // intent.setDataAndType(Uri.withAppendedPath(Uri.fromFile(file), "/AppPics"), "image/*")
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
     }

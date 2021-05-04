@@ -23,4 +23,6 @@
     <color name="veryLightGray">#EEEEEE</color>
     <color name="red">#BF1921</color>
     <color name="grey_text">#AFAFAF</color>
+
+    <color name="white_transparent_85">#D9FFFFFF</color>
 </resources>

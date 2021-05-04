@@ -10,7 +10,6 @@ class GridPresenter : IPresenter {
 
     override fun attach(view: IView) {
         this.view = view
-//        view.showPictures(SketchRepo.getListSketch())
         currentCall = DataRepository.templates(
             view::showPictures,
             Throwable::printStackTrace,

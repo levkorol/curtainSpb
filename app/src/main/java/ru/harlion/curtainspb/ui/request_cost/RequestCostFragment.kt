@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentRequestCostBinding
 import ru.harlion.curtainspb.repo.data.DataRepository
 import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
@@ -16,7 +16,7 @@ import java.io.Closeable
 import java.io.File
 
 
-class RequestCostFragment : Fragment() {
+class RequestCostFragment : BaseFragment() {
 
     private lateinit var binding: FragmentRequestCostBinding
     private var currentRequest: Closeable? = null
@@ -56,11 +56,7 @@ class RequestCostFragment : Fragment() {
                 binding.fRequestCostInputHeight.text.toString(),
                 binding.fRequestCostInputComment.text.toString(),
                 {
-                    Toast.makeText(
-                        requireContext(),
-                        "Ваша заявка успешно отправлена",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    showToast("Ваша заявка успешно отправлена")
                     replaceFragment(MainMenuFragment())
                 },
                 { message ->

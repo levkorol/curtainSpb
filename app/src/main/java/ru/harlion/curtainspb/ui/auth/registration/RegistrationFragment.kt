@@ -6,14 +6,13 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentRegistrationBinding
 import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 
-class RegistrationFragment : Fragment() {
+class RegistrationFragment : BaseFragment() {
 
     private val viewModel: RegistrationViewModel by viewModels()
     private lateinit var binding: FragmentRegistrationBinding
@@ -37,11 +36,7 @@ class RegistrationFragment : Fragment() {
     private fun initViewModel() {
         viewModel.isRegistrationComplete.observe(viewLifecycleOwner) {
             if (it) {
-                Toast.makeText(
-                    requireContext(),
-                    "Пользователь успешно зарегистрирован",
-                    Toast.LENGTH_LONG
-                ).show()
+                showToast("Пользователь успешно зарегистрирован")
                 replaceFragment(MainMenuFragment())
             }
         }

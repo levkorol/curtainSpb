@@ -98,13 +98,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:text="Габариты сцены" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
 
@@ -181,12 +180,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:text="Комментарии" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_160sdp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_edit_text">

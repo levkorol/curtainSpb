@@ -16,10 +16,6 @@ import com.bumptech.glide.request.Request
 import com.bumptech.glide.request.target.SizeReadyCallback
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
-import it.sephiroth.android.library.uigestures.UIGestureRecognizer
-import it.sephiroth.android.library.uigestures.UIGestureRecognizerDelegate
-import it.sephiroth.android.library.uigestures.UITapGestureRecognizer
-import it.sephiroth.android.library.uigestures.setGestureDelegate
 import kotlinx.android.synthetic.main.fragment_scetch.*
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.databinding.FragmentScetchBinding
@@ -73,54 +69,8 @@ class SketchFragment : Fragment(), IView {
 
         editorView.bottomView.setImageURI(requireArguments().getParcelable("image"))
 
-        // TODO editorView.topView.loadSomething() загрузить картинку
-
         initClick()
 
-        viewEdit()
-    }
-
-    // gesture recognizer actionlistener
-    private val actionListener = { recognizer: UIGestureRecognizer ->
-        // gesture recognized
-    }
-
-    private fun viewEdit() {
-
-        val delegate = UIGestureRecognizerDelegate();
-
-        // single tap gesture
-        val recognizer1 = UITapGestureRecognizer(requireContext())
-        recognizer1.tapsRequired = 1
-        recognizer1.touchesRequired = 1
-        recognizer1.tag = "single-tap";
-        recognizer1.actionListener = actionListener
-
-        // double tap gesture
-        val recognizer2 = UITapGestureRecognizer(requireContext())
-        recognizer2.tag = "double-tap"
-        recognizer2.tapsRequired = 2
-        recognizer2.touchesRequired = 1
-        recognizer2.actionListener = actionListener
-
-        // We want to recognize a single tap and a double tap separately. Normally, when the user
-        // performs a double tap, the single tap would be triggered twice.
-        // In this way, however, the single tap will wait until the double tap will fail. So a single tap
-        // and a double tap will be triggered separately.
-        recognizer1.requireFailureOf = recognizer2
-
-        // add both gestures to the delegate
-        delegate.addGestureRecognizer(recognizer1)
-        delegate.addGestureRecognizer(recognizer2)
-
-        // forward the touch events to the delegate
-        val rootView = binding.editorView
-        rootView.setGestureDelegate(delegate)
-
-        // optional delegate methods
-        delegate.shouldReceiveTouch = { recognizer -> true }
-        delegate.shouldBegin = { recognizer -> true }
-        delegate.shouldRecognizeSimultaneouslyWithGestureRecognizer = { recognizer, other -> true }
     }
 
     override fun onDestroyView() {

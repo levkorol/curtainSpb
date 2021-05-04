@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentAuthBinding
 import ru.harlion.curtainspb.ui.auth.password_recovery.PasswordRecoveryFragment
 import ru.harlion.curtainspb.ui.auth.registration.RegistrationFragment
@@ -13,7 +13,7 @@ import ru.harlion.curtainspb.ui.auth.user_arreement.fragment.UserAgreementFragme
 import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 
-class AuthFragment : Fragment() {
+class AuthFragment : BaseFragment() {
 
     private lateinit var binding: FragmentAuthBinding
     private val viewModel: AuthViewModel by viewModels()
@@ -40,6 +40,12 @@ class AuthFragment : Fragment() {
                 replaceFragment(MainMenuFragment(), false)
             }
         }
+
+        viewModel.isAuthFail.observe(viewLifecycleOwner) {
+            if (it) {
+                showToast("Ошибка авторизации")
+            }
+        }
     }
 
     private fun initClicks() {
@@ -63,7 +69,11 @@ class AuthFragment : Fragment() {
             val login = binding.loginInput.text.toString()
             val password = binding.passwordAuth.text.toString()
 
-            viewModel.authUser(login, password)
+            if (login.isEmpty() || password.isEmpty()) {
+                showToast("Логин или пароль не могут быть пустыми")
+            } else {
+                viewModel.authUser(login, password)
+            }
         }
     }
 }
