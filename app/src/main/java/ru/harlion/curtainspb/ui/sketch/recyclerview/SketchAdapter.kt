@@ -5,15 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.cardview.widget.CardView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_sketch.view.*
 import okhttp3.HttpUrl
 import ru.harlion.curtainspb.R
+import ru.harlion.curtainspb.base.CommonDialog
 import ru.harlion.curtainspb.models.data.Template
+import ru.harlion.curtainspb.repo.AuthPrefs
+import ru.harlion.curtainspb.ui.auth.registration.RegistrationFragment
 import ru.harlion.curtainspb.utils.downloadAndSetImage
+import ru.harlion.curtainspb.utils.replaceFragment
 
-class SketchAdapter(private val imageClicked: Context.(HttpUrl) -> Unit) :
+class SketchAdapter(
+    private val imageClicked: Context.(HttpUrl) -> Unit,
+    private val fragment: Fragment
+) :
     RecyclerView.Adapter<SketchAdapter.SketchHolder>() {
 
     var templates: List<Template> = listOf()
@@ -37,15 +45,42 @@ class SketchAdapter(private val imageClicked: Context.(HttpUrl) -> Unit) :
 
     inner class SketchHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val imageCv: CardView = itemView.imageView_sketch
         private val image: ImageView = itemView.image_img
+        private val imageIsOpen: ImageView = itemView.image_isOpen
 
         fun bind(item: Template) {
+
+            if (item.isOpen) imageIsOpen.visibility = View.GONE else imageIsOpen.visibility =
+                View.VISIBLE
 
             image.downloadAndSetImage(item.imageUrl.toString())
 
             itemView.setOnClickListener {
-                it.context.imageClicked(item.imageUrl)
+                val prefs = AuthPrefs(
+                    it.context.getSharedPreferences(
+                        "user",
+                        AppCompatActivity.MODE_PRIVATE
+                    )
+                )
+                if (item.isOpen) {
+                    it.context.imageClicked(item.imageUrl)
+
+                } else if (!item.isOpen && prefs.hasToken()) {
+                    val dialog = CommonDialog(it.context)
+                    dialog.setMessage("Для получения эскизов наш менеджер свяжется с вами по телефону, указанному при регистрации, если этого не произошло, позвоните нам \n +7(812) 213-35-55")
+                    dialog.setPositiveButton("Отмена") {}
+                    dialog.setNegativeButton("Жду звонка") {}
+                    dialog.show()
+
+                } else if (!item.isOpen && !prefs.hasToken()) {
+                    val dialog = CommonDialog(it.context)
+                    dialog.setMessage("Для получения эскизов зарегистрируйтесь")
+                    dialog.setPositiveButton("Отмена") {}
+                    dialog.setNegativeButton("Зарегистрироваться") {
+                        fragment.replaceFragment(RegistrationFragment())
+                    }
+                    dialog.show()
+                }
             }
         }
     }

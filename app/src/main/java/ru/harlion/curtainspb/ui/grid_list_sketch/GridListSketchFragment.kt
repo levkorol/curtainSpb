@@ -37,13 +37,13 @@ class GridListSketchFragment : Fragment(), IView {
         super.onViewCreated(view, savedInstanceState)
 
         val recyclerView: RecyclerView? = view.findViewById(R.id.recycler_view_gridle)
-        adapter = SketchAdapter {
+        adapter = SketchAdapter({
             setFragmentResult(
                 "sketch",
                 Bundle(1).apply { putString("url", it.toString()) }
             )
             parentFragmentManager.popBackStack()
-        }
+        }, this)
         recyclerView?.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView?.adapter = adapter
 
@@ -58,7 +58,10 @@ class GridListSketchFragment : Fragment(), IView {
     }
 
     override fun showPictures(templates: List<Template>) {
-        adapter.templates = templates
+        adapter.templates = templates.sortedByDescending {
+            it.isOpen
+        }
+        adapter.notifyDataSetChanged()
     }
 
     private fun initClick() {

@@ -14,18 +14,25 @@
         app:cardCornerRadius="10dp"
         app:cardElevation="4dp">
 
-        <ImageView
-            android:id="@+id/image_img"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/test_pic_big" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/image_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/test_pic_big" />
+
+            <ImageView
+                android:id="@+id/image_isOpen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@color/white_transparent_85" />
+
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:id="@+id/image_isOpen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        android:background="@color/white_transparent_85" />
 </RelativeLayout>

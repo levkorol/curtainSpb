@@ -12,13 +12,13 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import okio.buffer
 import okio.sink
 import okio.source
+import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentSaveProjectBinding
 import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
 import ru.harlion.curtainspb.ui.request_cost.RequestCostFragment
@@ -26,10 +26,11 @@ import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.File
 import java.io.OutputStream
 
-class SaveProjectFragment : Fragment() {
+class SaveProjectFragment : BaseFragment() {
 
     private lateinit var binding: FragmentSaveProjectBinding
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
+    private val viewModel: SaveProjectViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,13 +54,15 @@ class SaveProjectFragment : Fragment() {
         }
 
         binding.saveProjectInGalleryAndRequest.setOnClickListener {
-            saveInGallery()
+            saveInGallery() //todo сохранение в галлерею или отправка на сервер при переходе на экран заяки
+            sendFilePickOnBd()
             replaceFragment(RequestCostFragment())
         }
 
         binding.saveProjectInGallery.setOnClickListener {
             saveInGallery()
             showToast("Проект успешно сохранен в галлерею")
+            sendFilePickOnBd()
         }
 
         binding.fSaveProjectUrlSite.setOnClickListener {
@@ -71,6 +74,14 @@ class SaveProjectFragment : Fragment() {
         }
 
         binding.cvBackSaveProject.setOnClickListener { parentFragmentManager.popBackStack() }
+    }
+
+    private fun sendFilePickOnBd() {
+        val file = File(
+            File(requireActivity().filesDir, "upload").also(File::mkdirs),
+            "pick.png"
+        )
+        viewModel.onSendSketchToBD(file)
     }
 
     private fun saveInGallery() {
@@ -105,10 +116,5 @@ class SaveProjectFragment : Fragment() {
                     ).source()
                 )
             }
-    }
-
-    private fun showToast(msg: String) {
-        Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG)
-            .show()
     }
 }

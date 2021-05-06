@@ -47,9 +47,8 @@ class EditorView @JvmOverloads constructor(
 //        addView(waterView, LayoutParams(MATCH_PARENT, MATCH_PARENT))
 //        waterView.setImageResource(R.drawable.pic_water_down)
         // addView(topView, LayoutParams(500, 500, Gravity.CENTER))
-        addView(topView, LayoutParams(500, 500))
-        topView.setImageResource(R.drawable.unnamed)
-        //  topView.setBackgroundColor(Color.MAGENTA)
+        addView(topView, LayoutParams(700, 500))
+        // topView.setImageResource(R.drawable.unnamed)
 
         setWillNotDraw(false)
     }

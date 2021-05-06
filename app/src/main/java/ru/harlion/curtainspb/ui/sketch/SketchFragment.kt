@@ -61,7 +61,7 @@ class SketchFragment : Fragment(), IView {
         val recyclerView: RecyclerView? = view.findViewById(R.id.recyclerView)
         val llm = LinearLayoutManager(view.context)
         llm.orientation = LinearLayoutManager.HORIZONTAL
-        adapter = SketchAdapter { Glide.with(this).load(it.toString()).into(topViewTarget) }
+        adapter = SketchAdapter({ Glide.with(this).load(it.toString()).into(topViewTarget) }, this)
         recyclerView?.layoutManager = llm
         recyclerView?.adapter = adapter
 
@@ -79,12 +79,15 @@ class SketchFragment : Fragment(), IView {
     }
 
     override fun goToSave() {
-        saveAndSendBdSketch()
+        fileToBitmap()
         replaceFragment(SaveProjectFragment())
     }
 
     override fun showPictures(templates: List<Template>) {
-        adapter.templates = templates
+        adapter.templates = templates.sortedByDescending {
+            it.isOpen
+        }
+        adapter.notifyDataSetChanged()
     }
 
     private val topViewTarget = object : Target<Drawable> {
@@ -112,9 +115,7 @@ class SketchFragment : Fragment(), IView {
         override fun getRequest(): Request? = request
     }
 
-    //сохраняет получившиюся картинку  битмап в файл
-    // todo отправить на сервер (тепеерь отправлять только если сохраняет в галлерею или отправляет заявку)
-    private fun saveAndSendBdSketch() {
+    private fun fileToBitmap() {
         val file = File(
             File(requireActivity().filesDir, "upload").also(File::mkdirs),
             "pick.png"
