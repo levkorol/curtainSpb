@@ -27,7 +27,6 @@ class EditorView @JvmOverloads constructor(
         it.setOnTouchListener(this)
     }
     val bottomView: ImageView = ImageView(context)
-    val waterView: ImageView = ImageView(context)
 
     private val startTouchPoint: PointF = PointF()
     private val startTopSizes: Point = Point()
@@ -36,19 +35,15 @@ class EditorView @JvmOverloads constructor(
     var rotateCx: Int = 0
     var rotateCy: Int = 0
 
-//    var isEditMode: Boolean = false
-//        set(value) {
-//            field = value
-//            invalidate()
-//        }
+    var isVisibleEditorView: Boolean = false
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     init {
         addView(bottomView)
-//        addView(waterView, LayoutParams(MATCH_PARENT, MATCH_PARENT))
-//        waterView.setImageResource(R.drawable.pic_water_down)
-        // addView(topView, LayoutParams(500, 500, Gravity.CENTER))
         addView(topView, LayoutParams(700, 500))
-        // topView.setImageResource(R.drawable.unnamed)
 
         setWillNotDraw(false)
     }
