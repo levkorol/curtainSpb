@@ -32,4 +32,7 @@ interface DataServiceApi {
 
     @POST("requests/reset")
     fun passwordRecovery(@Body request: RecoveryRequest): Call<MessageResponse>
+
+    @GET("users/{userId}")
+    fun getUserProfile(@Path(value = "userId") userId: Int): Call<Resp<UsersResponse>>
 }

@@ -57,6 +57,28 @@ object DataRepository {
         service = retrofit.create(DataServiceApi::class.java)
     }
 
+    @CheckResult
+    fun getProfile(
+        success: (UsersResponse) -> Unit,
+        error: (Throwable) -> Unit
+    ): Closeable {
+        val call = service.getUserProfile(userPrefs.getInt("userId", -1).takeIf { it >= 0 } ?: 0)
+        call.enqueue(object : Callback<Resp<UsersResponse>> {
+            override fun onResponse(
+                call: Call<Resp<UsersResponse>>,
+                response: Response<Resp<UsersResponse>>
+            ) {
+                if (response.isSuccessful) success(response.body()!!.data)
+                else onFailure(call, IOException("HTTP ${response.code()}"))
+            }
+
+            override fun onFailure(call: Call<Resp<UsersResponse>>, t: Throwable) {
+                error(t)
+            }
+        })
+        return Closeable(call::cancel)
+    }
+
     fun registerUser(
         request: UsersRequest,
         success: (AuthData) -> Unit,
@@ -140,7 +162,6 @@ object DataRepository {
         })
         return Closeable(call::cancel)
     }
-
 
     @CheckResult fun request(
         image: File,

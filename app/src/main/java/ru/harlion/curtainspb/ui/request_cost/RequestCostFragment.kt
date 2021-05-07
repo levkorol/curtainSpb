@@ -7,8 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentRequestCostBinding
+import ru.harlion.curtainspb.repo.AuthPrefs
 import ru.harlion.curtainspb.repo.data.DataRepository
 import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
 import ru.harlion.curtainspb.utils.replaceFragment
@@ -20,6 +23,8 @@ class RequestCostFragment : BaseFragment() {
 
     private lateinit var binding: FragmentRequestCostBinding
     private var currentRequest: Closeable? = null
+    private lateinit var prefs: AuthPrefs
+    private val viewModel: RequestCostViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +37,19 @@ class RequestCostFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        prefs =
+            AuthPrefs(requireContext().getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE))
+
         initClicks()
+
+        if (prefs.hasToken()) {
+            currentRequest?.close()
+            currentRequest = DataRepository.getProfile(
+                {  //binding.fRequestCostInputName.text.toString() = it.name
+                },
+                {}
+            )
+        }
     }
 
     private fun initClicks() {
