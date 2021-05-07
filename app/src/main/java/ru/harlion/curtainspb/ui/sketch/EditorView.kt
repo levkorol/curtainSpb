@@ -5,10 +5,12 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewParent
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.withSave
+import androidx.core.math.MathUtils
 import androidx.core.view.setPadding
 import ru.harlion.curtainspb.R
 import kotlin.math.atan2
@@ -21,6 +23,8 @@ class EditorView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr), View.OnTouchListener {
 
     private val circleRadius = 10 * resources.displayMetrics.density
+    private val bigCircleRadius = 15 * resources.displayMetrics.density
+
     val topView: ImageView = ImageView(context).also {
         it.scaleType = ImageView.ScaleType.FIT_XY
         it.setPadding((circleRadius + CLICK_DISTANCE_LIMIT).toInt())
@@ -29,7 +33,8 @@ class EditorView @JvmOverloads constructor(
     val bottomView: ImageView = ImageView(context)
 
     private val startTouchPoint: PointF = PointF()
-    private val startTopSizes: Point = Point()
+    private val startTopSize: Point = Point()
+    private val targetTopSize: Point = Point()
     private var editType: EditType? = null
 
     var rotateCx: Int = 0
@@ -52,7 +57,8 @@ class EditorView @JvmOverloads constructor(
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 startTouchPoint.set(event.x, event.y)
-                startTopSizes.set(topView.width, topView.height)
+                startTopSize.set(topView.width, topView.height)
+                targetTopSize.set(startTopSize.x, startTopSize.y)
                 return super.dispatchTouchEvent(event)
             }
             MotionEvent.ACTION_MOVE -> {
@@ -72,46 +78,16 @@ class EditorView @JvmOverloads constructor(
                         }
 
                         EditType.LEFT_TOP_CORNER -> {
-                            if (startTopSizes.x - dx.toInt() > 200 && startTopSizes.y - dy.toInt() > 200) {
-                                topView.translationX += dx
-                                topView.translationY += dy
-                                topView.layoutParams.width -= dx.toInt()
-                                topView.layoutParams.height -= dy.toInt()
-                                topView.layoutParams = topView.layoutParams
-                            }
+                            targetTopSize.offset(-dx.toInt(), -dy.toInt())
                         }
-
                         EditType.LEFT_BOTTOM_CORNER -> {
-                            if (startTopSizes.x - dx.toInt() > 200 && startTopSizes.y - dy.toInt() > 200) {
-                                topView.translationX += dx
-                                topView.layoutParams = LayoutParams(
-                                    startTopSizes.x - dx.toInt(),
-                                    startTopSizes.y + dy.toInt()
-
-                                )
-                            }
+                            targetTopSize.offset(-dx.toInt(), dy.toInt())
                         }
-
                         EditType.RIGHT_TOP_CORNER -> {
-                            if (startTopSizes.x - dx.toInt() > 200 && startTopSizes.y - dy.toInt() > 200) {
-                                topView.translationY += dy
-                                topView.layoutParams = LayoutParams(
-                                    startTopSizes.x + dx.toInt(),
-                                    startTopSizes.y - dy.toInt()
-
-                                )
-                            }
+                            targetTopSize.offset(dx.toInt(), -dy.toInt())
                         }
-
                         EditType.RIGHT_BOTTOM_CORNER -> {
-                            if (startTopSizes.x - dx.toInt() > 200 && startTopSizes.y - dy.toInt() > 200) {
-                                topView.layoutParams = LayoutParams(
-                                    startTopSizes.x + dx.toInt(),
-                                    startTopSizes.y + dy.toInt()
-
-                                )
-                            }
-
+                            targetTopSize.offset(dx.toInt(), dy.toInt())
                         }
 
                         EditType.ALL -> {
@@ -120,8 +96,31 @@ class EditorView @JvmOverloads constructor(
 //                            topView.translationX = MathUtils.clamp(startTopPoint!!.x + dx, -hSpace, hSpace)
 //                            val vSpace = (height - topView.height) / 2f
 //                            topView.translationY = MathUtils.clamp(startTopPoint!!.y + dy, -vSpace, vSpace)
-                            topView.translationX += dx
-                            topView.translationY += dy
+                            topView.translationX = MathUtils.clamp(topView.translationX + dx, 0f, (width - topView.width).toFloat())
+                            topView.translationY = MathUtils.clamp(topView.translationY + dy, 0f, (height - topView.height).toFloat())
+                        }
+                    }
+
+                    when (editType) {
+                        EditType.LEFT_TOP_CORNER, EditType.LEFT_BOTTOM_CORNER,
+                        EditType.RIGHT_TOP_CORNER, EditType.RIGHT_BOTTOM_CORNER -> {
+                            val minSize = CLICK_DISTANCE_LIMIT + topView.paddingLeft +
+                                    circleRadius + bigCircleRadius + circleRadius +
+                                    topView.paddingRight + CLICK_DISTANCE_LIMIT
+
+                            if (targetTopSize.x > minSize)
+                                topView.layoutParams.width = targetTopSize.x
+                            if (targetTopSize.y > minSize) topView.layoutParams.height = targetTopSize.y
+                            topView.layoutParams = topView.layoutParams
+
+                            when (editType) {
+                                EditType.LEFT_TOP_CORNER, EditType.LEFT_BOTTOM_CORNER ->
+                                    topView.translationX += startTopSize.x - targetTopSize.x
+                            }
+                            when (editType) {
+                                EditType.LEFT_TOP_CORNER, EditType.RIGHT_TOP_CORNER ->
+                                    topView.translationY += startTopSize.y - targetTopSize.y
+                            }
                         }
                     }
                     invalidate()
@@ -130,7 +129,7 @@ class EditorView @JvmOverloads constructor(
             MotionEvent.ACTION_UP -> editType = null
         }
         startTouchPoint.set(event.x, event.y)
-        startTopSizes.set(topView.layoutParams.width, topView.layoutParams.height)
+        startTopSize.set(topView.layoutParams.width, topView.layoutParams.height)
         return editType != null
     }
     override fun onTouch(view: View, event: MotionEvent): Boolean {
@@ -149,25 +148,38 @@ class EditorView @JvmOverloads constructor(
     override fun dispatchDraw(canvas: Canvas) {
         super.dispatchDraw(canvas)
 
+        if (topView.drawable != null) {
+            drawDots(canvas)
+        }
+    }
+    private fun drawDots(canvas: Canvas) {
         p.color = Color.WHITE
-        val fifty50 = 15 * resources.displayMetrics.density
         canvas.withSave {
-            canvas.translate(topView.x, topView.y)
-            canvas.rotate(topView.rotation, topView.pivotX, topView.pivotY)
+            translate(topView.x, topView.y)
+            rotate(topView.rotation, topView.pivotX, topView.pivotY)
 
             val offset = CLICK_DISTANCE_LIMIT + circleRadius
-            canvas.drawCircle(offset, offset, circleRadius, p)
-            canvas.drawCircle(topView.width - offset, offset, circleRadius, p)
-            canvas.drawCircle(topView.width - offset, topView.height - offset, circleRadius, p)
-            canvas.drawCircle(offset, topView.height - offset, circleRadius, p)
+            drawCircle(offset, offset, circleRadius, p)
+            drawCircle(topView.width - offset, offset, circleRadius, p)
+            drawCircle(topView.width - offset, topView.height - offset, circleRadius, p)
+            drawCircle(offset, topView.height - offset, circleRadius, p)
 
             rotateCx = topView.width / 2
             rotateCy = (topView.height - offset).toInt()
-            canvas.drawCircle(rotateCx.toFloat(), rotateCy.toFloat(), fifty50, p)
-            val half = (fifty50 / 1.2).toInt()
+            drawCircle(rotateCx.toFloat(), rotateCy.toFloat(), bigCircleRadius, p)
+            val half = (bigCircleRadius / 1.2).toInt()
             icon.setBounds(rotateCx - half, rotateCy - half, rotateCx + half, rotateCy + half)
-            icon.draw(canvas)
+            icon.draw(this)
         }
+    }
+
+    override fun onDescendantInvalidated(child: View, target: View) {
+        super.onDescendantInvalidated(child, target)
+        if (child === topView) invalidate()
+    }
+    override fun invalidateChildInParent(location: IntArray?, dirty: Rect?): ViewParent? {
+        if (topView.isDirty) invalidate()
+        return super.invalidateChildInParent(location, dirty)
     }
 
     fun getEditType(event: MotionEvent): EditType? {
