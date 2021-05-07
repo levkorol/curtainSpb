@@ -132,6 +132,9 @@ class SketchFragment : Fragment(), IView {
 
         binding.fSketchBack.setOnClickListener { parentFragmentManager.popBackStack() }
         binding.fSketchBack.ovalOutline()
+        binding.fSketchBack.clipToOutline = true
+
+        binding.removeSketch.setOnClickListener { binding.editorView.topView.setImageDrawable(null) }
 
     }
 
