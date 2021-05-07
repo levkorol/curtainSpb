@@ -41,14 +41,10 @@ class RequestCostFragment : BaseFragment() {
             AuthPrefs(requireContext().getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE))
 
         initClicks()
+        viewModel.cost.observe(viewLifecycleOwner) { binding.fRequestCostInputName.setText(it) }
 
         if (prefs.hasToken()) {
-            currentRequest?.close()
-            currentRequest = DataRepository.getProfile(
-                {  //binding.fRequestCostInputName.text.toString() = it.name
-                },
-                {}
-            )
+            viewModel.getProfile()
         }
     }
 
@@ -63,7 +59,6 @@ class RequestCostFragment : BaseFragment() {
         binding.fRequestCostInputHeight.addTextChangedListener(watcher)
 
         binding.fRequestCostButtonSend.setOnClickListener {
-            currentRequest?.close()
             currentRequest = DataRepository.request(
                 File(File(requireActivity().filesDir, "upload"), "pick.png"),
                 binding.fRequestCostInputName.text.toString(),
