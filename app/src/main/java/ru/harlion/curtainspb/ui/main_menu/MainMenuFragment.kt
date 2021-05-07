@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.vansuita.pickimage.IntentResolver
+import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.base.CommonDialog
 import ru.harlion.curtainspb.databinding.FragmentMainMenuBinding
 import ru.harlion.curtainspb.repo.AuthPrefs
@@ -19,7 +19,7 @@ import ru.harlion.curtainspb.ui.sketch.SketchFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 
 
-class MainMenuFragment : Fragment() {
+class MainMenuFragment : BaseFragment() {
 
     private lateinit var prefs: AuthPrefs
     private lateinit var dialog: CommonDialog
@@ -112,11 +112,11 @@ class MainMenuFragment : Fragment() {
     }
 
     private fun openGallerySaveProject() {
-        //todo будет апишка
-        val intent = Intent()
-        intent.action = Intent.ACTION_VIEW
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
+        if (!prefs.hasToken()) {
+            showToast("Доступно только для зарегистрированных пользователей")
+        } else {
+            //todo
+        }
     }
 
     private fun openDialog() {

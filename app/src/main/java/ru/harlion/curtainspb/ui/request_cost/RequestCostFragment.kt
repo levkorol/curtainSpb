@@ -40,11 +40,21 @@ class RequestCostFragment : BaseFragment() {
         prefs =
             AuthPrefs(requireContext().getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE))
 
-        initClicks()
-        viewModel.cost.observe(viewLifecycleOwner) { binding.fRequestCostInputName.setText(it) }
+        if (prefs.hasToken()) viewModel.getProfile()
 
-        if (prefs.hasToken()) {
-            viewModel.getProfile()
+        initClicks()
+
+        initViewModel()
+
+    }
+
+    private fun initViewModel() {
+        viewModel.cost.observe(viewLifecycleOwner) { binding.fRequestCostInputName.setText(it) }
+        viewModel.email.observe(viewLifecycleOwner) { binding.fRequestCostInputEmail.setText(it) }
+        viewModel.phoneNumber.observe(viewLifecycleOwner) {
+            binding.fRequestCostInputPhone.setText(
+                it.toString()
+            )
         }
     }
 

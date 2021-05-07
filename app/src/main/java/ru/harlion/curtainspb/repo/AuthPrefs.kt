@@ -2,7 +2,7 @@ package ru.harlion.curtainspb.repo
 
 import android.content.SharedPreferences
 
-const val TOKEN = "token"
+const val TOKEN = "accessToken"
 const val USER_ID = "userId"
 const val USER_ROLE = "user_role"
 

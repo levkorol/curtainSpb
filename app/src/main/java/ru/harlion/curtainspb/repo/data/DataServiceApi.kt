@@ -6,6 +6,7 @@ import retrofit2.http.*
 import ru.harlion.curtainspb.models.data.*
 
 interface DataServiceApi {
+
     @POST("users")
     fun registerUser(@Body request: UsersRequest): Call<UsersResponse>
 
