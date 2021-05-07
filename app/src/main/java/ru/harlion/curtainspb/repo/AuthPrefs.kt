@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 
 const val TOKEN = "token"
 const val USER_ID = "userId"
+const val USER_ROLE = "user_role"
 
 class AuthPrefs(
     private val prefs: SharedPreferences
@@ -11,6 +12,7 @@ class AuthPrefs(
 
     private var token = ""
     private var userId = -1
+    private var userRole = -1
 
     fun hasToken(): Boolean {
         return prefs.contains(TOKEN)
@@ -59,6 +61,32 @@ class AuthPrefs(
         userId = -1
         prefs.edit()
             .remove(USER_ID)
+            .apply()
+    }
+
+
+    fun hasUserRole(): Boolean {
+        return prefs.contains(USER_ROLE)
+    }
+
+    fun getUserRole(): Int {
+        if (userRole < 0) {
+            userId = prefs.getInt(USER_ROLE, -1)
+        }
+        return userRole
+    }
+
+    fun setUserRole(userRole: Int) {
+        this.userRole = userRole
+        prefs.edit()
+            .putInt(USER_ROLE, userId)
+            .apply()
+    }
+
+    fun removeUserRole() {
+        userId = -1
+        prefs.edit()
+            .remove(USER_ROLE)
             .apply()
     }
 }

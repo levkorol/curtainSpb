@@ -10,6 +10,7 @@ data class Resp<T>(
 data class AuthData(
     val accessToken: String,
     val userId: Int,
+    val userRole: Int
 )
 
 private val BASE_URL = "https://api.pzntech.ru/static/templates/".toHttpUrl()

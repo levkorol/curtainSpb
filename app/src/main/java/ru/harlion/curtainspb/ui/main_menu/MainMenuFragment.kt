@@ -124,6 +124,8 @@ class MainMenuFragment : Fragment() {
         dialog.setMessage("Вы действительно хотите выйти из профиля?")
         dialog.setPositiveButton("Да") {
             prefs.removeToken()
+            prefs.removeUserId()
+            prefs.removeUserRole()
             replaceFragment(AuthFragment())
         }
         dialog.setNegativeButton("Нет") {}

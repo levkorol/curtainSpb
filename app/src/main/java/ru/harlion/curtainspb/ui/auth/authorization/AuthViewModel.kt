@@ -18,6 +18,7 @@ class AuthViewModel : BaseViewModel() {
                 AuthPrefs(context.getSharedPreferences("user", Context.MODE_PRIVATE))
             prefs.setToken(it.accessToken)
             prefs.setUserId(it.userId)
+            prefs.setUserRole(it.userRole)
             isAuthComplete.value = true
         }, {
             isAuthFail.value = true
