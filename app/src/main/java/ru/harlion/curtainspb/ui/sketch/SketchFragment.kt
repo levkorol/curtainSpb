@@ -135,10 +135,12 @@ class SketchFragment : Fragment(), IView {
         binding.fSketchBack.ovalOutline()
         binding.fSketchBack.clipToOutline = true
 
-        if (binding.editorView.topView.drawable != null) {
-            binding.removeSketch.visibility = View.VISIBLE
-        } else {
-            binding.removeSketch.visibility = View.GONE
+        binding.editorView.viewTreeObserver.addOnPreDrawListener {
+            val newVisibility = if (binding.editorView.topView.drawable != null) View.VISIBLE else View.GONE
+            if (binding.removeSketch.visibility == newVisibility) true else {
+                binding.removeSketch.visibility = newVisibility
+                false
+            }
         }
 
         binding.removeSketch.setOnClickListener { binding.editorView.topView.setImageDrawable(null) }

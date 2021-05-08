@@ -103,19 +103,21 @@ class EditorView @JvmOverloads constructor(
                                     circleRadius + bigCircleRadius + circleRadius +
                                     topView.paddingRight + CLICK_DISTANCE_LIMIT
 
-                            if (targetTopSize.x > minSize)
+                            if (targetTopSize.x > minSize) {
                                 topView.layoutParams.width = targetTopSize.x
-                            if (targetTopSize.y > minSize) topView.layoutParams.height = targetTopSize.y
+                                when (editType) {
+                                    EditType.LEFT_TOP_CORNER, EditType.LEFT_BOTTOM_CORNER ->
+                                        topView.translationX += startTopSize.x - targetTopSize.x
+                                }
+                            }
+                            if (targetTopSize.y > minSize) {
+                                topView.layoutParams.height = targetTopSize.y
+                                when (editType) {
+                                    EditType.LEFT_TOP_CORNER, EditType.RIGHT_TOP_CORNER ->
+                                        topView.translationY += startTopSize.y - targetTopSize.y
+                                }
+                            }
                             topView.layoutParams = topView.layoutParams
-
-                            when (editType) {
-                                EditType.LEFT_TOP_CORNER, EditType.LEFT_BOTTOM_CORNER ->
-                                    topView.translationX += startTopSize.x - targetTopSize.x
-                            }
-                            when (editType) {
-                                EditType.LEFT_TOP_CORNER, EditType.RIGHT_TOP_CORNER ->
-                                    topView.translationY += startTopSize.y - targetTopSize.y
-                            }
                         }
                     }
                     invalidate()

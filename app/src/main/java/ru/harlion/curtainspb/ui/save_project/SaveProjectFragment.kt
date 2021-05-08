@@ -100,7 +100,7 @@ class SaveProjectFragment : BaseFragment() {
 
         val photoUri = resolver
             .insert(photoCollection, ContentValues().apply {
-                put(MediaStore.Images.Media.DISPLAY_NAME, "curtain.png")
+                put(MediaStore.Images.Media.DISPLAY_NAME, "curtain-${System.currentTimeMillis()}.png")
                 if (Build.VERSION.SDK_INT >= 29) put(
                     MediaStore.Video.Media.DATE_TAKEN,
                     System.currentTimeMillis()
