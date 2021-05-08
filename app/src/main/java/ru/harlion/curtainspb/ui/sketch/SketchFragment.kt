@@ -127,12 +127,19 @@ class SketchFragment : Fragment(), IView {
     private fun initClick() {
 
         binding.cardViewSaveProject.setOnClickListener { presenter.onSaveClicked() }
+        binding.cardViewSaveProject.ovalOutline()
 
         binding.showAll.setOnClickListener { replaceFragment(GridListSketchFragment()) }
 
         binding.fSketchBack.setOnClickListener { parentFragmentManager.popBackStack() }
         binding.fSketchBack.ovalOutline()
         binding.fSketchBack.clipToOutline = true
+
+        if (binding.editorView.topView.drawable != null) {
+            binding.removeSketch.visibility = View.VISIBLE
+        } else {
+            binding.removeSketch.visibility = View.GONE
+        }
 
         binding.removeSketch.setOnClickListener { binding.editorView.topView.setImageDrawable(null) }
 

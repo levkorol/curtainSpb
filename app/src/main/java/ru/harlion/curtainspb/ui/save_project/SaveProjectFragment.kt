@@ -54,7 +54,7 @@ class SaveProjectFragment : BaseFragment() {
         }
 
         binding.saveProjectInGalleryAndRequest.setOnClickListener {
-            saveInGallery() //todo сохранение в галлерею или отправка на сервер при переходе на экран заяки
+            saveInGallery()
             sendFilePickOnBd()
             replaceFragment(RequestCostFragment())
         }

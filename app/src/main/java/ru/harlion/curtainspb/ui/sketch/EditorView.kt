@@ -91,11 +91,6 @@ class EditorView @JvmOverloads constructor(
                         }
 
                         EditType.ALL -> {
-                            //если вью по центру
-//                            val hSpace = (width - topView.width) / 2f
-//                            topView.translationX = MathUtils.clamp(startTopPoint!!.x + dx, -hSpace, hSpace)
-//                            val vSpace = (height - topView.height) / 2f
-//                            topView.translationY = MathUtils.clamp(startTopPoint!!.y + dy, -vSpace, vSpace)
                             topView.translationX = MathUtils.clamp(topView.translationX + dx, 0f, (width - topView.width).toFloat())
                             topView.translationY = MathUtils.clamp(topView.translationY + dy, 0f, (height - topView.height).toFloat())
                         }
