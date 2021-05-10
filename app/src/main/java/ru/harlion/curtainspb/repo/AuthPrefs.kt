@@ -5,6 +5,9 @@ import android.content.SharedPreferences
 const val TOKEN = "accessToken"
 const val USER_ID = "userId"
 const val USER_ROLE = "user_role"
+const val NAME_USER = "user_name"
+const val PHONE_USER = "user_phone"
+const val EMAIL_USER = "user_email"
 
 class AuthPrefs(
     private val prefs: SharedPreferences
@@ -13,6 +16,9 @@ class AuthPrefs(
     private var token = ""
     private var userId = -1
     private var userRole = -1
+    private var nameUser = ""
+    private var phoneUser = ""
+    private var emailUser = ""
 
     fun hasToken(): Boolean {
         return prefs.contains(TOKEN)
@@ -39,10 +45,6 @@ class AuthPrefs(
             .apply()
     }
 
-    fun hasUserId(): Boolean {
-        return prefs.contains(USER_ID)
-    }
-
     fun getUserId(): Int {
         if (userId < 0) {
             userId = prefs.getInt(USER_ID, -1)
@@ -64,11 +66,6 @@ class AuthPrefs(
             .apply()
     }
 
-
-    fun hasUserRole(): Boolean {
-        return prefs.contains(USER_ROLE)
-    }
-
     fun getUserRole(): Int {
         if (userRole < 0) {
             userId = prefs.getInt(USER_ROLE, -1)
@@ -87,6 +84,48 @@ class AuthPrefs(
         userId = -1
         prefs.edit()
             .remove(USER_ROLE)
+            .apply()
+    }
+
+    fun getUserName(): String {
+        if (nameUser.isEmpty()) {
+            nameUser = prefs.getString(NAME_USER, "") ?: ""
+        }
+        return nameUser
+    }
+
+    fun setUserName(nameUser: String) {
+        this.nameUser = nameUser
+        prefs.edit()
+            .putString(NAME_USER, nameUser)
+            .apply()
+    }
+
+    fun getUserPhone(): String {
+        if (phoneUser.isEmpty()) {
+            phoneUser = prefs.getString(PHONE_USER, "") ?: ""
+        }
+        return phoneUser
+    }
+
+    fun setUserPhone(phoneUser: String) {
+        this.phoneUser = phoneUser
+        prefs.edit()
+            .putString(PHONE_USER, phoneUser)
+            .apply()
+    }
+
+    fun getUserEmail(): String {
+        if (emailUser.isEmpty()) {
+            emailUser = prefs.getString(EMAIL_USER, "") ?: ""
+        }
+        return emailUser
+    }
+
+    fun setUserEmail(emailUser: String) {
+        this.emailUser = emailUser
+        prefs.edit()
+            .putString(EMAIL_USER, emailUser)
             .apply()
     }
 }

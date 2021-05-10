@@ -16,20 +16,32 @@ interface DataServiceApi {
     @GET("templates")
     fun getTemplates(@Query("userId") id: Int?): Call<Resp<List<Template>>>
 
-    @POST("users/{userId}/images") @Multipart
-    fun sendProjectImage(@Path(value = "userId") userId: Int, @Part image: MultipartBody.Part): Call<Unit>
+    @GET("users/{userId}/images")
+    fun getSavedProjects(@Path("userId") userId: Int): Call<Resp<List<SavedProject>>>
+
+    @POST("users/{userId}/images")
+    @Multipart
+    fun sendProjectImage(
+        @Path(value = "userId") userId: Int,
+        @Part image: MultipartBody.Part
+    ): Call<Unit>
 
     // @FormUrlEncoded
-    @POST("requests") @Multipart
+    @POST("requests")
+    @Multipart
     fun sendRequest(
         @Part image: MultipartBody.Part,
         @Part("name") name: String,
+        @Part("userId") userId: Int,
         @Part("phone") phone: String,
         @Part("email") email: String,
-        @Part("weight") width: String,
+        @Part("width") width: String,
         @Part("height") height: String,
-        @Part("comment") comment: String,
+        @Part("comments") comments: String,
     ): Call<Unit>
+
+    @POST("requests/phone")
+    fun requestPhone(@Body requestPhone: RequestPhoneBody): Call<Unit>
 
     @POST("requests/reset")
     fun passwordRecovery(@Body request: RecoveryRequest): Call<MessageResponse>

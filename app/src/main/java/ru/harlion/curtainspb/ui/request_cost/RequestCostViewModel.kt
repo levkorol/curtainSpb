@@ -23,7 +23,9 @@ class RequestCostViewModel : BaseViewModel() {
                 _phoneNumber.value = it.phone
                 _email.value = it.email
             },
-            {}
+            {
+
+            }
         )
     }
 }

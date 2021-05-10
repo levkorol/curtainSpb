@@ -35,6 +35,7 @@ object DataRepository {
     private val service: DataServiceApi
 
     private val gson = Gson()
+
     init {
         val client = OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().apply { setLevel(BODY) })
@@ -123,7 +124,8 @@ object DataRepository {
         })
     }
 
-    @CheckResult fun authUser(
+    @CheckResult
+    fun authUser(
         email: String,
         password: String,
         success: (AuthData) -> Unit,
@@ -131,7 +133,10 @@ object DataRepository {
     ): Closeable {
         val call = service.auth(AuthRequest(email, password))
         call.enqueue(object : Callback<Resp<AuthData>> {
-            override fun onResponse(call: Call<Resp<AuthData>>, response: Response<Resp<AuthData>>) {
+            override fun onResponse(
+                call: Call<Resp<AuthData>>,
+                response: Response<Resp<AuthData>>
+            ) {
                 if (response.isSuccessful) {
                     success(response.body()!!.data)
                 } else {
@@ -146,16 +151,21 @@ object DataRepository {
         return Closeable(call::cancel)
     }
 
-    @CheckResult fun templates(
+    @CheckResult
+    fun templates(
         success: (List<Template>) -> Unit,
         error: (Throwable) -> Unit,
     ): Closeable {
         val call = service.getTemplates(userPrefs.getInt("userId", -1).takeIf { it >= 0 })
         call.enqueue(object : Callback<Resp<List<Template>>> {
-            override fun onResponse(call: Call<Resp<List<Template>>>, response: Response<Resp<List<Template>>>) {
+            override fun onResponse(
+                call: Call<Resp<List<Template>>>,
+                response: Response<Resp<List<Template>>>
+            ) {
                 if (response.isSuccessful) success(response.body()!!.data)
                 else onFailure(call, IOException("HTTP ${response.code()}"))
             }
+
             override fun onFailure(call: Call<Resp<List<Template>>>, t: Throwable) {
                 error(t)
             }
@@ -163,9 +173,29 @@ object DataRepository {
         return Closeable(call::cancel)
     }
 
-    @CheckResult fun request(
+    @CheckResult
+    fun getSavedProjects(
+        userId: Int,
+        success: (List<SavedProject>) -> Unit,
+        errorMessage: (String) -> Unit,
+        error: (Throwable) -> Unit
+    ): Closeable = service.getSavedProjects(userId).enqueue(
+        {
+            success(it.data)
+        },
+        {
+            val message = gson.fromJson(it.charStream(), JsonObject::class.java)
+                .getAsJsonPrimitive("message").asString
+            errorMessage(message)
+        },
+        error
+    )
+
+    @CheckResult
+    fun requestOnProject(
         image: File,
         name: String,
+        userId: Int,
         phone: String,
         email: String,
         width: String,
@@ -176,8 +206,12 @@ object DataRepository {
         error: (Throwable) -> Unit,
     ): Closeable =
         service.sendRequest(
-            MultipartBody.Part.createFormData("image", image.name, image.asRequestBody("image/*".toMediaType())),
-            name, phone, email, width, height, comment
+            MultipartBody.Part.createFormData(
+                "image",
+                image.name,
+                image.asRequestBody("image/*".toMediaType())
+            ),
+            name, userId, phone, email, width, height, comment
         ).enqueue(
             { _ -> success() },
             {
@@ -188,7 +222,26 @@ object DataRepository {
             error,
         )
 
-    @CheckResult fun recover(
+    @CheckResult
+    fun requestPhone(
+        requestPhoneBody: RequestPhoneBody,
+        success: () -> Unit,
+        errorMessage: (String) -> Unit,
+        error: (Throwable) -> Unit
+    ): Closeable = service.requestPhone(requestPhoneBody).enqueue(
+        {
+            success()
+        },
+        {
+            val message = gson.fromJson(it.charStream(), JsonObject::class.java)
+                .getAsJsonPrimitive("message").asString
+            errorMessage(message)
+        },
+        error
+    )
+
+    @CheckResult
+    fun recoverPassword(
         email: String,
         success: (String) -> Unit,
         errorMessage: (String) -> Unit,
@@ -204,12 +257,21 @@ object DataRepository {
             error,
         )
 
-    fun <T> Call<T>.enqueue(success: (T) -> Unit, httpError: (ResponseBody) -> Unit, error: (Throwable) -> Unit): Closeable {
+    private fun <T> Call<T>.enqueue(
+        success: (T) -> Unit,
+        httpError: (ResponseBody) -> Unit,
+        error: (Throwable) -> Unit
+    ): Closeable {
         enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
                 if (response.isSuccessful) success(response.body()!!)
-                else try { httpError(response.errorBody()!!) } catch (e: Exception) { error(e) }
+                else try {
+                    httpError(response.errorBody()!!)
+                } catch (e: Exception) {
+                    error(e)
+                }
             }
+
             override fun onFailure(call: Call<T>, t: Throwable) {
                 error(t)
             }

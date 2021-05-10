@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
 import com.vansuita.pickimage.IntentResolver
 import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.base.CommonDialog
@@ -15,6 +16,7 @@ import ru.harlion.curtainspb.databinding.FragmentMainMenuBinding
 import ru.harlion.curtainspb.repo.AuthPrefs
 import ru.harlion.curtainspb.ui.auth.authorization.AuthFragment
 import ru.harlion.curtainspb.ui.auth.registration.RegistrationFragment
+import ru.harlion.curtainspb.ui.main_menu.saved_projects.SavedProjectsFragment
 import ru.harlion.curtainspb.ui.sketch.SketchFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 
@@ -23,6 +25,7 @@ class MainMenuFragment : BaseFragment() {
 
     private lateinit var prefs: AuthPrefs
     private lateinit var dialog: CommonDialog
+    private val viewModel: MainMenuViewModel by viewModels()
 
     companion object {
         private const val CAMERA = 1
@@ -54,6 +57,14 @@ class MainMenuFragment : BaseFragment() {
         initClicks()
 
         visibleViews()
+
+        initViewModel()
+    }
+
+    private fun initViewModel() {
+        if (prefs.hasToken()) {
+            viewModel.getProfileUser()
+        }
     }
 
     private fun visibleViews() {
@@ -115,7 +126,7 @@ class MainMenuFragment : BaseFragment() {
         if (!prefs.hasToken()) {
             showToast("Доступно только для зарегистрированных пользователей")
         } else {
-            //todo
+            replaceFragment(SavedProjectsFragment())
         }
     }
 

@@ -17,7 +17,7 @@ fun Context.showToast(message: String) {
 fun ImageView.downloadAndSetImage(url: String) {
     Glide.with(this)
         .load(url)
-        .placeholder(R.drawable.ic_logo_mini)
+        .placeholder(R.drawable.ic_baseline_image_search_24)
         .into(this)
 }
 

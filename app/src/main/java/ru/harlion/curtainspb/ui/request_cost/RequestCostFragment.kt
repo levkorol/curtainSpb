@@ -13,11 +13,10 @@ import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentRequestCostBinding
 import ru.harlion.curtainspb.repo.AuthPrefs
 import ru.harlion.curtainspb.repo.data.DataRepository
-import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
+import ru.harlion.curtainspb.ui.save_project.SaveProjectFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.Closeable
 import java.io.File
-
 
 class RequestCostFragment : BaseFragment() {
 
@@ -69,17 +68,18 @@ class RequestCostFragment : BaseFragment() {
         binding.fRequestCostInputHeight.addTextChangedListener(watcher)
 
         binding.fRequestCostButtonSend.setOnClickListener {
-            currentRequest = DataRepository.request(
+            currentRequest = DataRepository.requestOnProject(
                 File(File(requireActivity().filesDir, "upload"), "pick.png"),
                 binding.fRequestCostInputName.text.toString(),
+                prefs.getUserId(),
                 binding.fRequestCostInputPhone.text.toString(),
                 binding.fRequestCostInputEmail.text.toString(),
                 binding.fRequestCostInputWidth.text.toString(),
                 binding.fRequestCostInputHeight.text.toString(),
                 binding.fRequestCostInputComment.text.toString(),
                 {
-                    showToast("Ваша заявка успешно отправлена")
-                    replaceFragment(MainMenuFragment())
+                    showToast("Ваша заявка успешно отправлена. Наш менеджер скоро свяжется с вами.")
+                    replaceFragment(SaveProjectFragment())
                 },
                 { message ->
                     Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()

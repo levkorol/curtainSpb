@@ -10,7 +10,6 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.withSave
-import androidx.core.math.MathUtils
 import androidx.core.view.setPadding
 import ru.harlion.curtainspb.R
 import kotlin.math.atan2
@@ -40,11 +39,6 @@ class EditorView @JvmOverloads constructor(
     var rotateCx: Int = 0
     var rotateCy: Int = 0
 
-    var isVisibleEditorView: Boolean = false
-        set(value) {
-            field = value
-            invalidate()
-        }
 
     init {
         addView(bottomView)
@@ -91,8 +85,10 @@ class EditorView @JvmOverloads constructor(
                         }
 
                         EditType.ALL -> {
-                            topView.translationX = MathUtils.clamp(topView.translationX + dx, 0f, (width - topView.width).toFloat())
-                            topView.translationY = MathUtils.clamp(topView.translationY + dy, 0f, (height - topView.height).toFloat())
+                            topView.translationX += dx
+                            topView.translationY += dy
+//                            topView.translationX = MathUtils.clamp(topView.translationX + dx, 0f, (width - topView.width).toFloat())
+//                            topView.translationY = MathUtils.clamp(topView.translationY + dy, 0f, (height - topView.height).toFloat())
                         }
                     }
 

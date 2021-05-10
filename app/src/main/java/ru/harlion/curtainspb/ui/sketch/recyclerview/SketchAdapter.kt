@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +13,10 @@ import kotlinx.android.synthetic.main.item_sketch.view.*
 import okhttp3.HttpUrl
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.base.CommonDialog
+import ru.harlion.curtainspb.models.data.RequestPhoneBody
 import ru.harlion.curtainspb.models.data.Template
 import ru.harlion.curtainspb.repo.AuthPrefs
+import ru.harlion.curtainspb.repo.data.DataRepository
 import ru.harlion.curtainspb.ui.auth.registration.RegistrationFragment
 import ru.harlion.curtainspb.utils.downloadAndSetImage
 import ru.harlion.curtainspb.utils.replaceFragment
@@ -55,25 +58,49 @@ class SketchAdapter(
 
             image.downloadAndSetImage(item.imageUrl.toString())
 
-            itemView.setOnClickListener {
+            itemView.setOnClickListener { view ->
                 val prefs = AuthPrefs(
-                    it.context.getSharedPreferences(
+                    view.context.getSharedPreferences(
                         "user",
                         AppCompatActivity.MODE_PRIVATE
                     )
                 )
                 if (item.isOpen) {
-                    it.context.imageClicked(item.imageUrl)
+                    view.context.imageClicked(item.imageUrl)
 
                 } else if (!item.isOpen && prefs.hasToken()) {
-                    val dialog = CommonDialog(it.context)
+                    val dialog = CommonDialog(view.context)
                     dialog.setMessage("Для получения эскизов наш менеджер свяжется с вами по телефону, указанному при регистрации, если этого не произошло, позвоните нам \n +7(812) 213-35-55")
                     dialog.setPositiveButton("Отмена") {}
-                    dialog.setNegativeButton("Жду звонка") {}
+                    dialog.setNegativeButton("Перезвоните мне") {
+                        DataRepository.requestPhone(
+                            requestPhoneBody = RequestPhoneBody(
+                                userId = prefs.getUserId().toString(),
+                                name = prefs.getUserName(),
+                                phone = prefs.getUserPhone(),
+                                email = prefs.getUserEmail()
+                            ),
+                            {
+                                Toast.makeText(
+                                    it.context,
+                                    "Наш менеджер скоро свяжется с вами",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            },
+                            {
+                                Toast.makeText(
+                                    view.context,
+                                    it,
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            },
+                            Throwable::printStackTrace
+                        )
+                    }
                     dialog.show()
 
                 } else if (!item.isOpen && !prefs.hasToken()) {
-                    val dialog = CommonDialog(it.context)
+                    val dialog = CommonDialog(view.context)
                     dialog.setMessage("Для получения эскизов зарегистрируйтесь")
                     dialog.setPositiveButton("Отмена") {}
                     dialog.setNegativeButton("Зарегистрироваться") {

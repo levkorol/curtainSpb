@@ -10,7 +10,7 @@ class PasswordRecoveryViewModel : BaseViewModel() {
     val isError = MutableLiveData(false)
 
     fun passwordRecovery(email: String) {
-        +DataRepository.recover(email, {
+        +DataRepository.recoverPassword(email, {
             isSuccess.value = true
         }, {
             isError.value = true
