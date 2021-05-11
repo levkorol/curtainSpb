@@ -6,7 +6,7 @@ import okhttp3.HttpUrl.Companion.toHttpUrl
 import ru.harlion.curtainspb.AppCurtainSpb
 import ru.harlion.curtainspb.repo.AuthPrefs
 
-val SAVED_PROJECT_URL = "https://api.pzntech.ru/static/templates/".toHttpUrl()
+val SAVED_PROJECT_URL = "https://api.pzntech.ru/static/users/".toHttpUrl()
 
 class SavedProject(
     val id: Int,
