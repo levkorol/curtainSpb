@@ -11,6 +11,7 @@ class GridPresenter : IPresenter {
     override fun attach(view: IView) {
         this.view = view
         currentCall = DataRepository.templates(
+            1, 100500,
             view::showPictures,
             Throwable::printStackTrace,
         )

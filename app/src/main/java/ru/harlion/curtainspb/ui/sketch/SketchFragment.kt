@@ -28,7 +28,14 @@ import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.File
 import java.io.FileOutputStream
 
-class SketchFragment : Fragment(), IView {
+class SketchFragment : Fragment, IView {
+
+    constructor()
+    constructor(url: String) {
+        arguments = Bundle(1).apply {
+            putString("image", url)
+        }
+    }
 
     private lateinit var adapter: SketchAdapter
     private lateinit var binding: FragmentScetchBinding
@@ -38,7 +45,7 @@ class SketchFragment : Fragment(), IView {
         super.onCreate(savedInstanceState)
         presenter = SketchPresenter()
         setFragmentResultListener("sketch") { _, bndl ->
-            Glide.with(this).load(bndl.getString("url")).into(topViewTarget)
+            Glide.with(this).load(bndl.getString("url")).into(binding.editorView.topView)
         }
     }
 
@@ -61,13 +68,20 @@ class SketchFragment : Fragment(), IView {
         val recyclerView: RecyclerView? = view.findViewById(R.id.recyclerView)
         val llm = LinearLayoutManager(view.context)
         llm.orientation = LinearLayoutManager.HORIZONTAL
-        adapter = SketchAdapter({ Glide.with(this).load(it.toString()).into(topViewTarget) }, this)
+        adapter = SketchAdapter(
+            { Glide.with(this).load(it.toString()).into(binding.editorView.topView) },
+            this,
+            presenter::onEndReached,
+        )
         recyclerView?.layoutManager = llm
         recyclerView?.adapter = adapter
 
         presenter.attach(this)
 
-        editorView.bottomView.setImageURI(requireArguments().getParcelable("image"))
+        when (val image = requireArguments()["image"]) {
+            is Uri -> editorView.bottomView.setImageURI(requireArguments().getParcelable("image"))
+            is String -> Glide.with(this).load(image).into(editorView.bottomView)
+        }
 
         initClick()
 
@@ -84,13 +98,11 @@ class SketchFragment : Fragment(), IView {
     }
 
     override fun showPictures(templates: List<Template>) {
-        adapter.templates = templates.sortedByDescending {
-            it.isOpen
-        }
+        adapter.templates = templates
         adapter.notifyDataSetChanged()
     }
 
-    private val topViewTarget = object : Target<Drawable> {
+    /*private val topViewTarget = object : Target<Drawable> {
         override fun onStart() {}
         override fun onStop() {}
         override fun onDestroy() {}
@@ -113,7 +125,7 @@ class SketchFragment : Fragment(), IView {
         }
 
         override fun getRequest(): Request? = request
-    }
+    }*/
 
     private fun fileToBitmap() {
         val file = File(

@@ -9,8 +9,8 @@ import ru.harlion.curtainspb.repo.AuthPrefs
 val SAVED_PROJECT_URL = "https://api.pzntech.ru/static/users/".toHttpUrl()
 
 class SavedProject(
-    val id: Int,
-    val name: String
+    val id: Int = 0,
+    val name: String = "",
 ) {
     private val prefs = AuthPrefs(
         AppCurtainSpb.appContext.getSharedPreferences(
@@ -18,7 +18,7 @@ class SavedProject(
             AppCompatActivity.MODE_PRIVATE
         )
     )
-    private val userId = prefs.getUserId()
+    private val userId get() = prefs.getUserId()
 
     val imageUrl: HttpUrl
         get() = SAVED_PROJECT_URL.resolve("$userId/$name")!!

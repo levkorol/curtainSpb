@@ -14,7 +14,11 @@ interface DataServiceApi {
     fun auth(@Body request: AuthRequest): Call<Resp<AuthData>>
 
     @GET("templates")
-    fun getTemplates(@Query("userId") id: Int?): Call<Resp<List<Template>>>
+    fun getTemplates(
+        @Query("userId") id: Int?,
+        @Query("page") page: Int,
+        @Query("pageSize") pageSize: Int,
+    ): Call<Resp<List<Template>>>
 
     @GET("users/{userId}/images")
     fun getSavedProjects(@Path("userId") userId: Int): Call<Resp<List<SavedProject>>>

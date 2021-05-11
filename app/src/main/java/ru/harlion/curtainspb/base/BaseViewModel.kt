@@ -45,12 +45,12 @@ open class BaseViewModel : ViewModel() {
     }
 
     fun sendOnBdPick(file: File) {
-        +DataRepository.templates(
+        /*+DataRepository.templates(
             {
 
             }, {
 
             }
-        )
+        )*/
     }
 }

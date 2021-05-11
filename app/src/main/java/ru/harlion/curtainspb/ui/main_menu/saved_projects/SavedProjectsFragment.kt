@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.databinding.FragmentSavedProjectsBinding
 import ru.harlion.curtainspb.repo.AuthPrefs
+import ru.harlion.curtainspb.ui.sketch.SketchFragment
+import ru.harlion.curtainspb.utils.replaceFragment
 
 class SavedProjectsFragment : Fragment() {
 
@@ -37,7 +39,9 @@ class SavedProjectsFragment : Fragment() {
         val recyclerView: RecyclerView? = view.findViewById(R.id.recycler_view_saved_project)
         val llm = LinearLayoutManager(view.context)
         llm.orientation = LinearLayoutManager.VERTICAL
-        adapter = SavedProjectsAdapter { }
+        adapter = SavedProjectsAdapter { url ->
+            replaceFragment(SketchFragment(url.toString()))
+        }
         recyclerView?.layoutManager = llm
         recyclerView?.adapter = adapter
 

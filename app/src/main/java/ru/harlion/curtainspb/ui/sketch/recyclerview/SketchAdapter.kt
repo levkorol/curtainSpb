@@ -23,7 +23,8 @@ import ru.harlion.curtainspb.utils.replaceFragment
 
 class SketchAdapter(
     private val imageClicked: Context.(HttpUrl) -> Unit,
-    private val fragment: Fragment
+    private val fragment: Fragment,
+    private val endReached: () -> Unit,
 ) :
     RecyclerView.Adapter<SketchAdapter.SketchHolder>() {
 
@@ -42,6 +43,8 @@ class SketchAdapter(
     override fun onBindViewHolder(holder: SketchHolder, position: Int) {
         val item = templates[position]
         holder.bind(item)
+
+        if (position == templates.lastIndex) endReached()
     }
 
     override fun getItemCount(): Int = templates.size

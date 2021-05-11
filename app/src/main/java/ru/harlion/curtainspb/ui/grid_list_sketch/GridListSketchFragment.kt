@@ -43,7 +43,7 @@ class GridListSketchFragment : Fragment(), IView {
                 Bundle(1).apply { putString("url", it.toString()) }
             )
             parentFragmentManager.popBackStack()
-        }, this)
+        }, this, {})
         recyclerView?.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerView?.adapter = adapter
 

@@ -153,10 +153,12 @@ object DataRepository {
 
     @CheckResult
     fun templates(
+        page: Int,
+        pageSize: Int,
         success: (List<Template>) -> Unit,
         error: (Throwable) -> Unit,
     ): Closeable {
-        val call = service.getTemplates(userPrefs.getInt("userId", -1).takeIf { it >= 0 })
+        val call = service.getTemplates(userPrefs.getInt("userId", -1).takeIf { it >= 0 }, page, pageSize)
         call.enqueue(object : Callback<Resp<List<Template>>> {
             override fun onResponse(
                 call: Call<Resp<List<Template>>>,
