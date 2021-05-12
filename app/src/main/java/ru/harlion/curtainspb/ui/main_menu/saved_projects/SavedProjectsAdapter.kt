@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_saved_projects.view.*
 import okhttp3.HttpUrl
 import ru.harlion.curtainspb.R
+import ru.harlion.curtainspb.base.CommonDialog
 import ru.harlion.curtainspb.models.data.SavedProject
 import ru.harlion.curtainspb.utils.downloadAndSetImage
 
@@ -43,7 +44,13 @@ class SavedProjectsAdapter(
             image.downloadAndSetImage(item.imageUrl.toString())
 
             itemView.setOnClickListener {
-                it.context.imageClicked(item.imageUrl)
+                val dialog = CommonDialog(it.context)
+                dialog.setMessage("Переместить в конструктор этот проект?")
+                dialog.setNegativeButton("Да") { view ->
+                    view.context.imageClicked(item.imageUrl)
+                }
+                dialog.setPositiveButton("Отмена") {}
+                dialog.show()
             }
         }
     }
