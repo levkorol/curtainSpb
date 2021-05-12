@@ -20,7 +20,7 @@ class SketchPresenter : IPresenter {
 
     override fun attach(view: IView) {
         this.view = view
-        pager.load()
+        pager.get()
     }
 
     override fun detach() {

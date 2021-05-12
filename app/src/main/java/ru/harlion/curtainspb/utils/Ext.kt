@@ -6,7 +6,7 @@ import android.view.Gravity
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import ru.harlion.curtainspb.R
+import ru.harlion.curtainspb.ui.main_menu.saved_projects.ShimmerImageDrawable
 
 fun Context.showToast(message: String) {
     val toast = Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT)
@@ -17,7 +17,7 @@ fun Context.showToast(message: String) {
 fun ImageView.downloadAndSetImage(url: String) {
     Glide.with(this)
         .load(url)
-        .placeholder(R.drawable.ic_baseline_image_search_24)
+        .placeholder(ShimmerImageDrawable())
         .into(this)
 }
 

@@ -11,6 +11,10 @@ class Pager<T>(
     private var nextPage = 1
     private var currentCall: Closeable? = null
 
+    fun get() {
+        if (items.isNotEmpty()) loaded.invoke(items)
+        else load()
+    }
     fun load() {
         if (currentCall == null && nextPage > 0) {
             currentCall = load.invoke(this, nextPage, pageSize)
