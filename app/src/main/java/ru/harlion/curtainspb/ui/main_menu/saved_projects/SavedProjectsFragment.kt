@@ -55,6 +55,11 @@ class SavedProjectsFragment : Fragment() {
 
         viewModel.savedProjectList.observe(viewLifecycleOwner) { savedProject ->
             adapter.savedProjects = savedProject
+            if (savedProject.isEmpty()) {
+                binding.notProject.visibility = View.VISIBLE
+            } else {
+                binding.notProject.visibility = View.GONE
+            }
         }
     }
 }

@@ -36,6 +36,15 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/not_project"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="У вас пока нет сохраненных проектов..."
+        android:visibility="gone" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_saved_project"
         android:layout_width="match_parent"

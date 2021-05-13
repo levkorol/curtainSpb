@@ -1,23 +1,18 @@
 package ru.harlion.curtainspb.ui.sketch
 
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.Request
-import com.bumptech.glide.request.target.SizeReadyCallback
-import com.bumptech.glide.request.target.Target
-import com.bumptech.glide.request.transition.Transition
 import kotlinx.android.synthetic.main.fragment_scetch.*
 import ru.harlion.curtainspb.R
+import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentScetchBinding
 import ru.harlion.curtainspb.models.data.Template
 import ru.harlion.curtainspb.ui.grid_list_sketch.GridListSketchFragment
@@ -28,7 +23,7 @@ import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.File
 import java.io.FileOutputStream
 
-class SketchFragment : Fragment, IView {
+class SketchFragment : BaseFragment, IView {
 
     constructor()
     constructor(url: String) {
@@ -138,7 +133,14 @@ class SketchFragment : Fragment, IView {
 
     private fun initClick() {
 
-        binding.cardViewSaveProject.setOnClickListener { presenter.onSaveClicked() }
+        binding.cardViewSaveProject.setOnClickListener {
+            if (binding.editorView.topView.drawable != null) {
+                presenter.onSaveClicked()
+            } else {
+                showToast("Сначала выберите эскиз")
+            }
+        }
+
         binding.cardViewSaveProject.ovalOutline()
 
         binding.showAll.setOnClickListener { replaceFragment(GridListSketchFragment()) }
@@ -148,7 +150,8 @@ class SketchFragment : Fragment, IView {
         binding.fSketchBack.clipToOutline = true
 
         binding.editorView.viewTreeObserver.addOnPreDrawListener {
-            val newVisibility = if (binding.editorView.topView.drawable != null) View.VISIBLE else View.GONE
+            val newVisibility =
+                if (binding.editorView.topView.drawable != null) View.VISIBLE else View.GONE
             if (binding.removeSketch.visibility == newVisibility) true else {
                 binding.removeSketch.visibility = newVisibility
                 false
