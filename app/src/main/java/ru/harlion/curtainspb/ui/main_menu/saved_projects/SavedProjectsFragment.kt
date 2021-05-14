@@ -40,7 +40,7 @@ class SavedProjectsFragment : Fragment() {
         val llm = LinearLayoutManager(view.context)
         llm.orientation = LinearLayoutManager.VERTICAL
         adapter = SavedProjectsAdapter { url ->
-            replaceFragment(SketchFragment(url.toString()))
+            replaceFragment(SketchFragment.forProject(url.toString()))
         }
         recyclerView?.layoutManager = llm
         recyclerView?.adapter = adapter

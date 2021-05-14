@@ -23,14 +23,7 @@ import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.File
 import java.io.FileOutputStream
 
-class SketchFragment : BaseFragment, IView {
-
-    constructor()
-    constructor(url: String) {
-        arguments = Bundle(1).apply {
-            putString("image", url)
-        }
-    }
+class SketchFragment : BaseFragment(), IView {
 
     private lateinit var adapter: SketchAdapter
     private lateinit var binding: FragmentScetchBinding
@@ -134,7 +127,7 @@ class SketchFragment : BaseFragment, IView {
     private fun initClick() {
 
         binding.cardViewSaveProject.setOnClickListener {
-            if (binding.editorView.topView.drawable != null) {
+            if (requireArguments().getBoolean("edit") || binding.editorView.topView.drawable != null) {
                 presenter.onSaveClicked()
             } else {
                 showToast("Сначала выберите эскиз")
@@ -169,6 +162,13 @@ class SketchFragment : BaseFragment, IView {
                 putParcelable("image", image)
             }
             return fragment
+        }
+
+        fun forProject(url: String): SketchFragment = SketchFragment().apply {
+            arguments = Bundle(1).apply {
+                putString("image", url)
+                putBoolean("edit", true)
+            }
         }
     }
 }

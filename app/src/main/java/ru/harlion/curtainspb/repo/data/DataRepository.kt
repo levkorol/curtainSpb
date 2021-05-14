@@ -206,6 +206,7 @@ object DataRepository {
         success: () -> Unit,
         errorMessage: (String) -> Unit,
         error: (Throwable) -> Unit,
+        finally: () -> Unit,
     ): Closeable =
         service.sendRequest(
             MultipartBody.Part.createFormData(
@@ -222,6 +223,7 @@ object DataRepository {
                 errorMessage(message)
             },
             error,
+            finally,
         )
 
     @CheckResult
@@ -262,7 +264,8 @@ object DataRepository {
     private fun <T> Call<T>.enqueue(
         success: (T) -> Unit,
         httpError: (ResponseBody) -> Unit,
-        error: (Throwable) -> Unit
+        error: (Throwable) -> Unit,
+        finally: () -> Unit = {},
     ): Closeable {
         enqueue(object : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
@@ -271,11 +274,14 @@ object DataRepository {
                     httpError(response.errorBody()!!)
                 } catch (e: Exception) {
                     error(e)
-                }
+                } finally {}
+
+                finally()
             }
 
             override fun onFailure(call: Call<T>, t: Throwable) {
                 error(t)
+                finally()
             }
         })
         return Closeable(::cancel)

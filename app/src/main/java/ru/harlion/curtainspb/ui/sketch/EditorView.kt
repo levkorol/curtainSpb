@@ -10,6 +10,7 @@ import android.view.ViewParent
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.withMatrix
 import androidx.core.graphics.withSave
 import androidx.core.view.setPadding
 import ru.harlion.curtainspb.R
@@ -230,20 +231,15 @@ class EditorView @JvmOverloads constructor(
     }
 
     fun toBitmap(): Bitmap {
-        val resultBitmap = viewToBitmap(bottomView)
+        val resultBitmap = Bitmap.createBitmap(bottomView.width, bottomView.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(resultBitmap)
-        val topBitmap = viewToBitmap(topView)
-        val matrix = Matrix()
-        matrix.postTranslate(topView.x, topView.y)
-        canvas.drawBitmap(topBitmap, matrix, null)
-        return resultBitmap
-    }
+        bottomView.draw(canvas)
 
-    private fun viewToBitmap(view: View): Bitmap {
-        val bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-        view.draw(canvas)
-        return bitmap
+        canvas.withMatrix(topView.matrix, topView::draw)
+
+        waterMarkView.draw(canvas)
+
+        return resultBitmap
     }
 
     private fun distSqr(x0: Int, y0: Int, x1: Int, y1: Int) =

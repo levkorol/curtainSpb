@@ -85,7 +85,12 @@ class RequestCostFragment : BaseFragment() {
                     Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
                 },
                 Throwable::printStackTrace,
+                {
+                    currentRequest = null
+                    update()
+                }
             )
+            update()
         }
     }
 
@@ -101,12 +106,19 @@ class RequestCostFragment : BaseFragment() {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         override fun afterTextChanged(p0: Editable?) {
-            binding.fRequestCostButtonSend.isEnabled =
-                binding.fRequestCostInputName.text.isNotBlank()
-                        && binding.fRequestCostInputPhone.text.isNotBlank()
-                        && binding.fRequestCostInputWidth.text.isNotBlank()
-                        && binding.fRequestCostInputEmail.text.isNotBlank()
-                        && binding.fRequestCostInputHeight.text.isNotBlank()
+            update()
         }
+    }
+
+    private fun update() {
+        binding.fRequestCostButtonSend.isEnabled =
+            currentRequest == null &&
+                    binding.fRequestCostInputName.text.isNotBlank() &&
+                    binding.fRequestCostInputPhone.text.isNotBlank() &&
+                    binding.fRequestCostInputWidth.text.isNotBlank() &&
+                    binding.fRequestCostInputEmail.text.isNotBlank() &&
+                    binding.fRequestCostInputHeight.text.isNotBlank()
+
+        binding.progress.visibility = if (currentRequest == null) View.GONE else View.VISIBLE
     }
 }
