@@ -5,6 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewParent
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -30,6 +31,7 @@ class EditorView @JvmOverloads constructor(
         it.setOnTouchListener(this)
     }
     val bottomView: ImageView = ImageView(context)
+    val waterMarkView: ImageView = ImageView(context)
 
     private val startTouchPoint: PointF = PointF()
     private val startTopSize: Point = Point()
@@ -43,7 +45,8 @@ class EditorView @JvmOverloads constructor(
     init {
         addView(bottomView)
         addView(topView, LayoutParams(700, 500))
-
+        addView(waterMarkView, LayoutParams(MATCH_PARENT, MATCH_PARENT))
+        waterMarkView.setImageResource(R.drawable.watermark)
         setWillNotDraw(false)
     }
 
