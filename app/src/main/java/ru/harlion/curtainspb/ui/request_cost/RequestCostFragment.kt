@@ -52,7 +52,7 @@ class RequestCostFragment : BaseFragment() {
         viewModel.email.observe(viewLifecycleOwner) { binding.fRequestCostInputEmail.setText(it) }
         viewModel.phoneNumber.observe(viewLifecycleOwner) {
             binding.fRequestCostInputPhone.setText(
-                it.toString()
+                it
             )
         }
     }

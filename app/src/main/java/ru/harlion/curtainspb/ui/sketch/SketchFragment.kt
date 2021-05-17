@@ -67,7 +67,7 @@ class SketchFragment : BaseFragment(), IView {
         presenter.attach(this)
 
         when (val image = requireArguments()["image"]) {
-            is Uri -> editorView.bottomView.setImageURI(requireArguments().getParcelable("image"))
+            is Uri -> Glide.with(this).load(image).into(editorView.bottomView)
             is String -> Glide.with(this).load(image).into(editorView.bottomView)
         }
 

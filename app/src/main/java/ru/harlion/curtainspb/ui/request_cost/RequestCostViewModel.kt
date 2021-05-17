@@ -10,8 +10,8 @@ class RequestCostViewModel : BaseViewModel() {
     private val _cost: MutableLiveData<String> = MutableLiveData("")
     val cost: LiveData<String> get() = _cost
 
-    private val _phoneNumber: MutableLiveData<Int> = MutableLiveData(0)
-    val phoneNumber: LiveData<Int> get() = _phoneNumber
+    private val _phoneNumber: MutableLiveData<String> = MutableLiveData("")
+    val phoneNumber: LiveData<String> get() = _phoneNumber
 
     private val _email: MutableLiveData<String> = MutableLiveData("")
     val email: LiveData<String> get() = _email

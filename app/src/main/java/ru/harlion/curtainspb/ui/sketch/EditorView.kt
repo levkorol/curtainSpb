@@ -32,7 +32,13 @@ class EditorView @JvmOverloads constructor(
         it.setOnTouchListener(this)
     }
     val bottomView: ImageView = ImageView(context)
-    val waterMarkView: ImageView = ImageView(context)
+    private val waterMarkView: ImageView = ImageView(context)
+
+    var showWatermark: Boolean
+        get() = waterMarkView.visibility == View.VISIBLE
+        set(value) {
+            waterMarkView.visibility = if (value) View.VISIBLE else View.GONE
+        }
 
     private val startTouchPoint: PointF = PointF()
     private val startTopSize: Point = Point()
