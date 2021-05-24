@@ -73,12 +73,14 @@ class EditorView @JvmOverloads constructor(
                     when (editType) {
 
                         EditType.ROTATE -> {
-                            val cx = topView.x + topView.width/2
-                            val cy = topView.y + topView.height/2
-                            topView.rotation += Math.toDegrees(angleBetweenLines(
-                                cx, cy, startTouchPoint.x, startTouchPoint.y,
-                                cx, cy, event.x, event.y,
-                            )).toFloat()
+                            val cx = topView.x + topView.width / 2
+                            val cy = topView.y + topView.height / 2
+                            topView.rotation += Math.toDegrees(
+                                angleBetweenLines(
+                                    cx, cy, startTouchPoint.x, startTouchPoint.y,
+                                    cx, cy, event.x, event.y,
+                                )
+                            ).toFloat()
                         }
 
                         EditType.LEFT_TOP_CORNER -> {
@@ -135,6 +137,7 @@ class EditorView @JvmOverloads constructor(
         startTopSize.set(topView.layoutParams.width, topView.layoutParams.height)
         return editType != null
     }
+
     override fun onTouch(view: View, event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -155,6 +158,7 @@ class EditorView @JvmOverloads constructor(
             drawDots(canvas)
         }
     }
+
     private fun drawDots(canvas: Canvas) {
         p.color = Color.WHITE
         canvas.withSave {
@@ -180,6 +184,7 @@ class EditorView @JvmOverloads constructor(
         super.onDescendantInvalidated(child, target)
         if (child === topView) invalidate()
     }
+
     override fun invalidateChildInParent(location: IntArray?, dirty: Rect?): ViewParent? {
         if (topView.isDirty) invalidate()
         return super.invalidateChildInParent(location, dirty)
@@ -204,7 +209,7 @@ class EditorView @JvmOverloads constructor(
             ) < CLICK_DISTANCE_LIMIT_SQR + 15 * resources.displayMetrics.density
         ) {
             return EditType.ROTATE
-        } else if (event.x.toInt() in offset..(topView.width-offset) && event.y.toInt() in offset..(topView.height-offset)) {
+        } else if (event.x.toInt() in offset..(topView.width - offset) && event.y.toInt() in offset..(topView.height - offset)) {
             return EditType.ALL
         } else if (distSqr(
                 (topView.width - offset).toInt(),
@@ -237,7 +242,8 @@ class EditorView @JvmOverloads constructor(
     }
 
     fun toBitmap(): Bitmap {
-        val resultBitmap = Bitmap.createBitmap(bottomView.width, bottomView.height, Bitmap.Config.ARGB_8888)
+        val resultBitmap =
+            Bitmap.createBitmap(bottomView.width, bottomView.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(resultBitmap)
         bottomView.draw(canvas)
 
@@ -250,8 +256,10 @@ class EditorView @JvmOverloads constructor(
 
     private fun distSqr(x0: Int, y0: Int, x1: Int, y1: Int) =
         (x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0)
+
     private fun angleBetweenLines(
-        fX: Float, fY: Float, sX: Float, sY: Float, nfX: Float, nfY: Float, nsX: Float, nsY: Float): Double {
+        fX: Float, fY: Float, sX: Float, sY: Float, nfX: Float, nfY: Float, nsX: Float, nsY: Float
+    ): Double {
         val angle1 = atan2((fY - sY), (fX - sX)).toDouble()
         val angle2 = atan2((nfY - nsY), (nfX - nsX)).toDouble()
         return when {
