@@ -121,7 +121,6 @@ class SketchFragment : BaseFragment(), IView {
             "pick.png"
         )
         editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, FileOutputStream(file))
-        presenter.onSendSketchToBD(file)
     }
 
     private fun initClick() {

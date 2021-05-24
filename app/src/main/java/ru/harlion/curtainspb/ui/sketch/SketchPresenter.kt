@@ -32,10 +32,6 @@ class SketchPresenter : IPresenter {
         view?.goToSave()
     }
 
-    override fun onSendSketchToBD(file: File) {
-        DataRepository.sendPhoto(file)
-    }
-
     override fun onEndReached() {
         pager.load()
     }
@@ -45,6 +41,5 @@ interface IPresenter {
     fun attach(view: IView)
     fun detach()
     fun onSaveClicked()
-    fun onSendSketchToBD(file: File)
     fun onEndReached()
 }
