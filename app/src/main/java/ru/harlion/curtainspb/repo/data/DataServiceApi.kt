@@ -20,6 +20,13 @@ interface DataServiceApi {
         @Query("pageSize") pageSize: Int,
     ): Call<Resp<List<Template>>>
 
+    @GET("templates/foruser/userId={userId}")
+    fun getTemplatesForUser(
+        @Path("userId") id: Int?,
+        @Query("page") page: Int,
+        @Query("pageSize") pageSize: Int,
+    ): Call<Resp<List<Template>>>
+
     @GET("users/{userId}/images")
     fun getSavedProjects(@Path("userId") userId: Int): Call<Resp<List<SavedProject>>>
 

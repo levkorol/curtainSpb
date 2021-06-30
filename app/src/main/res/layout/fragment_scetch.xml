@@ -52,11 +52,12 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="115dp"
+            android:layout_height="63dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_logo_mini"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_logologo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cardView_save_project"
             app:layout_constraintStart_toEndOf="@+id/f_sketch_back"
@@ -86,8 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_weight="9"
-        android:background="@color/gray">
+        android:layout_weight="9">
 
         <ru.harlion.curtainspb.ui.sketch.EditorView
             android:id="@+id/editorView"

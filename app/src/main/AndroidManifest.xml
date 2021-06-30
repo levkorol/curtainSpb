@@ -17,7 +17,7 @@
         android:name=".AppCurtainSpb"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_logo"
-        android:label="Одежда для сцен"
+        android:label="Одежда сцен"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CurtainSpb"

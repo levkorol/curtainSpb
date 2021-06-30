@@ -9,11 +9,12 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="115dp"
+        android:layout_height="63dp"
         android:layout_gravity="center"
         android:layout_marginTop="14dp"
-        android:src="@drawable/ic_logo_mini"
+        android:layout_marginStart="20dp"
+        android:src="@drawable/ic_logologo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -176,6 +176,34 @@ object DataRepository {
     }
 
     @CheckResult
+    fun templatesForUser(
+        page: Int,
+        pageSize: Int,
+        success: (List<Template>) -> Unit,
+        error: (Throwable) -> Unit,
+    ): Closeable {
+        val call = service.getTemplatesForUser(
+            userPrefs.getInt("userId", -1).takeIf { it >= 0 },
+            page,
+            pageSize
+        )
+        call.enqueue(object : Callback<Resp<List<Template>>> {
+            override fun onResponse(
+                call: Call<Resp<List<Template>>>,
+                response: Response<Resp<List<Template>>>
+            ) {
+                if (response.isSuccessful) success(response.body()!!.data)
+                else onFailure(call, IOException("HTTP ${response.code()}"))
+            }
+
+            override fun onFailure(call: Call<Resp<List<Template>>>, t: Throwable) {
+                error(t)
+            }
+        })
+        return Closeable(call::cancel)
+    }
+
+    @CheckResult
     fun getSavedProjects(
         userId: Int,
         success: (List<SavedProject>) -> Unit,

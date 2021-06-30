@@ -13,7 +13,7 @@ import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentRequestCostBinding
 import ru.harlion.curtainspb.repo.AuthPrefs
 import ru.harlion.curtainspb.repo.data.DataRepository
-import ru.harlion.curtainspb.ui.save_project.SaveProjectFragment
+import ru.harlion.curtainspb.ui.main_menu.MainMenuFragment
 import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.Closeable
 import java.io.File
@@ -79,7 +79,7 @@ class RequestCostFragment : BaseFragment() {
                 binding.fRequestCostInputComment.text.toString(),
                 {
                     showToast("Ваша заявка успешно отправлена. Наш менеджер скоро свяжется с вами.")
-                    replaceFragment(SaveProjectFragment())
+                    replaceFragment(MainMenuFragment())
                 },
                 { message ->
                     Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
