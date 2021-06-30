@@ -112,14 +112,25 @@ class MainMenuFragment : BaseFragment() {
         picker.onSaveInstanceState(outState)
     }
 
+    private var cameraHandled = false
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == CAMERA) {
-            replaceFragment(SketchFragment.newInstance(Uri.fromFile(picker.cameraFile())))
+            replaceFragment(SketchFragment.newInstance(picker.cameraFile()))
+            cameraHandled = true
         }
         if (resultCode == Activity.RESULT_OK && requestCode == GALLERY) {
             replaceFragment(SketchFragment.newInstance(data!!.data!!))
         }
+    }
+    override fun onResume() {
+        super.onResume()
+        if (!cameraHandled) {
+            picker.cameraFile().delete()
+        }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        cameraHandled = false
     }
 
     private fun openGallerySaveProject() {

@@ -1,6 +1,7 @@
 package ru.harlion.curtainspb.ui.sketch
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -66,9 +67,10 @@ class SketchFragment : BaseFragment(), IView {
 
         presenter.attach(this)
 
-        when (val image = requireArguments()["image"]) {
-            is Uri -> Glide.with(this).load(image).into(editorView.bottomView)
-            is String -> Glide.with(this).load(image).into(editorView.bottomView)
+        requireArguments().let {
+            it.getString("imageUrl")?.let { Glide.with(this).load(it).into(editorView.bottomView) }
+            it.getParcelable<Uri>("imageUrl")?.let { Glide.with(this).load(it).into(editorView.bottomView) }
+            it.getString("imageFile")?.let { editorView.bottomView.setImageBitmap(BitmapFactory.decodeFile(it)) }
         }
 
         initClick()
@@ -158,14 +160,22 @@ class SketchFragment : BaseFragment(), IView {
         fun newInstance(image: Uri): SketchFragment {
             val fragment = SketchFragment()
             fragment.arguments = Bundle().apply {
-                putParcelable("image", image)
+                putParcelable("imageUri", image)
+            }
+            return fragment
+        }
+
+        fun newInstance(image: File): SketchFragment {
+            val fragment = SketchFragment()
+            fragment.arguments = Bundle().apply {
+                putString("imageFile", image.absolutePath)
             }
             return fragment
         }
 
         fun forProject(url: String): SketchFragment = SketchFragment().apply {
             arguments = Bundle(1).apply {
-                putString("image", url)
+                putString("imageUrl", url)
                 putBoolean("edit", true)
             }
         }
