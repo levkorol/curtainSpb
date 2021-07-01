@@ -69,7 +69,7 @@ class SketchFragment : BaseFragment(), IView {
 
         requireArguments().let {
             it.getString("imageUrl")?.let { Glide.with(this).load(it).into(editorView.bottomView) }
-            it.getParcelable<Uri>("imageUrl")?.let { Glide.with(this).load(it).into(editorView.bottomView) }
+            it.getParcelable<Uri>("imageUri")?.let { Glide.with(this).load(it).into(editorView.bottomView) }
             it.getString("imageFile")?.let { editorView.bottomView.setImageBitmap(BitmapFactory.decodeFile(it)) }
         }
 
