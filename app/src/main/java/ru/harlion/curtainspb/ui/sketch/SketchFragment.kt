@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,7 @@ import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentScetchBinding
 import ru.harlion.curtainspb.models.data.Template
+import ru.harlion.curtainspb.repo.AuthPrefs
 import ru.harlion.curtainspb.ui.grid_list_sketch.GridListSketchFragment
 import ru.harlion.curtainspb.ui.save_project.SaveProjectFragment
 import ru.harlion.curtainspb.ui.sketch.recyclerview.SketchAdapter
@@ -29,10 +31,13 @@ class SketchFragment : BaseFragment(), IView {
     private lateinit var adapter: SketchAdapter
     private lateinit var binding: FragmentScetchBinding
     private lateinit var presenter: IPresenter
+    private lateinit var prefs: AuthPrefs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter = SketchPresenter()
+        prefs =
+            AuthPrefs(requireContext().getSharedPreferences("user", AppCompatActivity.MODE_PRIVATE))
         setFragmentResultListener("sketch") { _, bndl ->
             Glide.with(this).load(bndl.getString("url")).into(binding.editorView.topView)
         }
@@ -68,13 +73,22 @@ class SketchFragment : BaseFragment(), IView {
         presenter.attach(this)
 
         requireArguments().let {
-            it.getString("imageUrl")?.let { Glide.with(this).load(it).into(editorView.bottomView) }
-            it.getParcelable<Uri>("imageUri")?.let { Glide.with(this).load(it).into(editorView.bottomView) }
-            it.getString("imageFile")?.let { editorView.bottomView.setImageBitmap(BitmapFactory.decodeFile(it)) }
+            it.getString("imageUrl")
+                ?.let { Glide.with(this).load(it).into(editorView.bottomView) }
+            it.getParcelable<Uri>("imageUri")
+                ?.let { Glide.with(this).load(it).into(editorView.bottomView) }
+            it.getString("imageFile")
+                ?.let { editorView.bottomView.setImageBitmap(BitmapFactory.decodeFile(it)) }
         }
 
         initClick()
 
+
+        if (prefs.getUserRole() == 4) {
+            editorView.showWatermark = false
+        } else {
+            editorView.showWatermark = true
+        }
     }
 
     override fun onDestroyView() {
@@ -152,7 +166,11 @@ class SketchFragment : BaseFragment(), IView {
             }
         }
 
-        binding.removeSketch.setOnClickListener { binding.editorView.topView.setImageDrawable(null) }
+        binding.removeSketch.setOnClickListener {
+            binding.editorView.topView.setImageDrawable(
+                null
+            )
+        }
 
     }
 

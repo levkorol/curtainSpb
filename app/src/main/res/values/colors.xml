@@ -25,4 +25,5 @@
     <color name="grey_text">#AFAFAF</color>
 
     <color name="white_transparent_85">#D9FFFFFF</color>
+    <color name="white_transparent_20">#99FFFFFF</color>
 </resources>

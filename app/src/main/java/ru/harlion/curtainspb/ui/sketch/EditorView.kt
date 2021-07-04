@@ -53,7 +53,7 @@ class EditorView @JvmOverloads constructor(
         addView(bottomView)
         addView(topView, LayoutParams(700, 500))
         addView(waterMarkView, LayoutParams(MATCH_PARENT, MATCH_PARENT))
-        waterMarkView.setImageResource(R.drawable.watermark)
+        waterMarkView.setImageResource(R.drawable.ic_group_8)
         setWillNotDraw(false)
     }
 
@@ -160,7 +160,7 @@ class EditorView @JvmOverloads constructor(
     }
 
     private fun drawDots(canvas: Canvas) {
-        p.color = Color.WHITE
+        p.color = ContextCompat.getColor(context, R.color.white_transparent_20)
         canvas.withSave {
             translate(topView.x, topView.y)
             rotate(topView.rotation, topView.pivotX, topView.pivotY)

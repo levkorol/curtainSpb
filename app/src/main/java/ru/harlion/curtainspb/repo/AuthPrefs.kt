@@ -15,7 +15,7 @@ class AuthPrefs(
 
     private var token = ""
     private var userId = -1
-    private var userRole = -1
+    private var userRole = -2
     private var nameUser = ""
     private var phoneUser = ""
     private var emailUser = ""
@@ -66,17 +66,12 @@ class AuthPrefs(
             .apply()
     }
 
-    fun getUserRole(): Int {
-        if (userRole < 0) {
-            userId = prefs.getInt(USER_ROLE, -1)
-        }
-        return userRole
-    }
+    fun getUserRole(): Int = prefs.getInt(USER_ROLE, -2)
 
     fun setUserRole(userRole: Int) {
-        this.userRole = userRole
+        //    this.userRole = userRole
         prefs.edit()
-            .putInt(USER_ROLE, userId)
+            .putInt(USER_ROLE, userRole)
             .apply()
     }
 
