@@ -1,9 +1,13 @@
 package ru.harlion.curtainspb.ui.sketch
 
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,12 +30,15 @@ import ru.harlion.curtainspb.utils.replaceFragment
 import java.io.File
 import java.io.FileOutputStream
 
+
 class SketchFragment : BaseFragment(), IView {
 
     private lateinit var adapter: SketchAdapter
     private lateinit var binding: FragmentScetchBinding
     private lateinit var presenter: IPresenter
     private lateinit var prefs: AuthPrefs
+
+    private val uri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,22 +80,17 @@ class SketchFragment : BaseFragment(), IView {
         presenter.attach(this)
 
         requireArguments().let {
-            it.getString("imageUrl")
+            it.getString("imageUrl") // saved
                 ?.let { Glide.with(this).load(it).into(editorView.bottomView) }
-            it.getParcelable<Uri>("imageUri")
+            it.getParcelable<Uri>("imageUri") // gallery
                 ?.let { Glide.with(this).load(it).into(editorView.bottomView) }
-            it.getString("imageFile")
+            it.getString("imageFile") // camera
                 ?.let { editorView.bottomView.setImageBitmap(BitmapFactory.decodeFile(it)) }
         }
 
         initClick()
 
-
-        if (prefs.getUserRole() == 4) {
-            editorView.showWatermark = false
-        } else {
-            editorView.showWatermark = true
-        }
+        editorView.showWatermark = prefs.getUserRole() != 4
     }
 
     override fun onDestroyView() {
@@ -106,30 +108,63 @@ class SketchFragment : BaseFragment(), IView {
         adapter.notifyDataSetChanged()
     }
 
-    /*private val topViewTarget = object : Target<Drawable> {
-        override fun onStart() {}
-        override fun onStop() {}
-        override fun onDestroy() {}
-        override fun onLoadStarted(placeholder: Drawable?) {}
-        override fun onLoadFailed(errorDrawable: Drawable?) {}
-        override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
-            binding.editorView.topView.setImageDrawable(resource)
+
+    private fun rotateIfNeeded(bitmap: Bitmap): Bitmap? {
+//        val rotation: Int = if (provider === EPickType.CAMERA) {
+//            getRotationFromCamera()
+//        } else {
+//            getRotationFromGallery()
+//        }
+        return null//rotate(bitmap, rotation)
+    }
+
+    private fun getRotationFromCamera(): Int {
+        var rotate = 0
+        try {
+            val exif = uri?.path?.let { ExifInterface(it) }
+            val orientation: Int = exif!!.getAttributeInt(
+                ExifInterface.TAG_ORIENTATION,
+                ExifInterface.ORIENTATION_NORMAL
+            )
+            rotate = when (orientation) {
+                ExifInterface.ORIENTATION_ROTATE_270 -> 270
+                ExifInterface.ORIENTATION_ROTATE_180 -> 180
+                ExifInterface.ORIENTATION_ROTATE_90 -> 90
+                else -> 0
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
+        return rotate
+    }
 
-        override fun onLoadCleared(placeholder: Drawable?) {}
-        override fun getSize(cb: SizeReadyCallback) {
-            cb.onSizeReady(Int.MIN_VALUE, Int.MIN_VALUE)
+    private fun getRotationFromGallery(): Int {
+        var result = 0
+        val columns = arrayOf(MediaStore.Images.Media.ORIENTATION)
+        var cursor: Cursor? = null
+        try {
+            cursor =
+                uri?.let { requireContext().contentResolver.query(it, columns, null, null, null) }
+            if (cursor != null && cursor.moveToFirst()) {
+                val orientationColumnIndex: Int = cursor.getColumnIndex(columns[0])
+                result = cursor.getInt(orientationColumnIndex)
+            }
+        } catch (e: Exception) {
+        } finally {
+            cursor?.close()
         }
+        return result
+    }
 
-        override fun removeCallback(cb: SizeReadyCallback) {}
 
-        private var request: Request? = null
-        override fun setRequest(request: Request?) {
-            this.request = request
+    private fun rotate(bitmap: Bitmap?, degrees: Int): Bitmap? {
+        if (bitmap != null && degrees != 0) {
+            val matrix = Matrix()
+            matrix.postRotate(degrees.toFloat())
+            return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
         }
-
-        override fun getRequest(): Request? = request
-    }*/
+        return bitmap
+    }
 
     private fun fileToBitmap() {
         val file = File(
