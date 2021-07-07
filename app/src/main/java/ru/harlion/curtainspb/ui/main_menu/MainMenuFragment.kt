@@ -2,12 +2,16 @@ package ru.harlion.curtainspb.ui.main_menu
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.viewModels
 import com.vansuita.pickimage.IntentResolver
 import ru.harlion.curtainspb.base.BaseFragment
@@ -19,6 +23,8 @@ import ru.harlion.curtainspb.ui.auth.registration.RegistrationFragment
 import ru.harlion.curtainspb.ui.main_menu.saved_projects.SavedProjectsFragment
 import ru.harlion.curtainspb.ui.sketch.SketchFragment
 import ru.harlion.curtainspb.utils.replaceFragment
+import java.io.File
+import java.io.FileOutputStream
 
 
 class MainMenuFragment : BaseFragment() {
@@ -115,11 +121,27 @@ class MainMenuFragment : BaseFragment() {
     private var cameraHandled = false
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == CAMERA) {
-            replaceFragment(SketchFragment.newInstance(picker.cameraFile()))
+            val image = picker.cameraFile()
+            val rotation = file.inputStream().use(::getRotation)
+            if (rotation != 0) {
+                rotate(BitmapFactory.decodeFile(file.path), rotation)
+                    .compress(Bitmap.CompressFormat.JPEG, 95, FileOutputStream(file))
+            }
+            replaceFragment(SketchFragment.newInstance(image))
             cameraHandled = true
         }
         if (resultCode == Activity.RESULT_OK && requestCode == GALLERY) {
-            replaceFragment(SketchFragment.newInstance(data!!.data!!))
+            val rotation = requireContext().contentResolver.openInputStream(data!!.data!!)!!.use(::getRotation)
+            if (rotation == 0) {
+                replaceFragment(SketchFragment.newInstance(data!!.data!!))
+            } else {
+                val image = picker.cameraFile()
+                val bitmap = requireContext().contentResolver.openInputStream(data!!.data!!)!!
+                    .use(BitmapFactory::decodeStream)
+                rotate(bitmap, rotation)
+                    .compress(Bitmap.CompressFormat.JPEG, 95, FileOutputStream(file))
+                replaceFragment(SketchFragment.newInstance(image))
+            }
         }
     }
     override fun onResume() {
@@ -152,5 +174,27 @@ class MainMenuFragment : BaseFragment() {
         }
         dialog.setNegativeButton("Нет") {}
         dialog.show()
+    }
+
+    private fun getRotation(inputStream: InputStream): Int {
+        var rotate = 0
+        try {
+            val orientation: Int = ExifInterface(inputStream)
+                .getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+            rotate = when (orientation) {
+                ExifInterface.ORIENTATION_ROTATE_270 -> 270
+                ExifInterface.ORIENTATION_ROTATE_180 -> 180
+                ExifInterface.ORIENTATION_ROTATE_90 -> 90
+                else -> 0
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return rotate
+    }
+    private fun rotate(bitmap: Bitmap, degrees: Int): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(degrees.toFloat())
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
     }
 }

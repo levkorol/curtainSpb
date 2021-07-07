@@ -108,64 +108,6 @@ class SketchFragment : BaseFragment(), IView {
         adapter.notifyDataSetChanged()
     }
 
-
-    private fun rotateIfNeeded(bitmap: Bitmap): Bitmap? {
-//        val rotation: Int = if (provider === EPickType.CAMERA) {
-//            getRotationFromCamera()
-//        } else {
-//            getRotationFromGallery()
-//        }
-        return null//rotate(bitmap, rotation)
-    }
-
-    private fun getRotationFromCamera(): Int {
-        var rotate = 0
-        try {
-            val exif = uri?.path?.let { ExifInterface(it) }
-            val orientation: Int = exif!!.getAttributeInt(
-                ExifInterface.TAG_ORIENTATION,
-                ExifInterface.ORIENTATION_NORMAL
-            )
-            rotate = when (orientation) {
-                ExifInterface.ORIENTATION_ROTATE_270 -> 270
-                ExifInterface.ORIENTATION_ROTATE_180 -> 180
-                ExifInterface.ORIENTATION_ROTATE_90 -> 90
-                else -> 0
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        return rotate
-    }
-
-    private fun getRotationFromGallery(): Int {
-        var result = 0
-        val columns = arrayOf(MediaStore.Images.Media.ORIENTATION)
-        var cursor: Cursor? = null
-        try {
-            cursor =
-                uri?.let { requireContext().contentResolver.query(it, columns, null, null, null) }
-            if (cursor != null && cursor.moveToFirst()) {
-                val orientationColumnIndex: Int = cursor.getColumnIndex(columns[0])
-                result = cursor.getInt(orientationColumnIndex)
-            }
-        } catch (e: Exception) {
-        } finally {
-            cursor?.close()
-        }
-        return result
-    }
-
-
-    private fun rotate(bitmap: Bitmap?, degrees: Int): Bitmap? {
-        if (bitmap != null && degrees != 0) {
-            val matrix = Matrix()
-            matrix.postRotate(degrees.toFloat())
-            return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-        }
-        return bitmap
-    }
-
     private fun fileToBitmap() {
         val file = File(
             File(requireActivity().filesDir, "upload").also(File::mkdirs),
