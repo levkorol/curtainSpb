@@ -144,9 +144,7 @@ class SketchFragment : BaseFragment(), IView {
         }
 
         binding.removeSketch.setOnClickListener {
-            binding.editorView.topView.setImageDrawable(
-                null
-            )
+            binding.editorView.remove()
         }
 
     }

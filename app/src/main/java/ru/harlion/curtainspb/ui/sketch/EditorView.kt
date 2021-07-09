@@ -49,12 +49,26 @@ class EditorView @JvmOverloads constructor(
     var rotateCy: Int = 0
 
 
+    private val initialSize = Point((230 * resources.displayMetrics.density).toInt(), (180 * resources.displayMetrics.density).toInt())
     init {
         addView(bottomView)
-        addView(topView, LayoutParams(700, 500))
+        addView(topView, LayoutParams(initialSize.x, initialSize.y))
         addView(waterMarkView, LayoutParams(MATCH_PARENT, MATCH_PARENT))
         waterMarkView.setImageResource(R.drawable.ic_group_8)
         setWillNotDraw(false)
+    }
+
+    fun remove() {
+        topView.apply {
+            setImageDrawable(null)
+            translationX = 0f
+            translationY = 0f
+            rotation = 0f
+            layoutParams = layoutParams.apply {
+                width = initialSize.x
+                height = initialSize.y
+            }
+        }
     }
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
