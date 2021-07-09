@@ -23,8 +23,9 @@ import ru.harlion.curtainspb.ui.auth.registration.RegistrationFragment
 import ru.harlion.curtainspb.ui.main_menu.saved_projects.SavedProjectsFragment
 import ru.harlion.curtainspb.ui.sketch.SketchFragment
 import ru.harlion.curtainspb.utils.replaceFragment
-import java.io.File
 import java.io.FileOutputStream
+
+import java.io.InputStream
 
 
 class MainMenuFragment : BaseFragment() {
@@ -122,10 +123,10 @@ class MainMenuFragment : BaseFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == CAMERA) {
             val image = picker.cameraFile()
-            val rotation = file.inputStream().use(::getRotation)
+            val rotation = image.inputStream().use(::getRotation)
             if (rotation != 0) {
-                rotate(BitmapFactory.decodeFile(file.path), rotation)
-                    .compress(Bitmap.CompressFormat.JPEG, 95, FileOutputStream(file))
+                rotate(BitmapFactory.decodeFile(image.path), rotation)
+                    .compress(Bitmap.CompressFormat.JPEG, 95, FileOutputStream(image))
             }
             replaceFragment(SketchFragment.newInstance(image))
             cameraHandled = true
@@ -133,13 +134,13 @@ class MainMenuFragment : BaseFragment() {
         if (resultCode == Activity.RESULT_OK && requestCode == GALLERY) {
             val rotation = requireContext().contentResolver.openInputStream(data!!.data!!)!!.use(::getRotation)
             if (rotation == 0) {
-                replaceFragment(SketchFragment.newInstance(data!!.data!!))
+                replaceFragment(SketchFragment.newInstance(data.data!!))
             } else {
                 val image = picker.cameraFile()
-                val bitmap = requireContext().contentResolver.openInputStream(data!!.data!!)!!
+                val bitmap = requireContext().contentResolver.openInputStream(data.data!!)!!
                     .use(BitmapFactory::decodeStream)
                 rotate(bitmap, rotation)
-                    .compress(Bitmap.CompressFormat.JPEG, 95, FileOutputStream(file))
+                    .compress(Bitmap.CompressFormat.JPEG, 95, FileOutputStream(image))
                 replaceFragment(SketchFragment.newInstance(image))
             }
         }
