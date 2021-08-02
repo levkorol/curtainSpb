@@ -14,7 +14,7 @@ class GridPresenter : IPresenter {
 
     private var view: IView? = null
     private val pager = Pager<Template>(
-        30,
+        30000,
         { page, pageSize ->
 
             if (prefs.hasToken()) {
