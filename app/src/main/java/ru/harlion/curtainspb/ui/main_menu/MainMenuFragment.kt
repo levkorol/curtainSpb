@@ -145,6 +145,7 @@ class MainMenuFragment : BaseFragment() {
             }
         }
     }
+
     override fun onResume() {
         super.onResume()
         if (!cameraHandled) {
