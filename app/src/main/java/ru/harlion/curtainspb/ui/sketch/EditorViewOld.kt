@@ -125,6 +125,8 @@ class EditorViewOld @JvmOverloads constructor(
                             topView.translationX = startTopPoint!!.x + dx
                             topView.translationY = startTopPoint!!.y + dy
                         }
+
+                        else -> {}
                     }
                     invalidate()
                 }

@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_sketch.view.*
 import okhttp3.HttpUrl
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.base.CommonDialog
@@ -51,8 +50,8 @@ class SketchAdapter(
 
     inner class SketchHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val image: ImageView = itemView.image_img
-        private val imageIsOpen: ImageView = itemView.image_isOpen
+        private val image: ImageView = itemView.findViewById(R.id.image_img)
+        private val imageIsOpen: ImageView = itemView.findViewById(R.id.image_isOpen)
 
         fun bind(item: Template) {
 

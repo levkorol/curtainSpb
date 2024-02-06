@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_saved_projects.view.*
 import okhttp3.HttpUrl
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.base.CommonDialog
@@ -38,7 +37,7 @@ class SavedProjectsAdapter(
 
     inner class SavedProjectHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        private val image: ImageView = itemView.saved_project_image
+        private val image: ImageView = itemView.findViewById(R.id.saved_project_image)
 
         fun bind(item: SavedProject) {
             image.downloadAndSetImage(item.imageUrl.toString())

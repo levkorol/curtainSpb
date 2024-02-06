@@ -116,6 +116,8 @@ class EditorView @JvmOverloads constructor(
 //                            topView.translationX = MathUtils.clamp(topView.translationX + dx, 0f, (width - topView.width).toFloat())
 //                            topView.translationY = MathUtils.clamp(topView.translationY + dy, 0f, (height - topView.height).toFloat())
                         }
+
+                        else -> {}
                     }
 
                     when (editType) {
@@ -130,6 +132,8 @@ class EditorView @JvmOverloads constructor(
                                 when (editType) {
                                     EditType.LEFT_TOP_CORNER, EditType.LEFT_BOTTOM_CORNER ->
                                         topView.translationX += startTopSize.x - targetTopSize.x
+
+                                    else -> {}
                                 }
                             }
                             if (targetTopSize.y > minSize) {
@@ -137,10 +141,14 @@ class EditorView @JvmOverloads constructor(
                                 when (editType) {
                                     EditType.LEFT_TOP_CORNER, EditType.RIGHT_TOP_CORNER ->
                                         topView.translationY += startTopSize.y - targetTopSize.y
+
+                                    else -> {}
                                 }
                             }
                             topView.layoutParams = topView.layoutParams
                         }
+
+                        else -> {}
                     }
                     invalidate()
                 }

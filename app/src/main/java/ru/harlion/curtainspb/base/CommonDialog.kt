@@ -3,19 +3,22 @@ package ru.harlion.curtainspb.base
 import android.app.Dialog
 import android.content.Context
 import android.graphics.drawable.InsetDrawable
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
-import kotlinx.android.synthetic.main.dialog_common.*
 import ru.harlion.curtainspb.R
+import ru.harlion.curtainspb.databinding.DialogCommonBinding
 
 class CommonDialog(val context: Context) {
+    private lateinit var binding: DialogCommonBinding
     private var dialog: Dialog = Dialog(context)
 
     init {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
-        dialog.setContentView(R.layout.dialog_common)
+        binding = DialogCommonBinding.inflate(LayoutInflater.from(context))
+        dialog.setContentView(binding.root)
         dialog.window!!.apply {
             setBackgroundDrawable(null)
             setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -39,28 +42,28 @@ class CommonDialog(val context: Context) {
     }
 
     fun setTitle(msg: String) {
-        dialog.d_common_title_tv.text = msg
-        dialog.d_common_title_tv.visibility = View.VISIBLE
+        binding.dCommonTitleTv.text = msg
+        binding.dCommonTitleTv.visibility = View.VISIBLE
     }
 
     fun setMessage(msg: String) {
-        dialog.d_common_message_tv.text = msg
-        dialog.d_common_message_tv.visibility = View.VISIBLE
+        binding.dCommonMessageTv.text = msg
+        binding.dCommonMessageTv.visibility = View.VISIBLE
     }
 
     fun setPositiveButton(title: String, onClickListener: View.OnClickListener?) {
-        dialog.d_common_positive_button.visibility = View.VISIBLE
-        dialog.d_common_positive_button.text = title
-        dialog.d_common_positive_button.setOnClickListener {
+        binding.dCommonPositiveButton.visibility = View.VISIBLE
+        binding.dCommonPositiveButton.text = title
+        binding.dCommonPositiveButton.setOnClickListener {
             onClickListener?.onClick(it)
             dialog.dismiss()
         }
     }
 
     fun setNegativeButton(title: String, onClickListener: View.OnClickListener?) {
-        dialog.d_common_negative_button.visibility = View.VISIBLE
-        dialog.d_common_negative_button.text = title
-        dialog.d_common_negative_button.setOnClickListener {
+        binding.dCommonNegativeButton.visibility = View.VISIBLE
+        binding.dCommonNegativeButton.text = title
+        binding.dCommonNegativeButton.setOnClickListener {
             onClickListener?.onClick(it)
             dialog.dismiss()
         }

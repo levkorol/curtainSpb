@@ -16,7 +16,6 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.fragment_scetch.*
 import ru.harlion.curtainspb.R
 import ru.harlion.curtainspb.base.BaseFragment
 import ru.harlion.curtainspb.databinding.FragmentScetchBinding
@@ -81,16 +80,16 @@ class SketchFragment : BaseFragment(), IView {
 
         requireArguments().let {
             it.getString("imageUrl") // saved
-                ?.let { Glide.with(this).load(it).into(editorView.bottomView) }
+                ?.let { Glide.with(this).load(it).into(binding.editorView.bottomView) }
             it.getParcelable<Uri>("imageUri") // gallery
-                ?.let { Glide.with(this).load(it).into(editorView.bottomView) }
+                ?.let { Glide.with(this).load(it).into(binding.editorView.bottomView) }
             it.getString("imageFile") // camera
-                ?.let { editorView.bottomView.setImageBitmap(BitmapFactory.decodeFile(it)) }
+                ?.let { binding.editorView.bottomView.setImageBitmap(BitmapFactory.decodeFile(it)) }
         }
 
         initClick()
 
-        editorView.showWatermark = prefs.getUserRole() != 4
+        binding.editorView.showWatermark = prefs.getUserRole() != 4
     }
 
     override fun onDestroyView() {
@@ -113,7 +112,7 @@ class SketchFragment : BaseFragment(), IView {
             File(requireActivity().filesDir, "upload").also(File::mkdirs),
             "pick.png"
         )
-        editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, FileOutputStream(file))
+        binding.editorView.toBitmap().compress(Bitmap.CompressFormat.PNG, 100, FileOutputStream(file))
     }
 
     private fun initClick() {

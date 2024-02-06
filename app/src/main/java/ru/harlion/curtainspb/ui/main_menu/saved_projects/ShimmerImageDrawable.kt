@@ -24,7 +24,7 @@ class ShimmerImageDrawable() : Drawable() {
     var tx = 0f
     var pathWidth = 0f
     var lastFrame = SystemClock.uptimeMillis()
-    override fun onBoundsChange(bounds: Rect?) {
+    override fun onBoundsChange(bounds: Rect) {
         path.rewind()
         paint.shader = null
     }
